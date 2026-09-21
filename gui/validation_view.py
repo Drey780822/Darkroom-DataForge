@@ -24,15 +24,15 @@ class ValidationCard(QFrame):
         super().__init__(parent)
         self.setObjectName("Card")
         layout = QVBoxLayout(self)
-        layout.setContentsMargins(18, 14, 18, 14)
-        layout.setSpacing(4)
+        layout.setContentsMargins(18, 16, 18, 16)
+        layout.setSpacing(6)
 
-        t_lbl = QLabel(title)
+        t_lbl = QLabel(title.upper())
         t_lbl.setObjectName("CardTitle")
         layout.addWidget(t_lbl)
 
         self.val_lbl = QLabel(str(count))
-        self.val_lbl.setStyleSheet(f"color: {color}; font-size: 26px; font-weight: 800;")
+        self.val_lbl.setStyleSheet(f"color: {color}; font-size: 24px; font-weight: 600; letter-spacing: -0.02em;")
         layout.addWidget(self.val_lbl)
 
     def set_count(self, count: int):
@@ -52,24 +52,25 @@ class ValidationView(QWidget):
 
     def init_ui(self):
         layout = QVBoxLayout(self)
-        layout.setContentsMargins(20, 20, 20, 20)
-        layout.setSpacing(16)
+        layout.setContentsMargins(32, 28, 32, 28)
+        layout.setSpacing(20)
 
         # Header
         header = QHBoxLayout()
         title_box = QVBoxLayout()
-        title = QLabel("Data Validation & Quality Assurance")
-        title.setStyleSheet("font-size: 18px; font-weight: 800; color: #F8FAFC;")
+        title_box.setSpacing(4)
+        title = QLabel("Validation & Quality")
+        title.setStyleSheet("font-size: 20px; font-weight: 600; color: #FFFFFF; letter-spacing: -0.02em;")
         title_box.addWidget(title)
 
-        subtitle = QLabel("Rule-based integrity checks for required fields, numeric bounds, regular expressions, and referential relations.")
-        subtitle.setStyleSheet("font-size: 12px; color: #94A3B8;")
+        subtitle = QLabel("Rule-based integrity checks for required fields, numeric bounds, expressions, and relations.")
+        subtitle.setStyleSheet("font-size: 13px; color: rgba(255, 255, 255, 0.45);")
         title_box.addWidget(subtitle)
         header.addLayout(title_box)
 
         header.addStretch()
 
-        self.btn_autofix = QPushButton("✨ Fix Deterministic Issues Automatically")
+        self.btn_autofix = QPushButton("Auto-fix Issues")
         self.btn_autofix.setObjectName("PrimaryButton")
         self.btn_autofix.clicked.connect(self.run_auto_fixes)
         header.addWidget(self.btn_autofix)
@@ -78,15 +79,15 @@ class ValidationView(QWidget):
 
         # 3 Severity Cards
         cards_grid = QGridLayout()
-        cards_grid.setSpacing(14)
+        cards_grid.setSpacing(12)
 
-        self.card_crit = ValidationCard("CRITICAL ISSUES", 0, color="#EF4444")
+        self.card_crit = ValidationCard("Critical Issues", 0, color="#EF4444")
         cards_grid.addWidget(self.card_crit, 0, 0)
 
-        self.card_warn = ValidationCard("WARNINGS", 0, color="#F59E0B")
+        self.card_warn = ValidationCard("Warnings", 0, color="#F59E0B")
         cards_grid.addWidget(self.card_warn, 0, 1)
 
-        self.card_info = ValidationCard("AUTO-FIXABLE DETECTED", 0, color="#22C55E")
+        self.card_info = ValidationCard("Auto-fixable Detected", 0, color="#10A37F")
         cards_grid.addWidget(self.card_info, 0, 2)
 
         layout.addLayout(cards_grid)
@@ -95,10 +96,10 @@ class ValidationView(QWidget):
         table_frame = QFrame()
         table_frame.setObjectName("Card")
         t_layout = QVBoxLayout(table_frame)
-        t_layout.setContentsMargins(14, 12, 14, 12)
-        t_layout.setSpacing(8)
+        t_layout.setContentsMargins(16, 14, 16, 14)
+        t_layout.setSpacing(10)
 
-        t_title = QLabel("DETECTED VALIDATION ISSUES")
+        t_title = QLabel("Detected Issues")
         t_title.setObjectName("CardTitle")
         t_layout.addWidget(t_title)
 

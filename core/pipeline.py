@@ -1,5 +1,6 @@
 from __future__ import annotations
 import time
+import platform
 from enum import Enum
 from typing import Dict, Any, List, Optional, Callable, Tuple
 from datetime import datetime, timezone
@@ -70,8 +71,10 @@ class DataforgePipeline:
 
     def __init__(self, project: Project, tesseract_cmd: str = ""):
         self.project = project
+        from core.profile_loader import get_profile_loader
+        self.profile_loader = get_profile_loader()
         self.inspector = DocumentInspector()
-        self.classifier = DocumentClassifier()
+        self.classifier = DocumentClassifier(profile_loader=self.profile_loader)
         self.extractor_engine = ExtractorEngine(tesseract_cmd=tesseract_cmd)
         self.validator = Validator()
 
@@ -206,9 +209,19 @@ class DataforgePipeline:
                 if not raw_table.rows:
                     continue
 
+                # Lookup profile for this document
+                profile = None
+                if doc.classification:
+                    profile = self.profile_loader.get_profile_by_document_type(doc.classification.document_type)
+                    if not profile and doc.classification.recommended_extractor:
+                        for p in self.profile_loader.get_all_profiles():
+                            if p.recommended_extractor == doc.classification.recommended_extractor:
+                                profile = p
+                                break
+
                 # Build Records with dual values and provenance
                 raw_headers = raw_table.headers or [f"Col_{i+1}" for i in range(raw_table.column_count)]
-                canonical_fields = SchemaDetector.detect_schema(raw_headers, [])
+                canonical_fields = SchemaDetector.detect_schema(raw_headers, [], profile=profile)
 
                 table_records: List[Record] = []
                 for r_idx, row in enumerate(raw_table.rows):
@@ -225,7 +238,6 @@ class DataforgePipeline:
                     for c_idx, field_def in enumerate(canonical_fields):
                         cell_raw = row[c_idx] if c_idx < len(row) else ""
                         norm_val, is_mod = Normalizer.normalize_value(cell_raw, field_name=field_def.name)
-                        record.cells[field_def.name] = cell_raw
                         record.set_value(field_def.name, cell_raw, norm_val, confidence=raw_table.confidence)
                     
                     record = Normalizer.normalize_record(record)
@@ -233,18 +245,23 @@ class DataforgePipeline:
 
                 # Deduplicate records
                 pk_fields = [f.name for f in canonical_fields if f.is_primary_key]
+                if profile and profile.datasets and profile.datasets[0].primary_key:
+                    pk_fields = [k for k in profile.datasets[0].primary_key if any(f.name == k for f in canonical_fields)] or pk_fields
                 unique_records, dup_count = Normalizer.deduplicate_records(table_records, key_fields=pk_fields if pk_fields else None)
                 if dup_count > 0:
                     log("INFO", f"Deduplicated {dup_count} duplicate rows in {doc.filename}.")
 
                 # Base dataset name
-                base_name = f"{doc.filename.lower().replace('.pdf', '')}_table"
-                if doc.classification and doc.classification.recommended_extractor == "qualifications":
+                if profile and profile.datasets:
+                    base_name = profile.datasets[0].id
+                elif doc.classification and doc.classification.recommended_extractor == "qualifications":
                     base_name = "qualifications"
                 elif doc.classification and doc.classification.recommended_extractor == "codebook":
                     base_name = "qlfs_codebook"
                 elif doc.classification and doc.classification.recommended_extractor == "occupations":
                     base_name = "occupations_high_demand"
+                else:
+                    base_name = f"{doc.filename.lower().replace('.pdf', '')}_table"
 
                 ds = Dataset(
                     metadata=DatasetMetadata(
@@ -262,7 +279,10 @@ class DataforgePipeline:
                 list_col = RelationshipDetector.detect_list_column(ds)
                 if list_col and pk_fields:
                     log("INFO", f"Detected 1:N relationship on column '{list_col.name}' for {ds.metadata.name}")
-                    child_ds_name = f"{ds.metadata.name}_colleges" if "college" in list_col.name else f"{ds.metadata.name}_items"
+                    if profile and len(profile.datasets) > 1:
+                        child_ds_name = profile.datasets[1].id
+                    else:
+                        child_ds_name = f"{ds.metadata.name}_colleges" if "college" in list_col.name else f"{ds.metadata.name}_items"
                     item_col_name = "college_name" if "college" in list_col.name else "item_name"
 
                     parent_clean, child_ds, rel = RelationshipDetector.decompose_one_to_many(
@@ -352,7 +372,11 @@ class DataforgePipeline:
                     quality_score=d.metadata.quality.overall_score if d.metadata.quality else 0.0,
                 ) for d in generated_datasets
             ],
-            system_environment={"platform": "Windows", "engine": "Darkroom DataForge v1.0.0"}
+            system_environment={
+                "platform": platform.system(),
+                "platform_release": platform.release(),
+                "engine": "Darkroom DataForge v1.0.0"
+            }
         )
         self.project.workspace.save_manifest(manifest.model_dump(mode="json"))
 

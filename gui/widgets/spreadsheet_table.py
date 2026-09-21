@@ -110,14 +110,14 @@ class SpreadsheetTable(QTableWidget):
         rec = self.filtered_records[row]
         menu = QMenu(self)
 
-        action_source = QAction(f"🔍 Jump to Source (Page {rec.provenance.source_page})", self)
+        action_source = QAction(f"Jump to Source (Page {rec.provenance.source_page})", self)
         action_source.triggered.connect(lambda: self.view_source_requested.emit(
             rec.provenance.source_document,
             rec.provenance.source_page
         ))
         menu.addAction(action_source)
 
-        action_raw = QAction("📄 View Raw Value", self)
+        action_raw = QAction("View Raw Value", self)
         col = item.column()
         field_name = self.current_dataset.column_names[col]
         raw_val = rec.cells[field_name].raw_value if field_name in rec.cells else ""

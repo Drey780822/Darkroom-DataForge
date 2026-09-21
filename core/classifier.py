@@ -1,6 +1,6 @@
 from __future__ import annotations
 import re
-from typing import List, Tuple
+from typing import List, Tuple, Optional
 from models.document import (
     DocumentMetadata,
     DocumentType,
@@ -9,23 +9,14 @@ from models.document import (
 )
 
 
+from core.profile_loader import ProfileLoader, get_profile_loader
+
+
 class DocumentClassifier:
-    """Classifies documents into archetypes and suggests optimal extraction strategies."""
+    """Classifies documents into archetypes and suggests optimal extraction strategies using YAML profiles."""
 
-    QLFS_KEYWORDS = [
-        "variable name", "variable label", "category code", "value label",
-        "quarterly labour force", "stats sa", "codebook", "survey metadata"
-    ]
-
-    TVET_KEYWORDS = [
-        "saqa id", "occupational certificate", "qualification title",
-        "tvet college", "nqf level", "participating colleges", "oqsf", "qcto"
-    ]
-
-    OIHD_KEYWORDS = [
-        "ofo code", "demand ranking", "occupations in high demand",
-        "oihd", "high demand", "labour market intelligence", "critical skills"
-    ]
+    def __init__(self, profile_loader: Optional[ProfileLoader] = None):
+        self.profile_loader = profile_loader or get_profile_loader()
 
     def classify(self, doc_metadata: DocumentMetadata) -> ClassificationResult:
         inspection = doc_metadata.inspection
@@ -60,50 +51,22 @@ class DocumentClassifier:
         sample_corpus = " ".join([p.sample_text.lower() for p in inspection.pages[:10]])
         combined_text = f"{filename} {sample_corpus}"
 
-        # 2. Check for TVET Qualifications
-        tvet_matches = [kw for kw in self.TVET_KEYWORDS if kw in combined_text]
-        if "tvet" in filename or "saqa" in filename or len(tvet_matches) >= 2:
-            conf = min(0.98, 0.70 + (len(tvet_matches) * 0.08))
+        # 2. Check Dynamic Profile Matches
+        matched_profile = self.profile_loader.match_profile(filename, sample_corpus)
+        if matched_profile:
+            keywords = matched_profile.matching_patterns.get("keywords", [])
+            kw_hits = [kw for kw in keywords if kw.lower() in combined_text]
+            conf = min(0.98, 0.72 + (len(kw_hits) * 0.06))
             return ClassificationResult(
-                document_type=DocumentType.REPEATED_TABULAR,
+                document_type=matched_profile.document_type,
                 confidence=round(conf, 2),
-                recommended_extractor="qualifications",
+                recommended_extractor=matched_profile.recommended_extractor,
                 reasons=[
-                    f"Detected TVET domain keywords: {', '.join(tvet_matches[:3])}",
-                    f"Table likelihood is high ({inspection.table_likelihood_score*100:.0f}%)",
-                    "Document structure contains repeating qualification offerings"
+                    f"Matched profile '{matched_profile.display_name}'",
+                    f"Detected domain keywords: {', '.join(kw_hits[:3])}" if kw_hits else "Matched filename pattern",
+                    f"Recommended extractor: {matched_profile.recommended_extractor}"
                 ],
-                alternative_extractors=["pdf_tables", "qualifications"],
-            )
-
-        # 3. Check for QLFS Codebooks
-        qlfs_matches = [kw for kw in self.QLFS_KEYWORDS if kw in combined_text]
-        if "qlfs" in filename or "codebook" in filename or len(qlfs_matches) >= 2:
-            conf = min(0.98, 0.72 + (len(qlfs_matches) * 0.08))
-            return ClassificationResult(
-                document_type=DocumentType.CODEBOOK_METADATA,
-                confidence=round(conf, 2),
-                recommended_extractor="codebook",
-                reasons=[
-                    f"Detected QLFS survey/codebook terms: {', '.join(qlfs_matches[:3])}",
-                    "Layout aligns with variable dictionary / value categories specification"
-                ],
-                alternative_extractors=["codebook", "pdf_text", "pdf_tables"],
-            )
-
-        # 4. Check for Occupations in High Demand (OIHD)
-        oihd_matches = [kw for kw in self.OIHD_KEYWORDS if kw in combined_text]
-        if "oihd" in filename or "demand" in filename or len(oihd_matches) >= 2:
-            conf = min(0.95, 0.68 + (len(oihd_matches) * 0.09))
-            return ClassificationResult(
-                document_type=DocumentType.SEMI_STRUCTURED_REPORT,
-                confidence=round(conf, 2),
-                recommended_extractor="occupations",
-                reasons=[
-                    f"Detected OIHD labour market terms: {', '.join(oihd_matches[:3])}",
-                    "Structure indicates narrative research report with embedded annexure tables"
-                ],
-                alternative_extractors=["occupations", "pdf_tables"],
+                alternative_extractors=["pdf_tables", matched_profile.recommended_extractor],
             )
 
         # 5. Generic Structured Table PDF

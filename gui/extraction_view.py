@@ -61,30 +61,32 @@ class ExtractionView(QWidget):
 
     def init_ui(self):
         layout = QVBoxLayout(self)
-        layout.setContentsMargins(20, 20, 20, 20)
-        layout.setSpacing(14)
+        layout.setContentsMargins(32, 28, 32, 28)
+        layout.setSpacing(18)
 
         # Header
         header = QHBoxLayout()
         title_box = QVBoxLayout()
-        title = QLabel("Pipeline Execution Engine")
-        title.setStyleSheet("font-size: 18px; font-weight: 800; color: #F8FAFC;")
+        title_box.setSpacing(3)
+
+        title = QLabel("Pipeline")
+        title.setStyleSheet("font-size: 22px; font-weight: 700; color: #FFFFFF; letter-spacing: -0.4px;")
         title_box.addWidget(title)
 
-        subtitle = QLabel("Select documents to execute multi-stage extraction, reconstruction, normalization, and validation.")
-        subtitle.setStyleSheet("font-size: 12px; color: #94A3B8;")
+        subtitle = QLabel("Execute multi-stage extraction, table reconstruction, normalization, and schema validation.")
+        subtitle.setStyleSheet("font-size: 12px; color: #8E8E93;")
         title_box.addWidget(subtitle)
         header.addLayout(title_box)
 
         header.addStretch()
 
-        self.btn_run_selected = QPushButton("▶ Run Pipeline (Selected)")
-        self.btn_run_selected.setObjectName("SuccessButton")
+        self.btn_run_selected = QPushButton("Run Selected")
+        self.btn_run_selected.setObjectName("NavyButton")
         self.btn_run_selected.clicked.connect(self.on_run_selected)
         header.addWidget(self.btn_run_selected)
 
-        self.btn_run_all = QPushButton("⏩ Run Pipeline (All)")
-        self.btn_run_all.setObjectName("PrimaryButton")
+        self.btn_run_all = QPushButton("Run All")
+        self.btn_run_all.setObjectName("SuccessButton")
         self.btn_run_all.clicked.connect(self.on_run_all)
         header.addWidget(self.btn_run_all)
 
@@ -141,30 +143,30 @@ class ExtractionView(QWidget):
 
         status_line = QHBoxLayout()
         self.status_lbl = QLabel("Status: Ready to execute.")
-        self.status_lbl.setStyleSheet("font-size: 13px; font-weight: 600; color: #F8FAFC;")
+        self.status_lbl.setStyleSheet("font-size: 13px; font-weight: 500; color: #EDEDED;")
         status_line.addWidget(self.status_lbl)
 
         status_line.addStretch()
 
         self.pct_lbl = QLabel("0%")
-        self.pct_lbl.setStyleSheet("font-size: 13px; font-weight: 700; color: #D4AF37;")
+        self.pct_lbl.setStyleSheet("font-size: 13px; font-weight: 600; color: #10A37F;")
         status_line.addWidget(self.pct_lbl)
         prog_layout.addLayout(status_line)
 
         self.progress_bar = QProgressBar()
-        self.progress_bar.setFixedHeight(8)
+        self.progress_bar.setFixedHeight(6)
         self.progress_bar.setRange(0, 100)
         self.progress_bar.setValue(0)
         self.progress_bar.setTextVisible(False)
         self.progress_bar.setStyleSheet("""
             QProgressBar {
-                background-color: #172033;
+                background-color: rgba(255, 255, 255, 0.06);
                 border: none;
-                border-radius: 4px;
+                border-radius: 3px;
             }
             QProgressBar::chunk {
-                background-color: #D4AF37;
-                border-radius: 4px;
+                background-color: #10A37F;
+                border-radius: 3px;
             }
         """)
         prog_layout.addWidget(self.progress_bar)

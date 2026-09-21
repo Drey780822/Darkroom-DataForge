@@ -65,18 +65,30 @@ class RelationshipDetector:
             raw_list_val = rec.get_value(list_column_name, prefer_normalized=False)
 
             # Create clean parent record
-            if pk_val not in seen_parent_pks:
-                clean_rec = Record(
-                    provenance=rec.provenance,
-                    is_flagged_for_review=rec.is_flagged_for_review,
-                )
-                for col in parent_cols:
-                    cell = rec.cells.get(col.name)
-                    if cell:
-                        clean_rec.cells[col.name] = cell
-                clean_parent_records.append(clean_rec)
-                if pk_val:
+            if pk_val is not None and pk_val != "":
+                if pk_val not in seen_parent_pks:
+                    clean_rec = Record(
+                        provenance=rec.provenance,
+                        is_flagged_for_review=rec.is_flagged_for_review,
+                    )
+                    for col in parent_cols:
+                        cell = rec.cells.get(col.name)
+                        if cell:
+                            clean_rec.cells[col.name] = cell
+                    clean_parent_records.append(clean_rec)
                     seen_parent_pks.add(pk_val)
+            else:
+                # Only include parent records without PK if they have non-empty content
+                if any(rec.get_value(c.name) for c in parent_cols):
+                    clean_rec = Record(
+                        provenance=rec.provenance,
+                        is_flagged_for_review=rec.is_flagged_for_review,
+                    )
+                    for col in parent_cols:
+                        cell = rec.cells.get(col.name)
+                        if cell:
+                            clean_rec.cells[col.name] = cell
+                    clean_parent_records.append(clean_rec)
 
             # Split child items
             if raw_list_val:

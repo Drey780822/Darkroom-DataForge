@@ -28,17 +28,17 @@ class StageStepWidget(QFrame):
         layout.setAlignment(Qt.AlignCenter)
 
         self.title_lbl = QLabel(self.label_text)
-        self.title_lbl.setStyleSheet("font-size: 11px; font-weight: 700; color: #94A3B8;")
+        self.title_lbl.setStyleSheet("font-size: 11px; font-weight: 600; color: #8E8E93;")
         self.title_lbl.setAlignment(Qt.AlignCenter)
         layout.addWidget(self.title_lbl)
 
         self.status_lbl = QLabel("PENDING")
-        self.status_lbl.setStyleSheet("font-size: 9px; font-weight: 700; color: #64748B; padding: 2px 6px; border-radius: 4px; background: #0B1020;")
+        self.status_lbl.setStyleSheet("font-size: 9px; font-weight: 600; color: #5C5C62; padding: 2px 6px; border-radius: 4px; background: rgba(255, 255, 255, 0.04);")
         self.status_lbl.setAlignment(Qt.AlignCenter)
         layout.addWidget(self.status_lbl)
 
         self.time_lbl = QLabel("-")
-        self.time_lbl.setStyleSheet("font-size: 9px; color: #64748B;")
+        self.time_lbl.setStyleSheet("font-size: 9px; color: #5C5C62;")
         self.time_lbl.setAlignment(Qt.AlignCenter)
         layout.addWidget(self.time_lbl)
 
@@ -53,24 +53,24 @@ class StageStepWidget(QFrame):
 
         if status == StageStatus.RUNNING:
             self.status_lbl.setText("RUNNING")
-            self.status_lbl.setStyleSheet("font-size: 9px; font-weight: 700; color: #0B1020; background: #D4AF37; padding: 2px 6px; border-radius: 4px;")
-            self.title_lbl.setStyleSheet("font-size: 11px; font-weight: 700; color: #D4AF37;")
+            self.status_lbl.setStyleSheet("font-size: 9px; font-weight: 600; color: #FFFFFF; background: rgba(255, 255, 255, 0.14); border: 1px solid rgba(255, 255, 255, 0.25); padding: 2px 6px; border-radius: 4px;")
+            self.title_lbl.setStyleSheet("font-size: 11px; font-weight: 600; color: #EDEDED;")
         elif status == StageStatus.COMPLETE:
             self.status_lbl.setText("COMPLETE")
-            self.status_lbl.setStyleSheet("font-size: 9px; font-weight: 700; color: #22C55E; background: rgba(34, 197, 94, 0.15); padding: 2px 6px; border-radius: 4px;")
-            self.title_lbl.setStyleSheet("font-size: 11px; font-weight: 700; color: #F8FAFC;")
+            self.status_lbl.setStyleSheet("font-size: 9px; font-weight: 600; color: #10A37F; background: rgba(16, 163, 127, 0.12); border: 1px solid rgba(16, 163, 127, 0.25); padding: 2px 6px; border-radius: 4px;")
+            self.title_lbl.setStyleSheet("font-size: 11px; font-weight: 600; color: #EDEDED;")
         elif status == StageStatus.WARNING:
             self.status_lbl.setText("WARNING")
-            self.status_lbl.setStyleSheet("font-size: 9px; font-weight: 700; color: #F59E0B; background: rgba(245, 158, 11, 0.15); padding: 2px 6px; border-radius: 4px;")
-            self.title_lbl.setStyleSheet("font-size: 11px; font-weight: 700; color: #F8FAFC;")
+            self.status_lbl.setStyleSheet("font-size: 9px; font-weight: 600; color: #F5A623; background: rgba(245, 166, 35, 0.12); border: 1px solid rgba(245, 166, 35, 0.25); padding: 2px 6px; border-radius: 4px;")
+            self.title_lbl.setStyleSheet("font-size: 11px; font-weight: 600; color: #EDEDED;")
         elif status == StageStatus.FAILED:
             self.status_lbl.setText("FAILED")
-            self.status_lbl.setStyleSheet("font-size: 9px; font-weight: 700; color: #EF4444; background: rgba(239, 68, 68, 0.15); padding: 2px 6px; border-radius: 4px;")
-            self.title_lbl.setStyleSheet("font-size: 11px; font-weight: 700; color: #EF4444;")
+            self.status_lbl.setStyleSheet("font-size: 9px; font-weight: 600; color: #E5534B; background: rgba(229, 83, 75, 0.12); border: 1px solid rgba(229, 83, 75, 0.25); padding: 2px 6px; border-radius: 4px;")
+            self.title_lbl.setStyleSheet("font-size: 11px; font-weight: 600; color: #E5534B;")
         else:
             self.status_lbl.setText("PENDING")
-            self.status_lbl.setStyleSheet("font-size: 9px; font-weight: 700; color: #64748B; background: #0B1020; padding: 2px 6px; border-radius: 4px;")
-            self.title_lbl.setStyleSheet("font-size: 11px; font-weight: 700; color: #94A3B8;")
+            self.status_lbl.setStyleSheet("font-size: 9px; font-weight: 600; color: #5C5C62; background: rgba(255, 255, 255, 0.04); padding: 2px 6px; border-radius: 4px;")
+            self.title_lbl.setStyleSheet("font-size: 11px; font-weight: 600; color: #8E8E93;")
 
 
 class PipelineStepper(QFrame):

@@ -39,20 +39,20 @@ class DocumentView(QWidget):
 
     def init_ui(self):
         layout = QVBoxLayout(self)
-        layout.setContentsMargins(20, 20, 20, 20)
-        layout.setSpacing(14)
+        layout.setContentsMargins(32, 28, 32, 28)
+        layout.setSpacing(18)
 
         # Header
         header = QHBoxLayout()
         title_box = QVBoxLayout()
-        title_box.setSpacing(2)
+        title_box.setSpacing(3)
 
-        title = QLabel("Document Ingestion & Inspection")
-        title.setStyleSheet("font-size: 18px; font-weight: 800; color: #F8FAFC;")
+        title = QLabel("Documents")
+        title.setStyleSheet("font-size: 22px; font-weight: 700; color: #FFFFFF; letter-spacing: -0.4px;")
         title_box.addWidget(title)
 
-        subtitle = QLabel("Inspect PDF structure, verify classification, select documents, or manage ingestions.")
-        subtitle.setStyleSheet("font-size: 12px; color: #94A3B8;")
+        subtitle = QLabel("Inspect PDF structure, review archetypes, select documents, and preview pages.")
+        subtitle.setStyleSheet("font-size: 12px; color: #8E8E93;")
         title_box.addWidget(subtitle)
         header.addLayout(title_box)
 
@@ -73,11 +73,11 @@ class DocumentView(QWidget):
         left_layout.addWidget(self.drop_zone)
 
         # Documents table container
-        tbl_frame = QFrame()
-        tbl_frame.setObjectName("Card")
-        tbl_layout = QVBoxLayout(tbl_frame)
-        tbl_layout.setContentsMargins(12, 12, 12, 12)
-        tbl_layout.setSpacing(8)
+        tbl_card = QFrame()
+        tbl_card.setObjectName("Card")
+        tbl_layout = QVBoxLayout(tbl_card)
+        tbl_layout.setContentsMargins(16, 14, 16, 14)
+        tbl_layout.setSpacing(10)
 
         # Action bar above table
         tbl_top = QHBoxLayout()
@@ -100,27 +100,27 @@ class DocumentView(QWidget):
 
         # Second row of action buttons
         actions_bar = QHBoxLayout()
-        self.btn_process_sel = QPushButton("▶ Process Selected")
+        self.btn_process_sel = QPushButton("Process Selected")
         self.btn_process_sel.setObjectName("SuccessButton")
         self.btn_process_sel.setFixedHeight(26)
         self.btn_process_sel.clicked.connect(self.on_process_selected)
         actions_bar.addWidget(self.btn_process_sel)
 
-        self.btn_reinspect = QPushButton("🔄 Re-inspect")
+        self.btn_reinspect = QPushButton("Re-inspect")
         self.btn_reinspect.setObjectName("NavyButton")
         self.btn_reinspect.setFixedHeight(26)
         self.btn_reinspect.clicked.connect(self.on_reinspect_selected)
         actions_bar.addWidget(self.btn_reinspect)
 
-        self.btn_delete_sel = QPushButton("🗑 Delete Selected")
+        self.btn_delete_sel = QPushButton("Delete Selected")
+        self.btn_delete_sel.setObjectName("DangerButton")
         self.btn_delete_sel.setFixedHeight(26)
-        self.btn_delete_sel.setStyleSheet("background-color: #3B1B1F; color: #EF4444; border: 1px solid #7F1D1D;")
         self.btn_delete_sel.clicked.connect(self.on_delete_selected)
         actions_bar.addWidget(self.btn_delete_sel)
 
-        self.btn_clear_all = QPushButton("⚠ Clear All")
+        self.btn_clear_all = QPushButton("Clear All")
+        self.btn_clear_all.setObjectName("DangerButton")
         self.btn_clear_all.setFixedHeight(26)
-        self.btn_clear_all.setStyleSheet("background-color: #2D1515; color: #F87171; border: 1px solid #991B1B;")
         self.btn_clear_all.clicked.connect(self.on_clear_all)
         actions_bar.addWidget(self.btn_clear_all)
 
@@ -138,7 +138,7 @@ class DocumentView(QWidget):
         self.doc_table.itemSelectionChanged.connect(self.on_doc_selected)
         tbl_layout.addWidget(self.doc_table)
 
-        left_layout.addWidget(tbl_frame)
+        left_layout.addWidget(tbl_card)
         splitter.addWidget(left_widget)
 
         # Right side: PDF Canvas

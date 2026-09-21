@@ -37,7 +37,7 @@ class PdfCanvas(QFrame):
         toolbar = QHBoxLayout()
         toolbar.setSpacing(8)
 
-        self.btn_prev = QPushButton("◀ Prev")
+        self.btn_prev = QPushButton("Previous")
         self.btn_prev.clicked.connect(self.prev_page)
         toolbar.addWidget(self.btn_prev)
 
@@ -47,10 +47,10 @@ class PdfCanvas(QFrame):
         toolbar.addWidget(self.page_spin)
 
         self.page_total_lbl = QLabel("/ 0")
-        self.page_total_lbl.setStyleSheet("color: #94A3B8; font-size: 11px;")
+        self.page_total_lbl.setStyleSheet("color: #8E8E93; font-size: 11px;")
         toolbar.addWidget(self.page_total_lbl)
 
-        self.btn_next = QPushButton("Next ▶")
+        self.btn_next = QPushButton("Next")
         self.btn_next.clicked.connect(self.next_page)
         toolbar.addWidget(self.btn_next)
 

@@ -48,16 +48,16 @@ columns:
     aliases: ["Notes", "Description", "Universe", "Filter"]
 
 datasets:
-  - id: "variables"
+  - id: "qlfs_codebook"
     name: "Survey Variables"
     primary_key: ["variable_name"]
-  - id: "variable_categories"
+  - id: "qlfs_categories"
     name: "Variable Categories / Codebook"
     primary_key: ["variable_name", "value"]
 
 relationships:
   - name: "variable_to_categories"
     type: "ONE_TO_MANY"
-    parent_dataset: "variables"
-    child_dataset: "variable_categories"
+    parent_dataset: "qlfs_codebook"
+    child_dataset: "qlfs_categories"
     foreign_key: "variable_name"

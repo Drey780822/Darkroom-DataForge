@@ -30,19 +30,19 @@ class MetricBar(QFrame):
         layout.addLayout(header_layout)
 
         self.bar = QProgressBar()
-        self.bar.setFixedHeight(6)
+        self.bar.setFixedHeight(4)
         self.bar.setTextVisible(False)
         self.bar.setRange(0, 100)
         self.bar.setValue(0)
         self.bar.setStyleSheet("""
             QProgressBar {
-                background-color: #172033;
+                background-color: rgba(255, 255, 255, 0.08);
                 border: none;
-                border-radius: 3px;
+                border-radius: 2px;
             }
             QProgressBar::chunk {
-                background-color: #D4AF37;
-                border-radius: 3px;
+                background-color: #10A37F;
+                border-radius: 2px;
             }
         """)
         layout.addWidget(self.bar)
@@ -53,16 +53,16 @@ class MetricBar(QFrame):
         self.bar.setValue(score_int)
         
         # Color coding
-        color = "#22C55E" if score >= 90 else ("#F59E0B" if score >= 70 else "#EF4444")
+        color = "#10A37F" if score >= 90 else ("#F59E0B" if score >= 70 else "#EF4444")
         self.bar.setStyleSheet(f"""
             QProgressBar {{
-                background-color: #172033;
+                background-color: rgba(255, 255, 255, 0.08);
                 border: none;
-                border-radius: 3px;
+                border-radius: 2px;
             }}
             QProgressBar::chunk {{
                 background-color: {color};
-                border-radius: 3px;
+                border-radius: 2px;
             }}
         """)
 
@@ -81,13 +81,13 @@ class QualityGauge(QFrame):
         layout.setSpacing(12)
 
         top_layout = QHBoxLayout()
-        title = QLabel("DATASET QUALITY")
+        title = QLabel("Dataset Quality")
         title.setObjectName("CardTitle")
         top_layout.addWidget(title)
         top_layout.addStretch()
 
         self.overall_badge = QLabel("--%")
-        self.overall_badge.setStyleSheet("font-size: 24px; font-weight: 800; color: #D4AF37;")
+        self.overall_badge.setStyleSheet("font-size: 24px; font-weight: 600; color: #FFFFFF; letter-spacing: -0.02em;")
         top_layout.addWidget(self.overall_badge)
         layout.addLayout(top_layout)
 
@@ -105,14 +105,14 @@ class QualityGauge(QFrame):
         layout.addWidget(self.bar_validation)
 
         notice = QLabel("* Operational indicator; not proof of correctness.")
-        notice.setStyleSheet("font-size: 10px; color: #64748B; font-style: italic;")
+        notice.setStyleSheet("font-size: 11px; color: rgba(255, 255, 255, 0.35); font-style: italic;")
         layout.addWidget(notice)
 
     def update_metrics(self, quality: DatasetQuality):
         score = quality.overall_score
         self.overall_badge.setText(f"{score:.1f}%")
-        color = "#22C55E" if score >= 90 else ("#F59E0B" if score >= 70 else "#EF4444")
-        self.overall_badge.setStyleSheet(f"font-size: 24px; font-weight: 800; color: {color};")
+        color = "#10A37F" if score >= 90 else ("#F59E0B" if score >= 70 else "#EF4444")
+        self.overall_badge.setStyleSheet(f"font-size: 24px; font-weight: 600; color: {color}; letter-spacing: -0.02em;")
 
         self.bar_extraction.set_value(quality.extraction_score)
         self.bar_completeness.set_value(quality.completeness_score)

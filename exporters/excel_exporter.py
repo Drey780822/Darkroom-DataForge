@@ -35,6 +35,12 @@ class ExcelExporter(BaseExporter):
         workbook_path = out_dir / "extracted_datasets.xlsx"
 
         wb = openpyxl.Workbook()
+        if not datasets:
+            ws = wb.active
+            ws.title = "Empty"
+            wb.save(str(workbook_path))
+            return [str(workbook_path)]
+
         # Remove default sheet
         wb.remove(wb.active)
 

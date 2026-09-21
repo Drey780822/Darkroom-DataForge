@@ -1,6 +1,6 @@
 from __future__ import annotations
 import re
-from typing import List, Dict, Any, Optional
+from typing import List, Dict, Any, Optional, Tuple
 from models.field import FieldDefinition, DataType
 from models.record import Record
 
@@ -58,13 +58,65 @@ class SchemaDetector:
         return DataType.STRING, 0.95
 
     @classmethod
-    def detect_schema(cls, raw_headers: List[str], records: List[Record]) -> List[FieldDefinition]:
+    def detect_schema(
+        cls,
+        raw_headers: List[str],
+        records: List[Record],
+        profile: Optional[Any] = None
+    ) -> List[FieldDefinition]:
         fields: List[FieldDefinition] = []
         seen_names: Dict[str, int] = {}
 
+        # Pre-index profile columns by alias and name if profile provided
+        profile_cols_by_alias: Dict[str, Any] = {}
+        pk_names = set()
+        if profile and hasattr(profile, "columns"):
+            for pcol in profile.columns:
+                profile_cols_by_alias[pcol.name.lower()] = pcol
+                profile_cols_by_alias[pcol.display_name.lower()] = pcol
+                for alias in pcol.aliases:
+                    profile_cols_by_alias[alias.lower()] = pcol
+            if hasattr(profile, "datasets") and profile.datasets:
+                pk_names = set(profile.datasets[0].primary_key)
+
         for idx, header in enumerate(raw_headers):
             original = header.strip() if header else f"Column_{idx+1}"
-            snake_name = cls.to_snake_case(original)
+            
+            # Check for profile column match
+            pcol_match = profile_cols_by_alias.get(original.lower())
+            if not pcol_match:
+                pcol_match = profile_cols_by_alias.get(cls.to_snake_case(original))
+
+            if pcol_match:
+                snake_name = pcol_match.name
+                display_name = pcol_match.display_name
+                try:
+                    dtype = DataType(pcol_match.type)
+                except ValueError:
+                    dtype = DataType.STRING
+                is_pk = snake_name in pk_names
+                is_required = pcol_match.required
+                regex_pat = pcol_match.pattern
+                min_val = pcol_match.min_value
+                max_val = pcol_match.max_value
+                type_conf = 0.99
+            else:
+                snake_name = cls.to_snake_case(original)
+                display_name = original
+                # Extract sample values for this field across records
+                col_values = []
+                for r in records:
+                    cell = r.cells.get(snake_name) or r.cells.get(original)
+                    if cell:
+                        col_values.append(cell.normalized_value)
+
+                dtype, type_conf = cls.infer_column_type(col_values)
+                null_count = sum(1 for v in col_values if v is None)
+                is_required = (null_count == 0 and len(col_values) > 0)
+                is_pk = (snake_name in ["id", "saqa_id", "ofo_code", "variable_name"] or "code" in snake_name)
+                regex_pat = None
+                min_val = None
+                max_val = None
 
             # Ensure uniqueness
             if snake_name in seen_names:
@@ -73,30 +125,19 @@ class SchemaDetector:
             else:
                 seen_names[snake_name] = 1
 
-            # Extract sample values for this field across records
-            col_values = []
-            for r in records:
-                cell = r.cells.get(snake_name) or r.cells.get(original)
-                if cell:
-                    col_values.append(cell.normalized_value)
-
-            dtype, type_conf = cls.infer_column_type(col_values)
-            null_count = sum(1 for v in col_values if v is None)
-            is_required = (null_count == 0 and len(col_values) > 0)
-
-            # Heuristics for primary key
-            is_pk = (snake_name in ["id", "saqa_id", "ofo_code", "variable_name"] or "code" in snake_name)
-
             fields.append(
                 FieldDefinition(
                     name=snake_name,
-                    display_name=original,
+                    display_name=display_name,
                     data_type=dtype,
                     required=is_required,
                     nullable=not is_required,
                     confidence=round(type_conf, 2),
                     source_header=original,
                     is_primary_key=is_pk,
+                    regex_pattern=regex_pat,
+                    min_value=min_val,
+                    max_value=max_val,
                 )
             )
 

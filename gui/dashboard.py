@@ -17,11 +17,11 @@ from core.project import Project
 
 
 class KpiCard(QFrame):
-    def __init__(self, title: str, initial_value: str = "0", color: str = "#F8FAFC", parent=None):
+    def __init__(self, title: str, initial_value: str = "0", color: str = "#EDEDED", parent=None):
         super().__init__(parent)
         self.setObjectName("Card")
         layout = QVBoxLayout(self)
-        layout.setContentsMargins(18, 16, 18, 16)
+        layout.setContentsMargins(20, 16, 20, 16)
         layout.setSpacing(6)
 
         t_lbl = QLabel(title)
@@ -30,7 +30,7 @@ class KpiCard(QFrame):
 
         self.v_lbl = QLabel(initial_value)
         self.v_lbl.setObjectName("CardValue")
-        self.v_lbl.setStyleSheet(f"color: {color}; font-size: 28px; font-weight: 800;")
+        self.v_lbl.setStyleSheet(f"color: {color}; font-size: 26px; font-weight: 600; letter-spacing: -0.5px;")
         layout.addWidget(self.v_lbl)
 
     def set_value(self, val: str):
@@ -42,6 +42,7 @@ class DashboardView(QWidget):
 
     create_project_requested = Signal()
     switch_workspace_requested = Signal()
+    load_demo_requested = Signal()
     ingest_requested = Signal()
     run_pipeline_requested = Signal()
     run_selected_requested = Signal(list)
@@ -54,36 +55,42 @@ class DashboardView(QWidget):
 
     def init_ui(self):
         layout = QVBoxLayout(self)
-        layout.setContentsMargins(24, 24, 24, 24)
+        layout.setContentsMargins(32, 28, 32, 28)
         layout.setSpacing(20)
 
         # Header with title and quick action buttons
         header_layout = QHBoxLayout()
         header_text = QVBoxLayout()
-        header_text.setSpacing(2)
+        header_text.setSpacing(3)
 
-        title = QLabel("Overview Dashboard")
-        title.setStyleSheet("font-size: 20px; font-weight: 800; color: #F8FAFC;")
+        title = QLabel("Overview")
+        title.setStyleSheet("font-size: 22px; font-weight: 700; color: #FFFFFF; letter-spacing: -0.4px;")
         header_text.addWidget(title)
 
         self.project_sub = QLabel("Active Project: None")
-        self.project_sub.setStyleSheet("font-size: 12px; color: #94A3B8;")
+        self.project_sub.setStyleSheet("font-size: 12px; color: #8E8E93;")
         header_text.addWidget(self.project_sub)
         header_layout.addLayout(header_text)
 
         header_layout.addStretch()
 
-        self.btn_switch_ws = QPushButton("📁 Switch Workspace")
+        self.btn_load_demo = QPushButton("Load Demo")
+        self.btn_load_demo.setObjectName("NavyButton")
+        self.btn_load_demo.setToolTip("Generate synthetic fixtures and load the TVET Qualifications demo project.")
+        self.btn_load_demo.clicked.connect(self.load_demo_requested.emit)
+        header_layout.addWidget(self.btn_load_demo)
+
+        self.btn_switch_ws = QPushButton("Switch Workspace")
         self.btn_switch_ws.setObjectName("NavyButton")
         self.btn_switch_ws.clicked.connect(self.switch_workspace_requested.emit)
         header_layout.addWidget(self.btn_switch_ws)
 
-        self.btn_ingest = QPushButton("➕ Ingest PDFs")
-        self.btn_ingest.setObjectName("PrimaryButton")
+        self.btn_ingest = QPushButton("Import PDFs")
+        self.btn_ingest.setObjectName("NavyButton")
         self.btn_ingest.clicked.connect(self.ingest_requested.emit)
         header_layout.addWidget(self.btn_ingest)
 
-        self.btn_run = QPushButton("▶ Run Pipeline (All)")
+        self.btn_run = QPushButton("Run Pipeline")
         self.btn_run.setObjectName("SuccessButton")
         self.btn_run.clicked.connect(self.run_pipeline_requested.emit)
         header_layout.addWidget(self.btn_run)
@@ -94,16 +101,16 @@ class DashboardView(QWidget):
         kpi_grid = QGridLayout()
         kpi_grid.setSpacing(14)
 
-        self.kpi_docs = KpiCard("DOCUMENTS PROCESSED", "0", color="#F8FAFC")
+        self.kpi_docs = KpiCard("DOCUMENTS PROCESSED", "0", color="#EDEDED")
         kpi_grid.addWidget(self.kpi_docs, 0, 0)
 
-        self.kpi_records = KpiCard("RECORDS EXTRACTED", "0", color="#D4AF37")
+        self.kpi_records = KpiCard("RECORDS EXTRACTED", "0", color="#EDEDED")
         kpi_grid.addWidget(self.kpi_records, 0, 1)
 
-        self.kpi_validation = KpiCard("VALIDATION ISSUES", "0 issues", color="#F59E0B")
+        self.kpi_validation = KpiCard("VALIDATION ISSUES", "0", color="#F5A623")
         kpi_grid.addWidget(self.kpi_validation, 0, 2)
 
-        self.kpi_datasets = KpiCard("DATASETS GENERATED", "0", color="#22C55E")
+        self.kpi_datasets = KpiCard("DATASETS GENERATED", "0", color="#10A37F")
         kpi_grid.addWidget(self.kpi_datasets, 0, 3)
 
         layout.addLayout(kpi_grid)
@@ -112,7 +119,7 @@ class DashboardView(QWidget):
         docs_card = QFrame()
         docs_card.setObjectName("Card")
         docs_layout = QVBoxLayout(docs_card)
-        docs_layout.setContentsMargins(18, 16, 18, 16)
+        docs_layout.setContentsMargins(20, 18, 20, 18)
         docs_layout.setSpacing(12)
 
         docs_top = QHBoxLayout()
@@ -131,10 +138,11 @@ class DashboardView(QWidget):
         self.btn_deselect_all.clicked.connect(self.deselect_all_docs)
         docs_top.addWidget(self.btn_deselect_all)
 
-        self.btn_run_selected = QPushButton("▶ Run Selected")
+        self.btn_run_selected = QPushButton("Run Selected")
         self.btn_run_selected.setObjectName("SuccessButton")
         self.btn_run_selected.setFixedHeight(26)
         self.btn_run_selected.clicked.connect(self.on_run_selected_clicked)
+        docs_top.addWidget(self.btn_run_selected)
         docs_top.addWidget(self.btn_run_selected)
 
         docs_layout.addLayout(docs_top)
