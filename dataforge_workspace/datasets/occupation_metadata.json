@@ -1,0 +1,222 @@
+{
+  "metadata": {
+    "id": "66909371-c59c-47c9-b977-00167cc4b397",
+    "name": "occupation_metadata",
+    "display_name": "Occupation Metadata",
+    "description": "Normalized 1:N relation of occupations_high_demand",
+    "source_documents": [
+      "The 2024 National List of Occupations in High Demand_A Technical Report.pdf"
+    ],
+    "created_at": "2026-09-21 14:44:32.945231+00:00",
+    "updated_at": "2026-09-21 14:44:32.945232+00:00",
+    "version": 1,
+    "quality": {
+      "overall_score": 98.8,
+      "extraction_score": 95.0,
+      "completeness_score": 100.0,
+      "consistency_score": 100.0,
+      "validation_score": 100.0,
+      "details": {
+        "total_records": 4,
+        "total_columns": 2,
+        "total_cells": 8,
+        "non_null_cells": 8,
+        "empty_cell_ratio": 0.0,
+        "critical_validation_issues": 0,
+        "warning_validation_issues": 0
+      }
+    }
+  },
+  "columns": [
+    {
+      "name": "ofo_code",
+      "display_name": "Ofo Code",
+      "data_type": "string",
+      "required": true,
+      "nullable": true,
+      "unique": false,
+      "regex_pattern": null,
+      "min_value": null,
+      "max_value": null,
+      "allowed_values": null,
+      "confidence": 1.0,
+      "source_header": null,
+      "description": null,
+      "is_primary_key": false,
+      "is_foreign_key": true,
+      "foreign_target": "occupations_high_demand.ofo_code"
+    },
+    {
+      "name": "item_name",
+      "display_name": "Item Name",
+      "data_type": "string",
+      "required": true,
+      "nullable": true,
+      "unique": false,
+      "regex_pattern": null,
+      "min_value": null,
+      "max_value": null,
+      "allowed_values": null,
+      "confidence": 1.0,
+      "source_header": null,
+      "description": null,
+      "is_primary_key": false,
+      "is_foreign_key": false,
+      "foreign_target": null
+    }
+  ],
+  "records": [
+    {
+      "id": "6706571b-c8df-4485-a27b-b4d065b99a9f",
+      "cells": {
+        "ofo_code": {
+          "raw_value": "2024",
+          "normalized_value": "2024",
+          "is_modified": false,
+          "confidence": 1.0,
+          "field_name": "ofo_code",
+          "error_message": null
+        },
+        "item_name": {
+          "raw_value": "Replaced the previous CFE",
+          "normalized_value": "Replaced the previous CFE",
+          "is_modified": false,
+          "confidence": 1.0,
+          "field_name": "item_name",
+          "error_message": null
+        }
+      },
+      "provenance": {
+        "source_document": "The 2024 National List of Occupations in High Demand_A Technical Report.pdf",
+        "source_document_id": null,
+        "source_page": 19,
+        "source_section": null,
+        "source_table": null,
+        "source_row_idx": null,
+        "extraction_method": "occupations",
+        "extracted_at": "2026-09-21 14:44:32.945033+00:00",
+        "confidence": 0.94,
+        "status": "NORMALIZED",
+        "reviewer_notes": null,
+        "audit_trail": []
+      },
+      "is_flagged_for_review": false,
+      "review_dismissed": false
+    },
+    {
+      "id": "ea01d98d-55f0-4d13-a884-9ba9144a29aa",
+      "cells": {
+        "ofo_code": {
+          "raw_value": "2024",
+          "normalized_value": "2024",
+          "is_modified": false,
+          "confidence": 1.0,
+          "field_name": "ofo_code",
+          "error_message": null
+        },
+        "item_name": {
+          "raw_value": "with a survey, which was then",
+          "normalized_value": "with a survey, which was then",
+          "is_modified": false,
+          "confidence": 1.0,
+          "field_name": "item_name",
+          "error_message": null
+        }
+      },
+      "provenance": {
+        "source_document": "The 2024 National List of Occupations in High Demand_A Technical Report.pdf",
+        "source_document_id": null,
+        "source_page": 19,
+        "source_section": null,
+        "source_table": null,
+        "source_row_idx": null,
+        "extraction_method": "occupations",
+        "extracted_at": "2026-09-21 14:44:32.945082+00:00",
+        "confidence": 0.94,
+        "status": "NORMALIZED",
+        "reviewer_notes": null,
+        "audit_trail": []
+      },
+      "is_flagged_for_review": false,
+      "review_dismissed": false
+    },
+    {
+      "id": "f4f87a8d-8229-46fb-8f10-762742562d95",
+      "cells": {
+        "ofo_code": {
+          "raw_value": "2024",
+          "normalized_value": "2024",
+          "is_modified": false,
+          "confidence": 1.0,
+          "field_name": "ofo_code",
+          "error_message": null
+        },
+        "item_name": {
+          "raw_value": "distributed via LinkedIn and the",
+          "normalized_value": "distributed via LinkedIn and the",
+          "is_modified": false,
+          "confidence": 1.0,
+          "field_name": "item_name",
+          "error_message": null
+        }
+      },
+      "provenance": {
+        "source_document": "The 2024 National List of Occupations in High Demand_A Technical Report.pdf",
+        "source_document_id": null,
+        "source_page": 19,
+        "source_section": null,
+        "source_table": null,
+        "source_row_idx": null,
+        "extraction_method": "occupations",
+        "extracted_at": "2026-09-21 14:44:32.945131+00:00",
+        "confidence": 0.94,
+        "status": "NORMALIZED",
+        "reviewer_notes": null,
+        "audit_trail": []
+      },
+      "is_flagged_for_review": false,
+      "review_dismissed": false
+    },
+    {
+      "id": "fe1321af-56e2-4fc0-bd21-854d26e5fa40",
+      "cells": {
+        "ofo_code": {
+          "raw_value": "2024",
+          "normalized_value": "2024",
+          "is_modified": false,
+          "confidence": 1.0,
+          "field_name": "ofo_code",
+          "error_message": null
+        },
+        "item_name": {
+          "raw_value": "DHET networks.",
+          "normalized_value": "DHET networks.",
+          "is_modified": false,
+          "confidence": 1.0,
+          "field_name": "item_name",
+          "error_message": null
+        }
+      },
+      "provenance": {
+        "source_document": "The 2024 National List of Occupations in High Demand_A Technical Report.pdf",
+        "source_document_id": null,
+        "source_page": 19,
+        "source_section": null,
+        "source_table": null,
+        "source_row_idx": null,
+        "extraction_method": "occupations",
+        "extracted_at": "2026-09-21 14:44:32.945159+00:00",
+        "confidence": 0.94,
+        "status": "NORMALIZED",
+        "reviewer_notes": null,
+        "audit_trail": []
+      },
+      "is_flagged_for_review": false,
+      "review_dismissed": false
+    }
+  ],
+  "primary_key": [
+    "ofo_code",
+    "item_name"
+  ]
+}

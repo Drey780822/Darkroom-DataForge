@@ -1,166 +1,165 @@
 # DARKROOM DATAFORGE
 ### Wits–merSETA Darkroom Structured Data Extraction, Validation & Dataset Generation Platform
 
-![Platform](https://img.shields.io/badge/Platform-PySide6%20Desktop-1D3557?style=flat-square)
-![Python](https://img.shields.io/badge/Python-3.10%20--%203.13-D4AF37?style=flat-square)
-![Database-Ready](https://img.shields.io/badge/Output-PostgreSQL%20%7C%20Supabase%20%7C%20CSV-22C55E?style=flat-square)
+![Architecture](https://img.shields.io/badge/Architecture-FastAPI%20%2B%20React%20%2B%20TypeScript-1D3557?style=flat-square)
+![Frontend](https://img.shields.io/badge/Frontend-Vite%20%7C%20TailwindCSS%20%7C%20Zustand-D4AF37?style=flat-square)
+![Backend](https://img.shields.io/badge/Backend-FastAPI%20%7C%20SQLAlchemy%20%7C%20PyMuPDF-22C55E?style=flat-square)
+![Storage](https://img.shields.io/badge/Databases-PostgreSQL%20%7C%20SQLite%20Fallback-0ea5e9?style=flat-square)
 
 ---
 
 ## 1. Overview & Purpose
 
-**Darkroom DataForge** is an internal research-grade desktop data engineering and document intelligence workstation built specifically for the **Wits–merSETA Darkroom** team.
+**Darkroom DataForge** is a centralized, research-grade document intelligence and structured-data extraction web workstation built specifically for the **Wits–merSETA Darkroom** team.
 
-The platform transforms complex collections of semi-structured PDF documents—such as **South African Quarterly Labour Force Survey (QLFS) codebooks**, **Public TVET College Occupational Qualifications lists**, **Occupations in High Demand (OIHD) reports**, and technical research annexures—into clean, validated, database-ready machine-readable datasets.
+The platform converts complex collections of semi-structured PDF documents—such as **South African Quarterly Labour Force Survey (QLFS) codebooks**, **Public TVET College Occupational Qualifications lists**, **Occupations in High Demand (OIHD) reports**, and technical research annexures—into clean, validated, database-ready machine-readable datasets.
 
 Unlike simplistic "PDF to CSV" converters, Darkroom DataForge implements an end-to-end data engineering pipeline:
-- **Zero Blind Trust**: Every cell and record preserves internal provenance (`source_document`, `source_page`, `extraction_method`, `timestamp`, `confidence`).
-- **Archetype Classification**: Automatically determines whether a PDF is a structured table, semi-structured report, codebook, repeated tabular list, or scanned document before selecting an extraction strategy.
-- **Table Healing & Reconstruction**: Merges multi-page tables, removes repeated headers across page breaks, and heals wrapped text cells.
-- **1:N Relational Normalization**: Decomposes composite fields (e.g., qualifications taught at multiple TVET colleges) into relational parent-child entities (`qualifications.csv` and `qualification_colleges.csv`).
-- **Human-in-the-Loop Review**: Low-confidence extractions and schema anomalies are queued for operator inspection with direct, synchronized jumping to the exact source PDF page.
-- **Strict Data Integrity**: Original source PDFs and raw extractions are never mutated or overwritten.
+- **Zero Blind Trust**: Every cell and record preserves internal provenance (`document_id`, `document_name`, `page_number`, `table_index`, `extraction_method`, `confidence_score`).
+- **Embedded Source PDF Viewer**: Instant page-synchronized inspection via the `[ View Source ]` button on any record, jumping directly to the exact source page.
+- **Archetype Classification**: Automatically determines whether a PDF is a TVET qualification catalogue, an OIHD occupational priority list, a survey codebook, or general tables.
+- **Table Healing & Normalization**: Merges multi-page tables, removes repeated headers across page breaks, standardizes South African provinces, cleans Unicode ligatures, and handles null tokens.
+- **Human-in-the-Loop Review**: Low-confidence extractions and schema anomalies are queued for operator inspection with full review audit trails (`HUMAN_REVIEWED`).
+- **Multi-Format Export**: One-click exports to CSV, JSON, and Excel (.xlsx) with configurable provenance metadata columns.
 
 ---
 
-## 2. System Architecture
+## 2. Monorepo Architecture
 
-The application follows a strictly modular architecture across 6 decoupled layers:
+The repository is organized into a clean full-stack monorepo:
 
 ```
-darkroom_dataforge/
-├── app.py                     # Unified GUI & CLI entry point
-├── config/
-│   ├── config.yaml            # Engine, OCR, theme, concurrency settings
-│   └── profiles/              # Document archetype YAML profiles
-├── models/                    # Pydantic data structures (Document, Dataset, Record, Field, Provenance)
-├── storage/                   # Portable filesystem workspace manager & JSON state store
-├── core/                      # Pipeline, Inspector, Classifier, Reconstructor, Normalizer,
-│                              # SchemaDetector, RelationshipDetector, Validator, QualityScorer
-├── extractors/                # Specialized table, text, codebook, qualifications & OCR extractors
-├── exporters/                 # CSV, JSON, Excel (.xlsx), and PostgreSQL / Supabase DDL exporters
-├── gui/                       # PySide6 desktop interface with Darkroom Dark styling
-├── demo/                      # Synthetic South African PDF generator & 1-click demo project
-├── cli/                       # Command-line companion interface for headless automation
-└── tests/                     # Comprehensive automated test suite
+Darkroom DataForge/
+├── backend/                        # FastAPI Backend
+│   ├── app/
+│   │   ├── api/v1/                 # REST API endpoints (projects, documents, extraction, datasets, records, validation, review, exports)
+│   │   ├── config.py               # Pydantic-settings configuration with .env support
+│   │   ├── database.py             # SQLAlchemy engine (PostgreSQL + SQLite fallback)
+│   │   ├── extractors/             # Specialized parsers (Qualifications, Occupations, Codebook, PdfTables)
+│   │   ├── models/                 # SQLAlchemy ORM models (Project, Document, ExtractionJob, Dataset, Record, ValidationIssue, ReviewAudit, ActivityLog)
+│   │   ├── pipeline/               # Pipeline engine, Normalizer, SchemaDetector, Validator, Exporter
+│   │   ├── schemas/                # Pydantic request/response schemas
+│   │   ├── storage/                # Local filesystem storage manager
+│   │   └── main.py                 # FastAPI application entry point with CORS
+│   ├── requirements.txt            # Python dependencies
+│   └── Dockerfile                  # Container definition
+│
+├── frontend/                       # Vite + React + TypeScript Frontend
+│   ├── src/
+│   │   ├── components/             # Layout (Header, Sidebar), Badges, ProgressBar, SourceDocumentModal
+│   │   ├── pages/                  # Dashboard, Projects, Documents, Pipeline, Datasets, DatasetDetails, Validation, Review, Exports
+│   │   ├── services/api.ts         # Axios API client with full type safety
+│   │   ├── store/useAppStore.ts    # Zustand global state (project scope, source modal)
+│   │   ├── types/index.ts          # TypeScript domain interfaces
+│   │   ├── App.tsx                 # React Router routing table
+│   │   └── main.tsx                # Entry point
+│   ├── package.json                # Frontend dependencies
+│   ├── tailwind.config.js          # Darkroom palette tokens (#0B1020, #1D3557, #D4AF37)
+│   ├── nginx.conf                  # Production reverse proxy config
+│   └── Dockerfile                  # Multi-stage production container
+│
+├── storage/                        # Persistent file workspace
+│   ├── uploads/                    # Ingested PDF documents
+│   ├── raw/                        # Raw extraction dumps
+│   ├── processed/                  # Normalized artifacts
+│   ├── exports/                    # Generated CSV, JSON, XLSX exports
+│   └── temp/                       # Temporary processing scratch space
+│
+├── tests/                          # Automated test suite
+│   ├── test_api_v1.py              # API endpoint tests
+│   └── test_pipeline_e2e.py        # End-to-end pipeline integration tests
+│
+├── docker-compose.yml              # Multi-container stack (Postgres, Redis, Backend, Frontend)
+├── Makefile                        # CLI convenience commands
+└── .env.example                    # Environment variable template
 ```
 
 ---
 
-## 3. Installation & Setup
+## 3. Quick Start Guide
 
-### Prerequisites
-- Python 3.10 to 3.13
-- Windows, macOS, or Linux
+### Option A: Running with Docker Compose (Production Stack)
 
-### Quick Setup
+Ensure Docker is installed and running, then:
 
 ```bash
-# 1. Clone or navigate to the repository
-cd "Darkroom DataForge"
+# 1. Start all containers (Postgres, Redis, Backend, Frontend)
+docker compose up -d --build
 
-# 2. Create virtual environment
-python -m venv .venv
-
-# 3. Activate virtual environment
-# Windows (PowerShell):
-.\.venv\Scripts\Activate.ps1
-# Linux / macOS:
-source .venv/bin/activate
-
-# 4. Install dependencies
-pip install -r requirements.txt
+# 2. Access the applications
+# Frontend Workstation: http://localhost:5173
+# Backend Swagger Docs: http://localhost:8000/docs
 ```
 
-> [!NOTE]
-> On Windows machines where path length limits are encountered due to deep directories, install into a shortened path junction (e.g., `mklink /J .venv C:\Users\<Username>\.ddf_venv`).
+### Option B: Local Development (Instant Setup)
+
+Darkroom DataForge automatically defaults to SQLite (`sqlite:///./storage/dataforge.db`) and in-process async workers when PostgreSQL/Redis are not running locally.
+
+#### 1. Backend Setup
+```bash
+# Activate virtual environment
+.venv\Scripts\activate
+
+# Install requirements
+pip install -r backend/requirements.txt
+
+# Start backend dev server
+uvicorn backend.app.main:app --reload --host 127.0.0.1 --port 8000
+```
+
+#### 2. Frontend Setup
+```bash
+# Navigate to frontend directory
+cd frontend
+
+# Install packages
+npm install
+
+# Start Vite dev server
+npm run dev
+# Open http://localhost:5173
+```
 
 ---
 
-## 4. Running the Application
+## 4. Key Endpoints (API v1)
 
-### Desktop GUI (Default)
+| Route | Method | Description |
+|---|---|---|
+| `/api/v1/health` | GET | System and database telemetry |
+| `/api/v1/projects` | GET / POST | List or create research projects |
+| `/api/v1/documents/upload` | POST | Ingest & auto-classify single or multiple PDFs |
+| `/api/v1/documents/{id}/inspect` | GET | Inspect page dimensions, text layer, detected tables |
+| `/api/v1/documents/{id}/file` | GET | Stream PDF for embedded viewer |
+| `/api/v1/extraction/jobs` | POST / GET | Trigger or monitor extraction jobs |
+| `/api/v1/datasets` | GET / DELETE | Manage normalized structured datasets |
+| `/api/v1/datasets/{id}/records` | GET | Paginated record viewer with search & status filters |
+| `/api/v1/records/{id}` | PATCH | Edit field values with automated audit trail |
+| `/api/v1/validation/datasets/{id}` | GET | Quality score breakdown and validation issues |
+| `/api/v1/validation/issues/{id}/resolve` | PATCH | Resolve validation exceptions with inline fix |
+| `/api/v1/review/datasets/{id}` | GET | Human-in-the-loop review audit trail |
+| `/api/v1/datasets/{id}/export` | POST | Export to CSV, JSON, or Excel (.xlsx) |
 
-Launch the interactive PySide6 graphical interface:
+---
+
+## 5. Automated Verification
+
+Run backend automated tests:
 
 ```bash
-python app.py
+# In the project root with virtual environment activated:
+pytest tests/test_api_v1.py tests/test_pipeline_e2e.py -v
 ```
 
-### CLI Companion (Automation & CI)
-
-Darkroom DataForge includes a full-featured CLI for automated batch pipelines:
+Build frontend production bundle:
 
 ```bash
-# Inspect and classify a PDF document
-python app.py inspect document.pdf
-
-# Process a folder of PDFs into a project workspace
-python app.py process ./documents --project ./my_project --format all
-
-# Validate extracted datasets in an existing project
-python app.py validate ./my_project
-
-# Export datasets with provenance metadata
-python app.py export ./my_project --format sql --provenance
+cd frontend
+npm run build
 ```
 
 ---
 
-## 5. End-to-End Workflow
+## 6. License & Attribution
 
-```
-PDF Documents
-     ↓
-1. INGESTION       (Drag & drop single files, batches, or directories)
-     ↓
-2. INSPECTION      (Detects page counts, text density, image ratio, vector grids)
-     ↓
-3. CLASSIFY        (Assigns archetype: CODEBOOK, REPEATED_TABULAR, REPORT, SCANNED)
-     ↓
-4. STRATEGY        (Auto-selects optimal extractor; allows manual operator override)
-     ↓
-5. EXTRACTION      (pdfplumber, PyMuPDF, layout reconstruction, OCR fallback)
-     ↓
-6. RECONSTRUCT     (Continues tables across pages, removes duplicate headers, heals lines)
-     ↓
-7. NORMALIZE       (Standardizes Unicode, whitespace, leading zeros, raw vs norm)
-     ↓
-8. RELATIONSHIPS   (Decomposes 1:N composite fields into relational tables)
-     ↓
-9. VALIDATION      (Rule-based checks: required, ranges, regex, types; auto-fix safe errors)
-     ↓
-10. HUMAN REVIEW   (Inspects low-confidence records with side-by-side PDF canvas jump)
-     ↓
-11. EXPORT         (Generates database-ready CSV, JSON, Excel, and PostgreSQL DDL)
-     ↓
-12. MANIFEST       (Outputs auditable manifest.json with run version & stats)
-```
-
----
-
-## 6. One-Click TVET Demo Project
-
-To explore the entire pipeline immediately without providing external documents:
-1. Launch `python app.py`.
-2. Click **⚡ Load TVET Demo** on the Overview Dashboard.
-3. The platform dynamically creates synthetic South African documents:
-   - `DHET_TVET_Qualifications_2026.pdf`
-   - `StatsSA_QLFS_Codebook_2026.pdf`
-   - `DHET_OIHD_National_Report_2024.pdf`
-4. The pipeline will automatically execute, decomposing TVET qualifications and college offerings into two normalized datasets:
-   - `qualifications.csv`
-   - `qualification_colleges.csv`
-5. Inspect the generated schema, validation reports, and export to PostgreSQL DDL.
-
----
-
-## 7. Testing & Verification
-
-Run the automated test suite covering all extractors, reconstruction, normalization, relationships, and export engines:
-
-```bash
-pytest tests/ -v
-```
-
-All 23+ tests execute hermetically with zero external network dependencies.
+Internal research tool developed for the **Wits–merSETA Darkroom** team. All rights reserved.

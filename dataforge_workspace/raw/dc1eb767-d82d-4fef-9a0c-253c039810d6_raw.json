@@ -1,0 +1,31 @@
+{
+  "filename": "The 2024 National List of Occupations in High Demand_A Technical Report.pdf",
+  "method": "occupations",
+  "tables": [
+    {
+      "page_number": 19,
+      "table_index": 1,
+      "headers": [
+        "ofo_code",
+        "occupation_title",
+        "demand_rank",
+        "major_group",
+        "province",
+        "educational_qualification_req"
+      ],
+      "rows": [
+        [
+          "2024",
+          "Replaced the previous CFE\nwith a survey, which was then\ndistributed via LinkedIn and the\nDHET networks.",
+          "z The QLFS and CareerJunction data were analysed.\nz A four-digit OFO-coded list was produced.\nz An online survey was distributed to allow employers\nto list occupations they will be recruiting for in the\nfuture.\nz The OIHD that were indicated by the survey sample\nwere manually mapped to their appropriate six-digit\nOFO codes.\nz The secondary data from the QLFS and\nCareerJunction was combined with the survey data\nto calculate overall demand scores.",
+          "",
+          "National",
+          ""
+        ]
+      ],
+      "extraction_method": "occupations",
+      "confidence": 0.94,
+      "bounding_box": null
+    }
+  ]
+}

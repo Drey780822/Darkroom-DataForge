@@ -1,0 +1,188 @@
+{
+  "metadata": {
+    "id": "4a20c0d5-a220-4933-b290-9e03129d9bc5",
+    "name": "occupations_high_demand",
+    "display_name": "Occupations High Demand",
+    "description": "Normalized entity: occupations_high_demand",
+    "source_documents": [
+      "The 2024 National List of Occupations in High Demand_A Technical Report.pdf"
+    ],
+    "created_at": "2026-09-21 14:44:32.945203+00:00",
+    "updated_at": "2026-09-21 14:44:32.945204+00:00",
+    "version": 1,
+    "quality": {
+      "overall_score": 87.2,
+      "extraction_score": 95.0,
+      "completeness_score": 60.0,
+      "consistency_score": 94.0,
+      "validation_score": 100.0,
+      "details": {
+        "total_records": 1,
+        "total_columns": 5,
+        "total_cells": 5,
+        "non_null_cells": 3,
+        "empty_cell_ratio": 0.4,
+        "critical_validation_issues": 0,
+        "warning_validation_issues": 0
+      }
+    }
+  },
+  "columns": [
+    {
+      "name": "ofo_code",
+      "display_name": "OFO Code",
+      "data_type": "string",
+      "required": true,
+      "nullable": false,
+      "unique": false,
+      "regex_pattern": "^[0-9]{4,6}$",
+      "min_value": null,
+      "max_value": null,
+      "allowed_values": null,
+      "confidence": 0.99,
+      "source_header": "ofo_code",
+      "description": null,
+      "is_primary_key": true,
+      "is_foreign_key": false,
+      "foreign_target": null
+    },
+    {
+      "name": "demand_rank",
+      "display_name": "Demand Ranking",
+      "data_type": "integer",
+      "required": false,
+      "nullable": true,
+      "unique": false,
+      "regex_pattern": null,
+      "min_value": null,
+      "max_value": null,
+      "allowed_values": null,
+      "confidence": 0.99,
+      "source_header": "demand_rank",
+      "description": null,
+      "is_primary_key": false,
+      "is_foreign_key": false,
+      "foreign_target": null
+    },
+    {
+      "name": "major_group",
+      "display_name": "Major Group",
+      "data_type": "string",
+      "required": false,
+      "nullable": true,
+      "unique": false,
+      "regex_pattern": null,
+      "min_value": null,
+      "max_value": null,
+      "allowed_values": null,
+      "confidence": 0.99,
+      "source_header": "major_group",
+      "description": null,
+      "is_primary_key": false,
+      "is_foreign_key": false,
+      "foreign_target": null
+    },
+    {
+      "name": "province",
+      "display_name": "Province",
+      "data_type": "string",
+      "required": false,
+      "nullable": true,
+      "unique": false,
+      "regex_pattern": null,
+      "min_value": null,
+      "max_value": null,
+      "allowed_values": null,
+      "confidence": 0.99,
+      "source_header": "province",
+      "description": null,
+      "is_primary_key": true,
+      "is_foreign_key": false,
+      "foreign_target": null
+    },
+    {
+      "name": "educational_qualification_req",
+      "display_name": "Entry Qualification",
+      "data_type": "string",
+      "required": false,
+      "nullable": true,
+      "unique": false,
+      "regex_pattern": null,
+      "min_value": null,
+      "max_value": null,
+      "allowed_values": null,
+      "confidence": 0.99,
+      "source_header": "educational_qualification_req",
+      "description": null,
+      "is_primary_key": false,
+      "is_foreign_key": false,
+      "foreign_target": null
+    }
+  ],
+  "records": [
+    {
+      "id": "01e439b2-ea5c-46ad-a3bb-6f984267e4ae",
+      "cells": {
+        "ofo_code": {
+          "raw_value": "2024",
+          "normalized_value": "2024",
+          "is_modified": false,
+          "confidence": 0.94,
+          "field_name": "ofo_code",
+          "error_message": null
+        },
+        "demand_rank": {
+          "raw_value": "z The QLFS and CareerJunction data were analysed.\nz A four-digit OFO-coded list was produced.\nz An online survey was distributed to allow employers\nto list occupations they will be recruiting for in the\nfuture.\nz The OIHD that were indicated by the survey sample\nwere manually mapped to their appropriate six-digit\nOFO codes.\nz The secondary data from the QLFS and\nCareerJunction was combined with the survey data\nto calculate overall demand scores.",
+          "normalized_value": "z The QLFS and CareerJunction data were analysed. z A four-digit OFO-coded list was produced. z An online survey was distributed to allow employers to list occupations they will be recruiting for in the future. z The OIHD that were indicated by the survey sample were manually mapped to their appropriate six-digit OFO codes. z The secondary data from the QLFS and CareerJunction was combined with the survey data to calculate overall demand scores.",
+          "is_modified": true,
+          "confidence": 0.94,
+          "field_name": "demand_rank",
+          "error_message": null
+        },
+        "major_group": {
+          "raw_value": "",
+          "normalized_value": null,
+          "is_modified": false,
+          "confidence": 0.94,
+          "field_name": "major_group",
+          "error_message": null
+        },
+        "province": {
+          "raw_value": "National",
+          "normalized_value": "National",
+          "is_modified": false,
+          "confidence": 0.94,
+          "field_name": "province",
+          "error_message": null
+        },
+        "educational_qualification_req": {
+          "raw_value": "",
+          "normalized_value": null,
+          "is_modified": false,
+          "confidence": 0.94,
+          "field_name": "educational_qualification_req",
+          "error_message": null
+        }
+      },
+      "provenance": {
+        "source_document": "The 2024 National List of Occupations in High Demand_A Technical Report.pdf",
+        "source_document_id": "dc1eb767-d82d-4fef-9a0c-253c039810d6",
+        "source_page": 19,
+        "source_section": null,
+        "source_table": null,
+        "source_row_idx": 0,
+        "extraction_method": "occupations",
+        "extracted_at": "2026-09-21 14:44:32.940170+00:00",
+        "confidence": 0.94,
+        "status": "NORMALIZED",
+        "reviewer_notes": null,
+        "audit_trail": []
+      },
+      "is_flagged_for_review": false,
+      "review_dismissed": false
+    }
+  ],
+  "primary_key": [
+    "ofo_code"
+  ]
+}

@@ -6,629 +6,629 @@
     "owner": "Wits\u2013merSETA Darkroom Team",
     "status": "Active",
     "created_at": "2026-09-21T12:43:18.462000Z",
-    "updated_at": "2026-09-21T12:54:37.740161Z",
-    "run_count": 2,
+    "updated_at": "2026-09-21T14:43:37.184008Z",
+    "run_count": 4,
     "version": "1.0.0"
   },
   "documents": {
-    "437ba94d-0922-47a3-9a8c-fb83dc4fc8b8": {
-      "id": "437ba94d-0922-47a3-9a8c-fb83dc4fc8b8",
-      "filename": "ddi-documentation-english-1247.pdf",
-      "file_path": "/home/toomuchcomputedan/projects/forked-projects/Darkroom-DataForge/dataforge_workspace/documents/ddi-documentation-english-1247.pdf",
-      "file_size_bytes": 496534,
-      "sha256_hash": "74ab4e9dce85fcf4474311c8b673ee3764bbd5c988854dc01a1aab9c307c1930",
-      "created_at": "2026-09-21T12:54:37.740066Z",
+    "dc1eb767-d82d-4fef-9a0c-253c039810d6": {
+      "id": "dc1eb767-d82d-4fef-9a0c-253c039810d6",
+      "filename": "The 2024 National List of Occupations in High Demand_A Technical Report.pdf",
+      "file_path": "C:\\Users\\Dikot\\OneDrive - Tshwane University of Technology\\Documents\\Wits\u2013merSETA 2026\\Darkroom DataForge\\dataforge_workspace\\documents\\The 2024 National List of Occupations in High Demand_A Technical Report.pdf",
+      "file_size_bytes": 1922457,
+      "sha256_hash": "1a0cd95d9e42dd0c8c95a577b75a595195643abfb4b172d8b64215bc3e525467",
+      "created_at": "2026-09-21T14:43:37.183693Z",
       "status": "CLASSIFIED",
       "inspection": {
-        "page_count": 150,
-        "total_text_length": 61490,
-        "total_images": 0,
+        "page_count": 96,
+        "total_text_length": 82155,
+        "total_images": 1,
         "scanned_pages_ratio": 0.0,
         "text_availability_score": 1.0,
         "table_likelihood_score": 1.0,
         "has_digital_text": true,
         "metadata": {
-          "format": "PDF 1.4",
+          "format": "PDF 1.7",
           "title": "",
           "author": "",
           "subject": "",
           "keywords": "",
-          "creator": "",
-          "producer": "mPDF 8.0.13",
-          "creationDate": "D:20260812144401+00'00'",
-          "modDate": "D:20260812144401+00'00'",
+          "creator": "Adobe InDesign 19.2 (Macintosh)",
+          "producer": "Adobe PDF Library 17.0",
+          "creationDate": "D:20240415141436+02'00'",
+          "modDate": "D:20240415141505+02'00'",
           "trapped": "",
           "encryption": null
         },
         "pages": [
           {
             "page_number": 1,
-            "text_length": 212,
-            "word_count": 27,
+            "text_length": 148,
+            "word_count": 23,
+            "image_count": 1,
+            "has_tables": true,
+            "table_count": 1,
+            "is_scanned_likely": false,
+            "has_vector_graphics": true,
+            "sample_text": "South Africa\u2019s National   List of Occupations   in High Demand A Technical Research Report 2024 NSF National Skills Fund FUNDING TO SKILL OUR NATION"
+          },
+          {
+            "page_number": 2,
+            "text_length": 138,
+            "word_count": 19,
             "image_count": 0,
             "has_tables": false,
             "table_count": 0,
             "is_scanned_likely": false,
             "has_vector_graphics": true,
-            "sample_text": "1 DataFirst South Africa - Quarterly Labour Force Survey 2026, Quarter 2 Statistics South Africa Report generated on: August 12, 2026 Visit our data catalog at: https://www.data\ufb01rst.uct.ac.za/dataport"
-          },
-          {
-            "page_number": 2,
-            "text_length": 1511,
-            "word_count": 225,
-            "image_count": 0,
-            "has_tables": true,
-            "table_count": 1,
-            "is_scanned_likely": false,
-            "has_vector_graphics": true,
-            "sample_text": "South Africa - Quarterly Labour Force Survey 2026, Quarter 2 2 Identi\ufb01cation SURVEY ID NUMBER zaf-statssa-qlfs-2026-q2-v1 TITLE Quarterly Labour Force Survey 2026, Quarter 2 ABBREVIATION OR ACRONYM QL"
+            "sample_text": "\u00a9 Published in 2024 by: Department of Higher Education and Training Private Bag X174 Pretoria 0001 www.dhet.gov.za ISBN: 978-1-77018-980-5"
           },
           {
             "page_number": 3,
-            "text_length": 2432,
-            "word_count": 361,
+            "text_length": 93,
+            "word_count": 14,
+            "image_count": 0,
+            "has_tables": false,
+            "table_count": 0,
+            "is_scanned_likely": false,
+            "has_vector_graphics": true,
+            "sample_text": "2024 South Africa\u2019s National  List of Occupations  in High Demand A Technical Research Report"
+          },
+          {
+            "page_number": 4,
+            "text_length": 550,
+            "word_count": 79,
+            "image_count": 0,
+            "has_tables": false,
+            "table_count": 0,
+            "is_scanned_likely": false,
+            "has_vector_graphics": true,
+            "sample_text": "Acknowledgements The authors would like to thank everyone who assisted with and contributed to this  research report. We extend our gratitude to the Department of Higher Education and  Training (DHET)"
+          },
+          {
+            "page_number": 5,
+            "text_length": 538,
+            "word_count": 94,
+            "image_count": 0,
+            "has_tables": false,
+            "table_count": 0,
+            "is_scanned_likely": false,
+            "has_vector_graphics": true,
+            "sample_text": "Table of Contents List of Figures\b 3 List of Tables\b 3 Acronyms and Abbreviations\b 4 PART 1 INTRODUCTION\b 5 PART 2 THE SOUTH AFRICAN ECONOMY AND LABOUR MARKET\b 7 PART 3 EVOLUTION OF THE METHODOLOGY US"
+          },
+          {
+            "page_number": 6,
+            "text_length": 402,
+            "word_count": 64,
+            "image_count": 0,
+            "has_tables": false,
+            "table_count": 0,
+            "is_scanned_likely": false,
+            "has_vector_graphics": true,
+            "sample_text": "2 SOUTH AFRICA\u2019S NATIONAL LIST OF OCCUPATIONS IN HIGH DEMAND: A TECHNICAL RESEARCH REPORT PART 7 ANNEXURES\b 42 Annexure 1: The number of occupations per category in the national OIHD list\b 43 Annexure"
+          },
+          {
+            "page_number": 7,
+            "text_length": 867,
+            "word_count": 147,
+            "image_count": 0,
+            "has_tables": false,
+            "table_count": 0,
+            "is_scanned_likely": false,
+            "has_vector_graphics": true,
+            "sample_text": "List of Figures 3 List of Figures Figure 1:\t The functions of the list of occupations in high demand\t 6 Figure 2:\t Signs of high occupational demand\t 6 Figure 3:\t South African GDP and the number of e"
+          },
+          {
+            "page_number": 8,
+            "text_length": 668,
+            "word_count": 91,
+            "image_count": 0,
+            "has_tables": true,
+            "table_count": 3,
+            "is_scanned_likely": false,
+            "has_vector_graphics": true,
+            "sample_text": "4 SOUTH AFRICA\u2019S NATIONAL LIST OF OCCUPATIONS IN HIGH DEMAND: A TECHNICAL RESEARCH REPORT Acronyms and Abbreviations ACRONYM/ABBREVIATION TERM/DEFINITION CFE Call for evidence DHET Department of Highe"
+          },
+          {
+            "page_number": 9,
+            "text_length": 61,
+            "word_count": 9,
+            "image_count": 0,
+            "has_tables": false,
+            "table_count": 0,
+            "is_scanned_likely": false,
+            "has_vector_graphics": true,
+            "sample_text": "Introduction PART 1  PART 1  Introduction Introduction PART 1"
+          },
+          {
+            "page_number": 10,
+            "text_length": 1660,
+            "word_count": 252,
+            "image_count": 0,
+            "has_tables": false,
+            "table_count": 0,
+            "is_scanned_likely": false,
+            "has_vector_graphics": true,
+            "sample_text": "6 SOUTH AFRICA\u2019S NATIONAL LIST OF OCCUPATIONS IN HIGH DEMAND: A TECHNICAL RESEARCH REPORT Knowing which occupations are in high demand is important for South Africa\u2019s post-school education  and traini"
+          },
+          {
+            "page_number": 11,
+            "text_length": 107,
+            "word_count": 18,
+            "image_count": 0,
+            "has_tables": false,
+            "table_count": 0,
+            "is_scanned_likely": false,
+            "has_vector_graphics": true,
+            "sample_text": "The South  African  Economy and  Labour Market PART 2 The South  African  Economy and  Labour Market PART 2"
+          },
+          {
+            "page_number": 12,
+            "text_length": 2467,
+            "word_count": 393,
             "image_count": 0,
             "has_tables": true,
             "table_count": 4,
             "is_scanned_likely": false,
             "has_vector_graphics": true,
-            "sample_text": "South Africa - Quarterly Labour Force Survey 2026, Quarter 2 3 GEOGRAPHIC UNIT The data is at the provincial and metropolitan level, as well as by geographic type (urban/traditional/farms) UNIVERSE Th"
+            "sample_text": "8 SOUTH AFRICA\u2019S NATIONAL LIST OF OCCUPATIONS IN HIGH DEMAND: A TECHNICAL RESEARCH REPORT Although South Africa\u2019s labour market has recovered meaningfully from the COVID-19 pandemic\u2019s lows  and contin"
           },
           {
-            "page_number": 4,
-            "text_length": 889,
-            "word_count": 114,
-            "image_count": 0,
-            "has_tables": true,
-            "table_count": 3,
-            "is_scanned_likely": false,
-            "has_vector_graphics": true,
-            "sample_text": "South Africa - Quarterly Labour Force Survey 2026, Quarter 2 4 Access policy CONTACTS Name A\ufb03liation Email URL DataFirst Helpdesk University of Cape Town support.data1st.org Link ACCESS CONDITIONS Cre"
-          },
-          {
-            "page_number": 5,
-            "text_length": 126,
-            "word_count": 20,
-            "image_count": 0,
-            "has_tables": true,
-            "table_count": 1,
-            "is_scanned_likely": false,
-            "has_vector_graphics": true,
-            "sample_text": "South Africa - Quarterly Labour Force Survey 2026, Quarter 2 5 Data Description Data \ufb01le Cases Variables qlfs-2026-q2-v1 0 200"
-          },
-          {
-            "page_number": 6,
-            "text_length": 62,
-            "word_count": 11,
+            "page_number": 13,
+            "text_length": 3643,
+            "word_count": 547,
             "image_count": 0,
             "has_tables": false,
             "table_count": 0,
             "is_scanned_likely": false,
-            "has_vector_graphics": false,
-            "sample_text": "South Africa - Quarterly Labour Force Survey 2026, Quarter 2 6"
-          },
-          {
-            "page_number": 7,
-            "text_length": 881,
-            "word_count": 105,
-            "image_count": 0,
-            "has_tables": true,
-            "table_count": 2,
-            "is_scanned_likely": false,
             "has_vector_graphics": true,
-            "sample_text": "South Africa - Quarterly Labour Force Survey 2026, Quarter 2 7 UQNO: Unique number Data \ufb01le: qlfs-2026-q2-v1 Overview Valid: 0      Type: Discrete      Width: -18      Format: Numeric        Q15POPULA"
-          },
-          {
-            "page_number": 8,
-            "text_length": 640,
-            "word_count": 126,
-            "image_count": 0,
-            "has_tables": true,
-            "table_count": 1,
-            "is_scanned_likely": false,
-            "has_vector_graphics": true,
-            "sample_text": "South Africa - Quarterly Labour Force Survey 2026, Quarter 2 8 Overview Valid: 0      Minimum:      Maximum:      Mean:      Standard deviation:      Type: Discrete      Width: 16      Format: Numeric"
-          },
-          {
-            "page_number": 9,
-            "text_length": 745,
-            "word_count": 108,
-            "image_count": 0,
-            "has_tables": true,
-            "table_count": 3,
-            "is_scanned_likely": false,
-            "has_vector_graphics": true,
-            "sample_text": "South Africa - Quarterly Labour Force Survey 2026, Quarter 2 9 Type: Discrete      Width: 16      Format: Numeric      Questions and instructions CATEGORIES Value Category 1 1. Yes   Q13GENDER: Gender"
-          },
-          {
-            "page_number": 10,
-            "text_length": 588,
-            "word_count": 119,
-            "image_count": 0,
-            "has_tables": true,
-            "table_count": 2,
-            "is_scanned_likely": false,
-            "has_vector_graphics": true,
-            "sample_text": "South Africa - Quarterly Labour Force Survey 2026, Quarter 2 10 9 9. 9 10 10. 10 11 11. 11 12 12. 12 13 13. 13 14 14. 14 15 15. 15 16 16. 16 17 17. 17 18 18. 18 19 19. 19 20 20. 20 21 21. 21 22 22. 22"
-          },
-          {
-            "page_number": 11,
-            "text_length": 717,
-            "word_count": 119,
-            "image_count": 0,
-            "has_tables": true,
-            "table_count": 2,
-            "is_scanned_likely": false,
-            "has_vector_graphics": true,
-            "sample_text": "South Africa - Quarterly Labour Force Survey 2026, Quarter 2 11 5 5. May 6 6. June 7 7. July 8 8. August 9 9. September 10 10. October 11 11. November 12 12. December   Q14YEAR: Year of birth Data \ufb01le"
-          },
-          {
-            "page_number": 12,
-            "text_length": 687,
-            "word_count": 128,
-            "image_count": 0,
-            "has_tables": true,
-            "table_count": 1,
-            "is_scanned_likely": false,
-            "has_vector_graphics": true,
-            "sample_text": "South Africa - Quarterly Labour Force Survey 2026, Quarter 2 12 1937 1937. 1937 1938 1938. 1938 1939 1939. 1939 1940 1940. 1940 1941 1941. 1941 1942 1942. 1942 1943 1943. 1943 1944 1944. 1944 1945 194"
-          },
-          {
-            "page_number": 13,
-            "text_length": 687,
-            "word_count": 128,
-            "image_count": 0,
-            "has_tables": true,
-            "table_count": 1,
-            "is_scanned_likely": false,
-            "has_vector_graphics": true,
-            "sample_text": "South Africa - Quarterly Labour Force Survey 2026, Quarter 2 13 1976 1976. 1976 1977 1977. 1977 1978 1978. 1978 1979 1979. 1979 1980 1980. 1980 1981 1981. 1981 1982 1982. 1982 1983 1983. 1983 1984 198"
+            "sample_text": "9 The South African Economy and Labour Market PART 2 The number of unemployed individuals in South Africa has been consistently growing since 2009. This  phenomenon can be attributed to insufficient l"
           },
           {
             "page_number": 14,
-            "text_length": 611,
-            "word_count": 117,
+            "text_length": 1038,
+            "word_count": 150,
             "image_count": 0,
             "has_tables": true,
             "table_count": 2,
             "is_scanned_likely": false,
             "has_vector_graphics": true,
-            "sample_text": "South Africa - Quarterly Labour Force Survey 2026, Quarter 2 14 2015 2015. 2015 2016 2016. 2016 2017 2017. 2017 2018 2018. 2018 2019 2019. 2019 2020 2020. 2020 2021 2021. 2021 2022 2022. 2022 2023 202"
+            "sample_text": "10 SOUTH AFRICA\u2019S NATIONAL LIST OF OCCUPATIONS IN HIGH DEMAND: A TECHNICAL RESEARCH REPORT FIGURE 4: Employment growth by industry 2019\u20132022 CCS Mining Agriculture Utilities Transport Finance Manufact"
           },
           {
             "page_number": 15,
-            "text_length": 453,
-            "word_count": 128,
+            "text_length": 2120,
+            "word_count": 304,
             "image_count": 0,
             "has_tables": true,
             "table_count": 1,
             "is_scanned_likely": false,
             "has_vector_graphics": true,
-            "sample_text": "South Africa - Quarterly Labour Force Survey 2026, Quarter 2 15 15 15. 15 16 16. 16 17 17. 17 18 18. 18 19 19. 19 20 20. 20 21 21. 21 22 22. 22 23 23. 23 24 24. 24 25 25. 25 26 26. 26 27 27. 27 28 28."
+            "sample_text": "11 The South African Economy and Labour Market PART 2 Figure 5 shows that over the pandemic period, those with more medium- to high-level technical skills  were more protected from the overall labour"
           },
           {
             "page_number": 16,
-            "text_length": 453,
-            "word_count": 128,
+            "text_length": 2896,
+            "word_count": 428,
             "image_count": 0,
-            "has_tables": true,
-            "table_count": 1,
+            "has_tables": false,
+            "table_count": 0,
             "is_scanned_likely": false,
             "has_vector_graphics": true,
-            "sample_text": "South Africa - Quarterly Labour Force Survey 2026, Quarter 2 16 54 54. 54 55 55. 55 56 56. 56 57 57. 57 58 58. 58 59 59. 59 60 60. 60 61 61. 61 62 62. 62 63 63. 63 64 64. 64 65 65. 65 66 66. 66 67 67."
+            "sample_text": "12 SOUTH AFRICA\u2019S NATIONAL LIST OF OCCUPATIONS IN HIGH DEMAND: A TECHNICAL RESEARCH REPORT Figure 5: continued Q3 2022\u2013Q3 2023 Sales and services Clerk Professional Elementary Plant and machine operat"
           },
           {
             "page_number": 17,
-            "text_length": 819,
-            "word_count": 126,
+            "text_length": 202,
+            "word_count": 32,
             "image_count": 0,
-            "has_tables": true,
-            "table_count": 2,
+            "has_tables": false,
+            "table_count": 0,
             "is_scanned_likely": false,
             "has_vector_graphics": true,
-            "sample_text": "South Africa - Quarterly Labour Force Survey 2026, Quarter 2 17 93 93. 93 94 94. 94 95 95. 95 96 96. 96 97 97. 97 98 98. 98 99 99. 99 100 100. 100 101 101. 101 102 102. 102 103 103. 103 105 105. 105 1"
+            "sample_text": "Evolution of the  Methodology  Used to Identify  Occupations in  High Demand in  South Africa PART 3  Evolution of the  Methodology  Used to Identify  Occupations in  High Demand in  South Africa PART"
           },
           {
             "page_number": 18,
-            "text_length": 1170,
-            "word_count": 211,
+            "text_length": 2801,
+            "word_count": 427,
             "image_count": 0,
             "has_tables": true,
-            "table_count": 1,
+            "table_count": 2,
             "is_scanned_likely": false,
             "has_vector_graphics": true,
-            "sample_text": "South Africa - Quarterly Labour Force Survey 2026, Quarter 2 18 Questions and instructions CATEGORIES Value Category 0 0. Grade R/0 1 1. Grade 1/Sub A 2 2. Grade 2/Sub B 3 3. Grade 3/Standard 1/AET 1"
+            "sample_text": "14 SOUTH AFRICA\u2019S NATIONAL LIST OF OCCUPATIONS IN HIGH DEMAND: A TECHNICAL RESEARCH REPORT The first national list of OIHD was published in 2014. The 2024 list is the fifth iteration. Over this time,"
           },
           {
             "page_number": 19,
-            "text_length": 1329,
-            "word_count": 196,
+            "text_length": 3613,
+            "word_count": 545,
             "image_count": 0,
             "has_tables": true,
-            "table_count": 1,
+            "table_count": 2,
             "is_scanned_likely": false,
             "has_vector_graphics": true,
-            "sample_text": "South Africa - Quarterly Labour Force Survey 2026, Quarter 2 19 Q18FIELD: Study \ufb01eld Data \ufb01le: qlfs-2026-q2-v1 Overview Valid: 0      Minimum:      Maximum:      Mean:      Standard deviation:      Ty"
+            "sample_text": "15 Evolution of the Methodology Used to Identify Occupations in High Demand in South Africa PART 3 ITERATION  OF THE LIST DEFINING CHARACTERISTICS BRIEF OVERVIEW OF THE METHODOLOGY USED TO  GENERATE T"
           },
           {
             "page_number": 20,
-            "text_length": 1089,
-            "word_count": 153,
+            "text_length": 83,
+            "word_count": 14,
             "image_count": 0,
-            "has_tables": true,
-            "table_count": 3,
+            "has_tables": false,
+            "table_count": 0,
             "is_scanned_likely": false,
             "has_vector_graphics": true,
-            "sample_text": "South Africa - Quarterly Labour Force Survey 2026, Quarter 2 20 31 31. Engineering 32 32. Primary agriculture 33 33. Hospitality 34 34. Tourism 35 35. Safety in society 36 36. Mechatronics 37 37. Educ"
+            "sample_text": "The 2024  Methodology  and Results PART 4 The 2024  Methodology  and Results PART 4"
           },
           {
             "page_number": 21,
-            "text_length": 1105,
-            "word_count": 138,
+            "text_length": 1925,
+            "word_count": 293,
             "image_count": 0,
-            "has_tables": true,
-            "table_count": 3,
+            "has_tables": false,
+            "table_count": 0,
             "is_scanned_likely": false,
             "has_vector_graphics": true,
-            "sample_text": "South Africa - Quarterly Labour Force Survey 2026, Quarter 2 21 6 6. Higher Education Institution (University/University of Technology) 7 7. Adult Basic Education and Training Centre (ABET CENTRE) 8 8"
+            "sample_text": "17 The 2024 Methodology and Results PART 4 The methodology uses a three-stage approach to identify OIHD. Figure 6 presents a high-level summary  of this approach that simultaneously considers all the"
           },
           {
             "page_number": 22,
-            "text_length": 798,
-            "word_count": 101,
+            "text_length": 2536,
+            "word_count": 384,
             "image_count": 0,
             "has_tables": true,
-            "table_count": 3,
+            "table_count": 2,
             "is_scanned_likely": false,
             "has_vector_graphics": true,
-            "sample_text": "South Africa - Quarterly Labour Force Survey 2026, Quarter 2 22 Questions and instructions CATEGORIES Value Category 1 1. Yes 2 2. No   Q24APDWRK: Paid work Data \ufb01le: qlfs-2026-q2-v1 Overview Valid: 0"
+            "sample_text": "18 SOUTH AFRICA\u2019S NATIONAL LIST OF OCCUPATIONS IN HIGH DEMAND: A TECHNICAL RESEARCH REPORT 4.1\t Secondary data analysis  Table 2 lists and describes the dimensions and indicators of occupational deman"
           },
           {
             "page_number": 23,
-            "text_length": 1042,
-            "word_count": 143,
+            "text_length": 2023,
+            "word_count": 335,
             "image_count": 0,
             "has_tables": true,
-            "table_count": 3,
+            "table_count": 1,
             "is_scanned_likely": false,
             "has_vector_graphics": true,
-            "sample_text": "South Africa - Quarterly Labour Force Survey 2026, Quarter 2 23 Type: Discrete      Width: 16      Format: Numeric      Questions and instructions CATEGORIES Value Category 1 1. Yes 2 2. No   Q25APDWR"
+            "sample_text": "19 The 2024 Methodology and Results PART 4 vacancies between 2019 and 2022 are considered strong indicators of current and changing demand,  respectively. The renewal rate is the percentage of adverti"
           },
           {
             "page_number": 24,
-            "text_length": 1007,
-            "word_count": 143,
+            "text_length": 1958,
+            "word_count": 319,
             "image_count": 0,
             "has_tables": true,
-            "table_count": 3,
+            "table_count": 2,
             "is_scanned_likely": false,
             "has_vector_graphics": true,
-            "sample_text": "South Africa - Quarterly Labour Force Survey 2026, Quarter 2 24 8 8. Bad weather, natural disaster 9 9. Study or training leave 10 10. Unrest (violence) 11 11. Temporarily laid o\ufb00/reduction in economi"
+            "sample_text": "20 SOUTH AFRICA\u2019S NATIONAL LIST OF OCCUPATIONS IN HIGH DEMAND: A TECHNICAL RESEARCH REPORT Secondary data demand scorej\u200a(Sj ) = 1 \u2013 Rj \u2013 Rmin Rmax \u2013 Rmin (Rmin) = Lowest average rank accross all minor"
           },
           {
             "page_number": 25,
-            "text_length": 818,
-            "word_count": 101,
+            "text_length": 2032,
+            "word_count": 320,
             "image_count": 0,
             "has_tables": true,
-            "table_count": 3,
+            "table_count": 4,
             "is_scanned_likely": false,
             "has_vector_graphics": true,
-            "sample_text": "South Africa - Quarterly Labour Force Survey 2026, Quarter 2 25 Overview Valid: 0      Minimum:      Maximum:      Mean:      Standard deviation:      Type: Discrete      Width: 16      Format: Numeri"
+            "sample_text": "21 The 2024 Methodology and Results PART 4 The question posed was as follows: Please list the\u00a0specific\u00a0occupations your organisation\u00a0or the organisations you represent\u00a0will likely recruit  for over th"
           },
           {
             "page_number": 26,
-            "text_length": 890,
-            "word_count": 111,
+            "text_length": 1691,
+            "word_count": 259,
             "image_count": 0,
             "has_tables": true,
             "table_count": 3,
             "is_scanned_likely": false,
             "has_vector_graphics": true,
-            "sample_text": "South Africa - Quarterly Labour Force Survey 2026, Quarter 2 26 Q2803FISHING: Fishery and aquaculture activities Data \ufb01le: qlfs-2026-q2-v1 Overview Valid: 0      Minimum:      Maximum:      Mean:"
+            "sample_text": "22 SOUTH AFRICA\u2019S NATIONAL LIST OF OCCUPATIONS IN HIGH DEMAND: A TECHNICAL RESEARCH REPORT Mj = 1 \u2013 R\u200aM j RM,max R\u200aM j = Rank of occupation according to mentions RM,max = Rank of occupation without an"
           },
           {
             "page_number": 27,
-            "text_length": 901,
-            "word_count": 110,
+            "text_length": 552,
+            "word_count": 83,
             "image_count": 0,
-            "has_tables": true,
-            "table_count": 3,
+            "has_tables": false,
+            "table_count": 0,
             "is_scanned_likely": false,
             "has_vector_graphics": true,
-            "sample_text": "South Africa - Quarterly Labour Force Survey 2026, Quarter 2 27   Q2902ANIMALS: Animal production Data \ufb01le: qlfs-2026-q2-v1 Overview Valid: 0      Minimum:      Maximum:      Mean:      Standard devia"
+            "sample_text": "23 The 2024 Methodology and Results PART 4 Figure 9: continued By industry Community, social, and  personal services 32% Manufacturing 14% Transport 12% Finance 11% Agriculture 7% Utilities 7% Trade 5"
           },
           {
             "page_number": 28,
-            "text_length": 978,
-            "word_count": 127,
+            "text_length": 1751,
+            "word_count": 280,
             "image_count": 0,
-            "has_tables": true,
-            "table_count": 3,
+            "has_tables": false,
+            "table_count": 0,
             "is_scanned_likely": false,
             "has_vector_graphics": true,
-            "sample_text": "South Africa - Quarterly Labour Force Survey 2026, Quarter 2 28 2 2. No   Q210MARKET: Main intended destination of production Data \ufb01le: qlfs-2026-q2-v1 Overview Valid: 0      Minimum:      Maximum:"
+            "sample_text": "24 SOUTH AFRICA\u2019S NATIONAL LIST OF OCCUPATIONS IN HIGH DEMAND: A TECHNICAL RESEARCH REPORT 4.2.3\t Results  Figure 11 presents the results of the survey related to \u2018mentions\u2019 in the form of a histogram"
           },
           {
             "page_number": 29,
-            "text_length": 877,
-            "word_count": 115,
+            "text_length": 812,
+            "word_count": 137,
             "image_count": 0,
-            "has_tables": true,
-            "table_count": 3,
+            "has_tables": false,
+            "table_count": 0,
             "is_scanned_likely": false,
             "has_vector_graphics": true,
-            "sample_text": "South Africa - Quarterly Labour Force Survey 2026, Quarter 2 29 Questions and instructions CATEGORIES Value Category 111 111. Growing of crops 112 112. Farming of animals 113 113. Growing of crops com"
+            "sample_text": "25 The 2024 Methodology and Results PART 4 Figure 10 shows the certainty-related survey results. 47% of occupations mentioned in the survey had an  average certainty score between 3 and 4. Nearly 70%"
           },
           {
             "page_number": 30,
-            "text_length": 809,
-            "word_count": 100,
+            "text_length": 107,
+            "word_count": 18,
             "image_count": 0,
-            "has_tables": true,
-            "table_count": 3,
+            "has_tables": false,
+            "table_count": 0,
             "is_scanned_likely": false,
             "has_vector_graphics": true,
-            "sample_text": "South Africa - Quarterly Labour Force Survey 2026, Quarter 2 30 Overview Valid: 0      Minimum:      Maximum:      Mean:      Standard deviation:      Type: Discrete      Width: 16      Format: Numeri"
+            "sample_text": "Consolidation of  Evidence and the  Final List PART 5 Consolidation of  Evidence and the  Final List PART 5"
           },
           {
             "page_number": 31,
-            "text_length": 882,
-            "word_count": 108,
+            "text_length": 1579,
+            "word_count": 271,
             "image_count": 0,
             "has_tables": true,
-            "table_count": 3,
+            "table_count": 1,
             "is_scanned_likely": false,
             "has_vector_graphics": true,
-            "sample_text": "South Africa - Quarterly Labour Force Survey 2026, Quarter 2 31 Q3204JOBSEARCH: Search job Data \ufb01le: qlfs-2026-q2-v1 Overview Valid: 0      Minimum:      Maximum:      Mean:      Standard deviation:"
+            "sample_text": "27 Consolidation of Evidence and the Final List PART 5 Following the synthesising and analysis of the secondary and survey data, the evidence is consolidated  by calculating the weighted demand score"
           },
           {
             "page_number": 32,
-            "text_length": 883,
-            "word_count": 109,
+            "text_length": 2600,
+            "word_count": 403,
             "image_count": 0,
-            "has_tables": true,
-            "table_count": 3,
+            "has_tables": false,
+            "table_count": 0,
             "is_scanned_likely": false,
             "has_vector_graphics": true,
-            "sample_text": "South Africa - Quarterly Labour Force Survey 2026, Quarter 2 32   Q3207CASUAL: Casual work Data \ufb01le: qlfs-2026-q2-v1 Overview Valid: 0      Minimum:      Maximum:      Mean:      Standard deviation:"
+            "sample_text": "28 SOUTH AFRICA\u2019S NATIONAL LIST OF OCCUPATIONS IN HIGH DEMAND: A TECHNICAL RESEARCH REPORT A note on the asterisk (*) Some occupations are given an asterisk to indicate a comparatively large number of"
           },
           {
             "page_number": 33,
-            "text_length": 968,
-            "word_count": 132,
+            "text_length": 3043,
+            "word_count": 399,
             "image_count": 0,
             "has_tables": true,
-            "table_count": 3,
+            "table_count": 2,
             "is_scanned_likely": false,
             "has_vector_graphics": true,
-            "sample_text": "South Africa - Quarterly Labour Force Survey 2026, Quarter 2 33 2 2. No   Q33AWHNSTART: How soon are you expecting to start work or a business Data \ufb01le: qlfs-2026-q2-v1 Overview Valid: 0      Minimum:"
+            "sample_text": "29 Consolidation of Evidence and the Final List PART 5 TABLE 4: The final list of N-OIHD SIX-DIGIT  OFO CODE SIX-DIGIT OFO OCCUPATION MINIMUM QUALIFICATION REQUIRED\u00a0 2021-111202 General Manager Public"
           },
           {
             "page_number": 34,
-            "text_length": 1035,
-            "word_count": 175,
+            "text_length": 3152,
+            "word_count": 419,
             "image_count": 0,
             "has_tables": true,
             "table_count": 2,
             "is_scanned_likely": false,
             "has_vector_graphics": true,
-            "sample_text": "South Africa - Quarterly Labour Force Survey 2026, Quarter 2 34 Value Category 1 1. Scholar or student 2 2. Housewife/homemaker (family considerations/child care) 3 3. Health reasons 4 4. Retired or t"
+            "sample_text": "30 SOUTH AFRICA\u2019S NATIONAL LIST OF OCCUPATIONS IN HIGH DEMAND: A TECHNICAL RESEARCH REPORT SIX-DIGIT  OFO CODE SIX-DIGIT OFO OCCUPATION MINIMUM QUALIFICATION REQUIRED\u00a0 2021-132201 Mining Manager Bache"
           },
           {
             "page_number": 35,
-            "text_length": 1045,
-            "word_count": 177,
+            "text_length": 2966,
+            "word_count": 375,
             "image_count": 0,
             "has_tables": true,
             "table_count": 2,
             "is_scanned_likely": false,
             "has_vector_graphics": true,
-            "sample_text": "South Africa - Quarterly Labour Force Survey 2026, Quarter 2 35 Questions and instructions CATEGORIES Value Category 1 1. Working 2 2. Managing a home 3 3. Going to school 4 4. Other   Q38RSNNOTSEEK:"
+            "sample_text": "31 Consolidation of Evidence and the Final List PART 5 SIX-DIGIT  OFO CODE SIX-DIGIT OFO OCCUPATION MINIMUM QUALIFICATION REQUIRED\u00a0 2021-212103 Statistician Honours Degree, Postgraduate Diploma, or Ba"
           },
           {
             "page_number": 36,
-            "text_length": 1065,
-            "word_count": 147,
+            "text_length": 2925,
+            "word_count": 376,
             "image_count": 0,
             "has_tables": true,
             "table_count": 2,
             "is_scanned_likely": false,
             "has_vector_graphics": true,
-            "sample_text": "South Africa - Quarterly Labour Force Survey 2026, Quarter 2 36 Q39JOBOFFER: Accept job if o\ufb00ered Data \ufb01le: qlfs-2026-q2-v1 Overview Valid: 0      Minimum:      Maximum:      Mean:      Standard devia"
+            "sample_text": "32 SOUTH AFRICA\u2019S NATIONAL LIST OF OCCUPATIONS IN HIGH DEMAND: A TECHNICAL RESEARCH REPORT SIX-DIGIT  OFO CODE SIX-DIGIT OFO OCCUPATION MINIMUM QUALIFICATION REQUIRED\u00a0 2021-215101 Electrical Engineer*"
           },
           {
             "page_number": 37,
-            "text_length": 910,
-            "word_count": 147,
+            "text_length": 3171,
+            "word_count": 415,
             "image_count": 0,
             "has_tables": true,
-            "table_count": 3,
+            "table_count": 2,
             "is_scanned_likely": false,
             "has_vector_graphics": true,
-            "sample_text": "South Africa - Quarterly Labour Force Survey 2026, Quarter 2 37 Questions and instructions CATEGORIES Value Category 1 1. Within a week 2 2. Within two weeks   Q312EVERWRK: Ever worked Data \ufb01le: qlfs-"
+            "sample_text": "33 Consolidation of Evidence and the Final List PART 5 SIX-DIGIT  OFO CODE SIX-DIGIT OFO OCCUPATION MINIMUM QUALIFICATION REQUIRED\u00a0 2021-222117 Midwife Bachelor\u2019s Degree or Advanced Diploma (NQF Level"
           },
           {
             "page_number": 38,
-            "text_length": 1186,
-            "word_count": 157,
+            "text_length": 3097,
+            "word_count": 402,
             "image_count": 0,
             "has_tables": true,
             "table_count": 2,
             "is_scanned_likely": false,
             "has_vector_graphics": true,
-            "sample_text": "South Africa - Quarterly Labour Force Survey 2026, Quarter 2 38   Q314RSNSTOPWRK: Main reason you stopped working Data \ufb01le: qlfs-2026-q2-v1 Overview Valid: 0      Minimum:      Maximum:      Mean:"
+            "sample_text": "34 SOUTH AFRICA\u2019S NATIONAL LIST OF OCCUPATIONS IN HIGH DEMAND: A TECHNICAL RESEARCH REPORT SIX-DIGIT  OFO CODE SIX-DIGIT OFO OCCUPATION MINIMUM QUALIFICATION REQUIRED\u00a0 2021-242302 Skills Development P"
           },
           {
             "page_number": 39,
-            "text_length": 2619,
-            "word_count": 322,
-            "image_count": 0,
-            "has_tables": true,
-            "table_count": 1,
-            "is_scanned_likely": false,
-            "has_vector_graphics": true,
-            "sample_text": "South Africa - Quarterly Labour Force Survey 2026, Quarter 2 39 1211 1211. Rectors/principals of universities/colleges 1221 1221. Production and operations managers/department managers in agriculture,"
-          },
-          {
-            "page_number": 40,
-            "text_length": 2600,
-            "word_count": 305,
-            "image_count": 0,
-            "has_tables": true,
-            "table_count": 1,
-            "is_scanned_likely": false,
-            "has_vector_graphics": true,
-            "sample_text": "South Africa - Quarterly Labour Force Survey 2026, Quarter 2 40 2143 2143. Electrical engineers 2144 2144. Electronics and telecommunications engineers 2145 2145. Mechanical engineers 2146 2146. Chemi"
-          },
-          {
-            "page_number": 41,
-            "text_length": 2447,
-            "word_count": 295,
-            "image_count": 0,
-            "has_tables": true,
-            "table_count": 1,
-            "is_scanned_likely": false,
-            "has_vector_graphics": true,
-            "sample_text": "South Africa - Quarterly Labour Force Survey 2026, Quarter 2 41 2445 2445. Psychologists, Psychometricians and Psycho-technicians 2446 2446. Social work professionals 2451 2451. Authors, journalists a"
-          },
-          {
-            "page_number": 42,
-            "text_length": 2183,
-            "word_count": 274,
-            "image_count": 0,
-            "has_tables": true,
-            "table_count": 1,
-            "is_scanned_likely": false,
-            "has_vector_graphics": true,
-            "sample_text": "South Africa - Quarterly Labour Force Survey 2026, Quarter 2 42 3222 3222. Sanitarians 3223 3223. Dieticians and nutritionists 3224 3224. Optometrists and opticians 3225 3225. Dental assistants 3226 3"
-          },
-          {
-            "page_number": 43,
-            "text_length": 2051,
-            "word_count": 276,
-            "image_count": 0,
-            "has_tables": true,
-            "table_count": 1,
-            "is_scanned_likely": false,
-            "has_vector_graphics": true,
-            "sample_text": "South Africa - Quarterly Labour Force Survey 2026, Quarter 2 43 3449 3449. Customs, tax and related government associate professionals not elsewhere classi\ufb01ed 3450 3450. Police inspectors and detectiv"
-          },
-          {
-            "page_number": 44,
-            "text_length": 2307,
-            "word_count": 327,
-            "image_count": 0,
-            "has_tables": true,
-            "table_count": 1,
-            "is_scanned_likely": false,
-            "has_vector_graphics": true,
-            "sample_text": "South Africa - Quarterly Labour Force Survey 2026, Quarter 2 44 5121 5121. Housekeepers and related workers 5122 5122. Cooks 5123 5123. Waiters, waitresses and bartenders 5124 5124. Tavern and shebeen"
-          },
-          {
-            "page_number": 45,
-            "text_length": 3030,
-            "word_count": 322,
-            "image_count": 0,
-            "has_tables": true,
-            "table_count": 1,
-            "is_scanned_likely": false,
-            "has_vector_graphics": true,
-            "sample_text": "South Africa - Quarterly Labour Force Survey 2026, Quarter 2 45 7112 7112. Shot-\ufb01rers and blasters (including apprentices/trainees) 7113 7113. Stone splitters, cutters and carvers (including apprentic"
-          },
-          {
-            "page_number": 46,
-            "text_length": 3113,
-            "word_count": 352,
-            "image_count": 0,
-            "has_tables": true,
-            "table_count": 1,
-            "is_scanned_likely": false,
-            "has_vector_graphics": true,
-            "sample_text": "South Africa - Quarterly Labour Force Survey 2026, Quarter 2 46 7313 7313. Jewellery and precious-metal workers (including apprentices/trainees) 7321 7321. Abrasive wheel formers, potters and related"
-          },
-          {
-            "page_number": 47,
-            "text_length": 2193,
-            "word_count": 288,
-            "image_count": 0,
-            "has_tables": true,
-            "table_count": 1,
-            "is_scanned_likely": false,
-            "has_vector_graphics": true,
-            "sample_text": "South Africa - Quarterly Labour Force Survey 2026, Quarter 2 47 8131 8131. Glass and ceramics kiln and related machine operators 8139 8139. Glass, ceramics and related plant operators not elsewhere cl"
-          },
-          {
-            "page_number": 48,
-            "text_length": 2042,
-            "word_count": 284,
-            "image_count": 0,
-            "has_tables": true,
-            "table_count": 1,
-            "is_scanned_likely": false,
-            "has_vector_graphics": true,
-            "sample_text": "South Africa - Quarterly Labour Force Survey 2026, Quarter 2 48 8274 8274. Baked goods, cereal and chocolate products machine operators 8275 8275. Fruit, vegetable and nut-processing machine operators"
-          },
-          {
-            "page_number": 49,
-            "text_length": 1619,
-            "word_count": 216,
+            "text_length": 2929,
+            "word_count": 360,
             "image_count": 0,
             "has_tables": true,
             "table_count": 2,
             "is_scanned_likely": false,
             "has_vector_graphics": true,
-            "sample_text": "South Africa - Quarterly Labour Force Survey 2026, Quarter 2 49 9190 9190. Elementary sales and services occupations not elsewhere classi\ufb01ed 9211 9211. Farmhands and labourers 9212 9212. Forestry labo"
+            "sample_text": "35 Consolidation of Evidence and the Final List PART 5 SIX-DIGIT  OFO CODE SIX-DIGIT OFO OCCUPATION MINIMUM QUALIFICATION REQUIRED\u00a0 2021-311101 Chemistry Technician Diploma or Advanced Certificate (NQ"
+          },
+          {
+            "page_number": 40,
+            "text_length": 3009,
+            "word_count": 385,
+            "image_count": 0,
+            "has_tables": true,
+            "table_count": 2,
+            "is_scanned_likely": false,
+            "has_vector_graphics": true,
+            "sample_text": "36 SOUTH AFRICA\u2019S NATIONAL LIST OF OCCUPATIONS IN HIGH DEMAND: A TECHNICAL RESEARCH REPORT SIX-DIGIT  OFO CODE SIX-DIGIT OFO OCCUPATION MINIMUM QUALIFICATION REQUIRED\u00a0 2021-331503 Insurance Loss Adjus"
+          },
+          {
+            "page_number": 41,
+            "text_length": 2828,
+            "word_count": 347,
+            "image_count": 0,
+            "has_tables": true,
+            "table_count": 2,
+            "is_scanned_likely": false,
+            "has_vector_graphics": true,
+            "sample_text": "37 Consolidation of Evidence and the Final List PART 5 SIX-DIGIT  OFO CODE SIX-DIGIT OFO OCCUPATION MINIMUM QUALIFICATION REQUIRED\u00a0 2021-432101 Stock Clerk/Officer* National Certificate (NQF Level 4)"
+          },
+          {
+            "page_number": 42,
+            "text_length": 2941,
+            "word_count": 358,
+            "image_count": 0,
+            "has_tables": true,
+            "table_count": 2,
+            "is_scanned_likely": false,
+            "has_vector_graphics": true,
+            "sample_text": "38 SOUTH AFRICA\u2019S NATIONAL LIST OF OCCUPATIONS IN HIGH DEMAND: A TECHNICAL RESEARCH REPORT SIX-DIGIT  OFO CODE SIX-DIGIT OFO OCCUPATION MINIMUM QUALIFICATION REQUIRED\u00a0 2021-652301 Metal Machinist Nati"
+          },
+          {
+            "page_number": 43,
+            "text_length": 539,
+            "word_count": 68,
+            "image_count": 0,
+            "has_tables": true,
+            "table_count": 2,
+            "is_scanned_likely": false,
+            "has_vector_graphics": true,
+            "sample_text": "39 Consolidation of Evidence and the Final List PART 5 SIX-DIGIT  OFO CODE SIX-DIGIT OFO OCCUPATION MINIMUM QUALIFICATION REQUIRED\u00a0 2021-734101 Agricultural Mobile Plant  (Equipment) Operator* Nationa"
+          },
+          {
+            "page_number": 44,
+            "text_length": 35,
+            "word_count": 6,
+            "image_count": 0,
+            "has_tables": false,
+            "table_count": 0,
+            "is_scanned_likely": false,
+            "has_vector_graphics": true,
+            "sample_text": "Conclusion PART 6 Conclusion PART 6"
+          },
+          {
+            "page_number": 45,
+            "text_length": 1529,
+            "word_count": 203,
+            "image_count": 0,
+            "has_tables": false,
+            "table_count": 0,
+            "is_scanned_likely": false,
+            "has_vector_graphics": true,
+            "sample_text": "41 Conclusion PART 6 This technical report on national OIHD sheds light on the country\u2019s economic and labour market  conditions. South Africa faces significant challenges relating to unemployment and"
+          },
+          {
+            "page_number": 46,
+            "text_length": 33,
+            "word_count": 6,
+            "image_count": 0,
+            "has_tables": false,
+            "table_count": 0,
+            "is_scanned_likely": false,
+            "has_vector_graphics": true,
+            "sample_text": "Annexures PART 7 Annexures PART 7"
+          },
+          {
+            "page_number": 47,
+            "text_length": 1211,
+            "word_count": 170,
+            "image_count": 0,
+            "has_tables": true,
+            "table_count": 4,
+            "is_scanned_likely": false,
+            "has_vector_graphics": true,
+            "sample_text": "43 Annexures PART 7 Annexure 1: \u0007The number of occupations per category  in the national OIHD list South Africa\u2019s list of OIHD is colour-coded below according to this key. OCCUPATIONAL CATEGORIES  (CO"
+          },
+          {
+            "page_number": 48,
+            "text_length": 1727,
+            "word_count": 240,
+            "image_count": 0,
+            "has_tables": true,
+            "table_count": 2,
+            "is_scanned_likely": false,
+            "has_vector_graphics": true,
+            "sample_text": "44 SOUTH AFRICA\u2019S NATIONAL LIST OF OCCUPATIONS IN HIGH DEMAND: A TECHNICAL RESEARCH REPORT OFO CODE OFO TITLE DEMAND SCORES SECONDARY  DATA MENTIONS  FREQUENCY AVERAGE  CERTAINTY WEIGHTED  AVERAGE 202"
+          },
+          {
+            "page_number": 49,
+            "text_length": 1636,
+            "word_count": 225,
+            "image_count": 0,
+            "has_tables": true,
+            "table_count": 2,
+            "is_scanned_likely": false,
+            "has_vector_graphics": true,
+            "sample_text": "45 Annexures PART 7 OFO CODE OFO TITLE DEMAND SCORES SECONDARY  DATA MENTIONS  FREQUENCY AVERAGE  CERTAINTY WEIGHTED  AVERAGE 2021-111204 Senior Government  Official 0.79 0.94 0.42 0.84 2021-651302 Bo"
           },
           {
             "page_number": 50,
-            "text_length": 1986,
-            "word_count": 309,
+            "text_length": 1723,
+            "word_count": 237,
             "image_count": 0,
             "has_tables": true,
-            "table_count": 1,
+            "table_count": 2,
             "is_scanned_likely": false,
             "has_vector_graphics": true,
-            "sample_text": "South Africa - Quarterly Labour Force Survey 2026, Quarter 2 50 210 210. Mining of coal and lignite 221 221. Extraction of crude petroleum and natural gas; service activities incidental to oil and gas"
+            "sample_text": "46 SOUTH AFRICA\u2019S NATIONAL LIST OF OCCUPATIONS IN HIGH DEMAND: A TECHNICAL RESEARCH REPORT OFO CODE OFO TITLE DEMAND SCORES SECONDARY  DATA MENTIONS  FREQUENCY AVERAGE  CERTAINTY WEIGHTED  AVERAGE 202"
           }
         ],
-        "inspected_at": "2026-09-21T12:55:10.314510Z"
+        "inspected_at": "2026-09-21T14:44:04.207485Z"
       },
       "classification": {
-        "document_type": "REPEATED_TABULAR",
-        "confidence": 0.85,
-        "recommended_extractor": "pdf_tables",
+        "document_type": "SEMI_STRUCTURED_REPORT",
+        "confidence": 0.78,
+        "recommended_extractor": "occupations",
         "reasons": [
-          "Consistent tabular alignment detected across pages (100% likelihood)",
-          "Digital vector lines and grid bounding boxes present"
+          "Matched profile 'Occupations in High Demand (OIHD)'",
+          "Detected domain keywords: High Demand",
+          "Recommended extractor: occupations"
         ],
         "alternative_extractors": [
           "pdf_tables",
-          "pdf_text"
+          "occupations"
         ]
       },
       "manual_type_override": null,
-      "manual_extractor_override": "pdf_tables",
+      "manual_extractor_override": "occupations",
       "error_message": null
     }
   },
   "relationships": [
     {
-      "id": "75b87403-696e-42c4-a312-dda32ccb5309",
-      "name": "qualifications_to_qualifications_colleges",
+      "id": "0627302f-f244-4efc-bb98-748fca25937f",
+      "name": "occupations_high_demand_to_occupation_metadata",
       "rel_type": "ONE_TO_MANY",
-      "parent_dataset": "qualifications",
-      "child_dataset": "qualifications_colleges",
-      "parent_key": "saqa_id",
-      "foreign_key": "saqa_id",
-      "description": "One qualifications relates to multiple college_name entries",
+      "parent_dataset": "occupations_high_demand",
+      "child_dataset": "occupation_metadata",
+      "parent_key": "ofo_code",
+      "foreign_key": "ofo_code",
+      "description": "One occupations_high_demand relates to multiple item_name entries",
       "is_accepted": true,
       "confidence": 0.95
     }
   ],
   "dataset_names": [
-    "qualifications_colleges",
-    "qualifications",
-    "ddi-documentation-english-1247_table"
+    "occupations_high_demand",
+    "occupation_metadata"
   ]
 }
