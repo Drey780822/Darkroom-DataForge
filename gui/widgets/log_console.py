@@ -27,7 +27,7 @@ class LogConsole(QFrame):
 
         # Header bar
         header = QHBoxLayout()
-        title = QLabel("PIPELINE LOGS")
+        title = QLabel("Pipeline Logs")
         title.setObjectName("CardTitle")
         header.addWidget(title)
 
@@ -35,7 +35,7 @@ class LogConsole(QFrame):
 
         self.search_input = QLineEdit()
         self.search_input.setPlaceholderText("Filter logs...")
-        self.search_input.setFixedWidth(150)
+        self.search_input.setFixedWidth(160)
         header.addWidget(self.search_input)
 
         self.btn_clear = QPushButton("Clear")
@@ -49,12 +49,14 @@ class LogConsole(QFrame):
         self.log_text.setReadOnly(True)
         self.log_text.setStyleSheet("""
             QPlainTextEdit {
-                background-color: #070B16;
-                color: #94A3B8;
-                font-family: 'Cascadia Code', 'Consolas', 'Courier New', monospace;
+                background-color: #0A0A0C;
+                color: #ECECF1;
+                font-family: ui-monospace, 'Cascadia Code', 'Fira Code', 'Consolas', monospace;
                 font-size: 11px;
-                border: 1px solid #1E293B;
-                border-radius: 4px;
+                line-height: 1.4;
+                border: 1px solid rgba(255, 255, 255, 0.08);
+                border-radius: 6px;
+                padding: 6px;
             }
         """)
         layout.addWidget(self.log_text)
@@ -62,14 +64,14 @@ class LogConsole(QFrame):
     def append_log(self, level: str, message: str):
         timestamp = datetime.now(timezone.utc).strftime("%H:%M:%S")
         color_map = {
-            "INFO": "#94A3B8",
+            "INFO": "rgba(255, 255, 255, 0.6)",
             "WARNING": "#F59E0B",
             "ERROR": "#EF4444",
-            "DEBUG": "#64748B",
-            "SUCCESS": "#22C55E",
+            "DEBUG": "rgba(255, 255, 255, 0.35)",
+            "SUCCESS": "#10A37F",
         }
-        color = color_map.get(level.upper(), "#94A3B8")
-        html_line = f"<span style='color:#64748B;'>[{timestamp}]</span> <span style='color:{color}; font-weight:bold;'>[{level.upper()}]</span> <span style='color:#E2E8F0;'>{message}</span>"
+        color = color_map.get(level.upper(), "rgba(255, 255, 255, 0.6)")
+        html_line = f"<span style='color:rgba(255, 255, 255, 0.3);'>[{timestamp}]</span> <span style='color:{color}; font-weight:600;'>[{level.upper()}]</span> <span style='color:#ECECF1;'>{message}</span>"
 
         # Apply search filter if present
         filter_str = self.search_input.text().strip().lower()

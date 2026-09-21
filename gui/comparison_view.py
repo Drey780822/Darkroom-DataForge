@@ -24,15 +24,15 @@ class ComparisonMetricCard(QFrame):
         super().__init__(parent)
         self.setObjectName("Card")
         layout = QVBoxLayout(self)
-        layout.setContentsMargins(16, 12, 16, 12)
-        layout.setSpacing(4)
+        layout.setContentsMargins(18, 16, 18, 16)
+        layout.setSpacing(6)
 
-        t_lbl = QLabel(title)
+        t_lbl = QLabel(title.upper())
         t_lbl.setObjectName("CardTitle")
         layout.addWidget(t_lbl)
 
         self.v_lbl = QLabel(str(count))
-        self.v_lbl.setStyleSheet(f"color: {color}; font-size: 24px; font-weight: 800;")
+        self.v_lbl.setStyleSheet(f"color: {color}; font-size: 24px; font-weight: 600; letter-spacing: -0.02em;")
         layout.addWidget(self.v_lbl)
 
     def set_count(self, count: int):
@@ -49,17 +49,18 @@ class ComparisonView(QWidget):
 
     def init_ui(self):
         layout = QVBoxLayout(self)
-        layout.setContentsMargins(20, 20, 20, 20)
-        layout.setSpacing(16)
+        layout.setContentsMargins(32, 28, 32, 28)
+        layout.setSpacing(20)
 
         # Header
         header = QVBoxLayout()
-        title = QLabel("Dataset Edition & Longitudinal Comparison")
-        title.setStyleSheet("font-size: 18px; font-weight: 800; color: #F8FAFC;")
+        header.setSpacing(4)
+        title = QLabel("Dataset Comparison")
+        title.setStyleSheet("font-size: 20px; font-weight: 600; color: #FFFFFF; letter-spacing: -0.02em;")
         header.addWidget(title)
 
-        subtitle = QLabel("Compare extractions across time periods, survey quarters, or report revisions to track new, modified, and removed records.")
-        subtitle.setStyleSheet("font-size: 12px; color: #94A3B8;")
+        subtitle = QLabel("Compare extractions across periods, survey quarters, or revisions to track added, modified, and removed records.")
+        subtitle.setStyleSheet("font-size: 13px; color: rgba(255, 255, 255, 0.45);")
         header.addWidget(subtitle)
         layout.addLayout(header)
 
@@ -67,23 +68,23 @@ class ComparisonView(QWidget):
         sel_bar = QHBoxLayout()
         sel_bar.setSpacing(12)
 
-        lbl1 = QLabel("Baseline Dataset:")
-        lbl1.setStyleSheet("color: #94A3B8; font-weight: 600;")
+        lbl1 = QLabel("Baseline:")
+        lbl1.setStyleSheet("color: rgba(255, 255, 255, 0.6); font-size: 13px;")
         sel_bar.addWidget(lbl1)
 
         self.combo_base = QComboBox()
         self.combo_base.setMinimumWidth(180)
         sel_bar.addWidget(self.combo_base)
 
-        lbl2 = QLabel("Comparison Dataset:")
-        lbl2.setStyleSheet("color: #94A3B8; font-weight: 600;")
+        lbl2 = QLabel("Comparison:")
+        lbl2.setStyleSheet("color: rgba(255, 255, 255, 0.6); font-size: 13px;")
         sel_bar.addWidget(lbl2)
 
         self.combo_target = QComboBox()
         self.combo_target.setMinimumWidth(180)
         sel_bar.addWidget(self.combo_target)
 
-        self.btn_compare = QPushButton("⚡ Compare Datasets")
+        self.btn_compare = QPushButton("Compare Datasets")
         self.btn_compare.setObjectName("PrimaryButton")
         self.btn_compare.clicked.connect(self.run_comparison)
         sel_bar.addWidget(self.btn_compare)
@@ -93,18 +94,18 @@ class ComparisonView(QWidget):
 
         # 4 Metric Cards
         metrics_grid = QGridLayout()
-        metrics_grid.setSpacing(14)
+        metrics_grid.setSpacing(12)
 
-        self.card_added = ComparisonMetricCard("NEW / ADDED RECORDS", 0, color="#22C55E")
+        self.card_added = ComparisonMetricCard("Added Records", 0, color="#10A37F")
         metrics_grid.addWidget(self.card_added, 0, 0)
 
-        self.card_modified = ComparisonMetricCard("MODIFIED RECORDS", 0, color="#F59E0B")
+        self.card_modified = ComparisonMetricCard("Modified Records", 0, color="#F59E0B")
         metrics_grid.addWidget(self.card_modified, 0, 1)
 
-        self.card_removed = ComparisonMetricCard("REMOVED RECORDS", 0, color="#EF4444")
+        self.card_removed = ComparisonMetricCard("Removed Records", 0, color="#EF4444")
         metrics_grid.addWidget(self.card_removed, 0, 2)
 
-        self.card_unchanged = ComparisonMetricCard("UNCHANGED RECORDS", 0, color="#94A3B8")
+        self.card_unchanged = ComparisonMetricCard("Unchanged Records", 0, color="rgba(255, 255, 255, 0.4)")
         metrics_grid.addWidget(self.card_unchanged, 0, 3)
 
         layout.addLayout(metrics_grid)
@@ -113,15 +114,15 @@ class ComparisonView(QWidget):
         diff_frame = QFrame()
         diff_frame.setObjectName("Card")
         d_layout = QVBoxLayout(diff_frame)
-        d_layout.setContentsMargins(14, 12, 14, 12)
-        d_layout.setSpacing(8)
+        d_layout.setContentsMargins(16, 14, 16, 14)
+        d_layout.setSpacing(10)
 
-        d_title = QLabel("RECORD DIFFERENCE SPECIFICATION")
+        d_title = QLabel("Record Differences")
         d_title.setObjectName("CardTitle")
         d_layout.addWidget(d_title)
 
         self.diff_table = QTableWidget(0, 4)
-        self.diff_table.setHorizontalHeaderLabels(["Record Key", "Change Type", "Changed Fields", "Values (Old ➔ New)"])
+        self.diff_table.setHorizontalHeaderLabels(["Record Key", "Change Type", "Changed Fields", "Values (Old -> New)"])
         self.diff_table.horizontalHeader().setSectionResizeMode(0, QHeaderView.ResizeToContents)
         self.diff_table.horizontalHeader().setSectionResizeMode(1, QHeaderView.ResizeToContents)
         self.diff_table.horizontalHeader().setSectionResizeMode(2, QHeaderView.ResizeToContents)
@@ -173,7 +174,7 @@ class ComparisonView(QWidget):
 
             val_str = ""
             if diff.diff_type == "MODIFIED":
-                val_str = "; ".join([f"{f}: '{diff.old_values.get(f)}' ➔ '{diff.new_values.get(f)}'" for f in diff.changed_fields])
+                val_str = "; ".join([f"{f}: '{diff.old_values.get(f)}' -> '{diff.new_values.get(f)}'" for f in diff.changed_fields])
             elif diff.diff_type == "ADDED":
                 val_str = f"New Record ({len(diff.new_values)} fields)"
             elif diff.diff_type == "REMOVED":

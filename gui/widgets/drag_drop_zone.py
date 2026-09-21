@@ -24,23 +24,28 @@ class DragDropZone(QFrame):
         self.init_ui()
 
     def init_ui(self):
+        self.setStyleSheet("""
+            QFrame#Card {
+                border: 1px dashed rgba(255, 255, 255, 0.14);
+                border-radius: 8px;
+                background-color: rgba(255, 255, 255, 0.02);
+            }
+            QFrame#Card:hover {
+                border-color: rgba(255, 255, 255, 0.25);
+            }
+        """)
         layout = QVBoxLayout(self)
         layout.setAlignment(Qt.AlignCenter)
-        layout.setContentsMargins(30, 30, 30, 30)
-        layout.setSpacing(12)
-
-        icon_label = QLabel("📥")
-        icon_label.setStyleSheet("font-size: 32px;")
-        icon_label.setAlignment(Qt.AlignCenter)
-        layout.addWidget(icon_label)
+        layout.setContentsMargins(24, 28, 24, 28)
+        layout.setSpacing(8)
 
         title_label = QLabel("Drop PDF documents here")
-        title_label.setStyleSheet("font-size: 15px; font-weight: 700; color: #F8FAFC;")
+        title_label.setStyleSheet("font-size: 14px; font-weight: 600; color: #EDEDED; letter-spacing: -0.2px;")
         title_label.setAlignment(Qt.AlignCenter)
         layout.addWidget(title_label)
 
-        sub_label = QLabel("Supports Single PDF, Multiple Batch PDFs, or Entire Directories")
-        sub_label.setStyleSheet("font-size: 11px; color: #94A3B8;")
+        sub_label = QLabel("Supports single documents, multi-page reports, or batch folders")
+        sub_label.setStyleSheet("font-size: 12px; color: #8E8E93;")
         sub_label.setAlignment(Qt.AlignCenter)
         layout.addWidget(sub_label)
 

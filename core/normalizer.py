@@ -90,7 +90,7 @@ class Normalizer:
         if re.match(r"^-?\d+$", cleaned) and not is_code_field:
             try:
                 num = int(cleaned)
-                return num, True
+                return num, (str(raw) != cleaned)
             except ValueError:
                 pass
 
@@ -98,15 +98,15 @@ class Normalizer:
         if re.match(r"^-?\d+\.\d+$", cleaned) and not is_code_field:
             try:
                 num = float(cleaned)
-                return num, True
+                return num, (str(raw) != cleaned)
             except ValueError:
                 pass
 
         # Check boolean
         if cleaned.lower() in ["true", "yes", "y"]:
-            return True, True
+            return True, (raw is not True and str(raw) != "True")
         if cleaned.lower() in ["false", "no", "n"]:
-            return False, True
+            return False, (raw is not False and str(raw) != "False")
 
         # Standardize South African province if province-related field
         is_prov_field = any(term in field_name.lower() for term in ["province", "prov", "region"])

@@ -31,17 +31,18 @@ class SettingsView(QWidget):
 
     def init_ui(self):
         layout = QVBoxLayout(self)
-        layout.setContentsMargins(20, 20, 20, 20)
-        layout.setSpacing(16)
+        layout.setContentsMargins(32, 28, 32, 28)
+        layout.setSpacing(20)
 
         # Header
         header = QVBoxLayout()
-        title = QLabel("System Settings & Extraction Profiles")
-        title.setStyleSheet("font-size: 18px; font-weight: 800; color: #F8FAFC;")
+        header.setSpacing(4)
+        title = QLabel("System Settings")
+        title.setStyleSheet("font-size: 20px; font-weight: 600; color: #FFFFFF; letter-spacing: -0.02em;")
         header.addWidget(title)
 
-        subtitle = QLabel("Configure OCR engine fallback, parallelism, quality thresholds, and document archetype profiles.")
-        subtitle.setStyleSheet("font-size: 12px; color: #94A3B8;")
+        subtitle = QLabel("Configure OCR engine fallback, parallelism, thresholds, and document archetype profiles.")
+        subtitle.setStyleSheet("font-size: 13px; color: rgba(255, 255, 255, 0.45);")
         header.addWidget(subtitle)
         layout.addLayout(header)
 
@@ -49,19 +50,19 @@ class SettingsView(QWidget):
         settings_card = QFrame()
         settings_card.setObjectName("Card")
         s_layout = QVBoxLayout(settings_card)
-        s_layout.setContentsMargins(16, 14, 16, 14)
-        s_layout.setSpacing(10)
+        s_layout.setContentsMargins(18, 16, 18, 16)
+        s_layout.setSpacing(12)
 
-        st_title = QLabel("ENGINE CONFIGURATION")
+        st_title = QLabel("Engine Configuration")
         st_title.setObjectName("CardTitle")
         s_layout.addWidget(st_title)
 
         row1 = QHBoxLayout()
-        self.chk_ocr = QCheckBox("Enable Tesseract OCR Engine Fallback for Scanned Documents")
+        self.chk_ocr = QCheckBox("Enable Tesseract OCR engine fallback for scanned documents")
         self.chk_ocr.setChecked(True)
         row1.addWidget(self.chk_ocr)
 
-        row1.addSpacing(20)
+        row1.addSpacing(24)
         row1.addWidget(QLabel("Parallel Workers:"))
         self.spin_workers = QSpinBox()
         self.spin_workers.setRange(1, 16)
@@ -71,9 +72,9 @@ class SettingsView(QWidget):
         s_layout.addLayout(row1)
 
         row2 = QHBoxLayout()
-        row2.addWidget(QLabel("Custom Tesseract Path (Optional):"))
+        row2.addWidget(QLabel("Custom Tesseract Path:"))
         self.txt_tesseract = QLineEdit()
-        self.txt_tesseract.setPlaceholderText("e.g. C:\\Program Files\\Tesseract-OCR\\tesseract.exe")
+        self.txt_tesseract.setPlaceholderText("Optional path to tesseract binary")
         row2.addWidget(self.txt_tesseract)
         s_layout.addLayout(row2)
 
@@ -83,22 +84,24 @@ class SettingsView(QWidget):
         prof_card = QFrame()
         prof_card.setObjectName("Card")
         p_layout = QVBoxLayout(prof_card)
-        p_layout.setContentsMargins(16, 14, 16, 14)
-        p_layout.setSpacing(10)
+        p_layout.setContentsMargins(18, 16, 18, 16)
+        p_layout.setSpacing(12)
 
         p_header = QHBoxLayout()
-        p_title = QLabel("EXTRACTION PROFILES (YAML)")
+        p_title = QLabel("Extraction Profiles")
         p_title.setObjectName("CardTitle")
         p_header.addWidget(p_title)
 
         p_header.addStretch()
-        p_header.addWidget(QLabel("Select Profile:"))
+        lbl_p = QLabel("Profile:")
+        lbl_p.setStyleSheet("color: rgba(255, 255, 255, 0.6); font-size: 13px;")
+        p_header.addWidget(lbl_p)
         self.profile_combo = QComboBox()
         self.profile_combo.setMinimumWidth(200)
         self.profile_combo.currentIndexChanged.connect(self.on_profile_selected)
         p_header.addWidget(self.profile_combo)
 
-        self.btn_save_prof = QPushButton("💾 Save Profile")
+        self.btn_save_prof = QPushButton("Save Profile")
         self.btn_save_prof.setObjectName("PrimaryButton")
         self.btn_save_prof.clicked.connect(self.save_current_profile)
         p_header.addWidget(self.btn_save_prof)
@@ -108,12 +111,14 @@ class SettingsView(QWidget):
         self.profile_editor = QPlainTextEdit()
         self.profile_editor.setStyleSheet("""
             QPlainTextEdit {
-                background-color: #070B16;
-                color: #F8FAFC;
-                font-family: 'Cascadia Code', 'Consolas', 'Courier New', monospace;
+                background-color: #0A0A0C;
+                color: #ECECF1;
+                font-family: ui-monospace, 'Cascadia Code', 'Fira Code', 'Consolas', monospace;
                 font-size: 12px;
-                border: 1px solid #263244;
-                border-radius: 4px;
+                line-height: 1.5;
+                border: 1px solid rgba(255, 255, 255, 0.08);
+                border-radius: 6px;
+                padding: 10px;
             }
         """)
         p_layout.addWidget(self.profile_editor)

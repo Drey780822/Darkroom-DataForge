@@ -36,18 +36,19 @@ class ReviewQueueView(QWidget):
 
     def init_ui(self):
         layout = QVBoxLayout(self)
-        layout.setContentsMargins(20, 20, 20, 20)
-        layout.setSpacing(14)
+        layout.setContentsMargins(32, 28, 32, 28)
+        layout.setSpacing(20)
 
         # Header
         header = QHBoxLayout()
         title_box = QVBoxLayout()
-        title = QLabel("Human-in-the-Loop Review Queue")
-        title.setStyleSheet("font-size: 18px; font-weight: 800; color: #F8FAFC;")
+        title_box.setSpacing(4)
+        title = QLabel("Review Queue")
+        title.setStyleSheet("font-size: 20px; font-weight: 600; color: #FFFFFF; letter-spacing: -0.02em;")
         title_box.addWidget(title)
 
         subtitle = QLabel("Cross-verify low-confidence extractions, schema anomalies, and validation warnings against source pages.")
-        subtitle.setStyleSheet("font-size: 12px; color: #94A3B8;")
+        subtitle.setStyleSheet("font-size: 13px; color: rgba(255, 255, 255, 0.45);")
         title_box.addWidget(subtitle)
         header.addLayout(title_box)
 
@@ -64,22 +65,22 @@ class ReviewQueueView(QWidget):
 
         # Action bar
         action_bar = QHBoxLayout()
-        self.count_lbl = QLabel("0 records pending review")
-        self.count_lbl.setStyleSheet("font-size: 12px; font-weight: 700; color: #D4AF37;")
+        self.count_lbl = QLabel("0 pending")
+        self.count_lbl.setStyleSheet("font-size: 12px; font-weight: 500; color: rgba(255, 255, 255, 0.5); padding: 4px 8px; background: rgba(255, 255, 255, 0.05); border-radius: 4px;")
         action_bar.addWidget(self.count_lbl)
 
         action_bar.addStretch()
 
-        self.btn_accept = QPushButton("✓ Accept Record")
+        self.btn_accept = QPushButton("Accept Record")
         self.btn_accept.setObjectName("SuccessButton")
         self.btn_accept.clicked.connect(self.accept_selected)
         action_bar.addWidget(self.btn_accept)
 
-        self.btn_edit = QPushButton("✏ Edit Value")
+        self.btn_edit = QPushButton("Edit Value")
         self.btn_edit.clicked.connect(self.edit_selected)
         action_bar.addWidget(self.btn_edit)
 
-        self.btn_reject = QPushButton("✕ Reject Record")
+        self.btn_reject = QPushButton("Reject Record")
         self.btn_reject.setObjectName("DangerButton")
         self.btn_reject.clicked.connect(self.reject_selected)
         action_bar.addWidget(self.btn_reject)
@@ -102,9 +103,9 @@ class ReviewQueueView(QWidget):
         self.detail_frame = QFrame()
         self.detail_frame.setObjectName("Card")
         detail_layout = QVBoxLayout(self.detail_frame)
-        detail_layout.setContentsMargins(12, 10, 12, 10)
+        detail_layout.setContentsMargins(14, 12, 14, 12)
         self.detail_lbl = QLabel("Select a record to inspect cell values.")
-        self.detail_lbl.setStyleSheet("font-size: 11px; color: #94A3B8;")
+        self.detail_lbl.setStyleSheet("font-size: 12px; color: rgba(255, 255, 255, 0.6); line-height: 1.4;")
         self.detail_lbl.setWordWrap(True)
         detail_layout.addWidget(self.detail_lbl)
         left_layout.addWidget(self.detail_frame)

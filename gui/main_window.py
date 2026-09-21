@@ -2,7 +2,7 @@ from __future__ import annotations
 import sys
 from pathlib import Path
 from typing import Optional
-from PySide6.QtCore import Qt, QSize
+from PySide6.QtCore import Qt, QSize, QPropertyAnimation, QEasingCurve
 from PySide6.QtGui import QIcon, QFont
 from PySide6.QtWidgets import (
     QMainWindow,
@@ -17,6 +17,7 @@ from PySide6.QtWidgets import (
     QFileDialog,
     QInputDialog,
     QMessageBox,
+    QGraphicsOpacityEffect,
 )
 from core.project import Project
 from .styles import DARKROOM_STYLE
@@ -116,7 +117,7 @@ class MainWindow(QMainWindow):
         side_layout.addStretch()
 
         # Workspace switcher button
-        self.btn_switch_ws = QPushButton("📁 Switch Workspace")
+        self.btn_switch_ws = QPushButton("Switch Workspace")
         self.btn_switch_ws.setObjectName("NavyButton")
         self.btn_switch_ws.clicked.connect(self.switch_workspace_dialog)
         side_layout.addWidget(self.btn_switch_ws)
@@ -124,11 +125,11 @@ class MainWindow(QMainWindow):
         # Bottom Info
         side_layout.addSpacing(6)
         self.ws_lbl = QLabel(f"Project: {self.project.metadata.name}")
-        self.ws_lbl.setStyleSheet("font-size: 10px; color: #94A3B8;")
+        self.ws_lbl.setStyleSheet("font-size: 10px; color: #8E8E93;")
         side_layout.addWidget(self.ws_lbl)
 
         ver_lbl = QLabel("v1.0.0 • Local Workstation")
-        ver_lbl.setStyleSheet("font-size: 9px; color: #64748B;")
+        ver_lbl.setStyleSheet("font-size: 9px; color: #5C5C62;")
         side_layout.addWidget(ver_lbl)
 
         main_layout.addWidget(sidebar)
@@ -160,6 +161,7 @@ class MainWindow(QMainWindow):
 
         # Connect inter-view signals
         self.view_dashboard.switch_workspace_requested.connect(self.switch_workspace_dialog)
+        self.view_dashboard.load_demo_requested.connect(self.on_load_demo)
         self.view_dashboard.ingest_requested.connect(lambda: self.switch_view(1))
         self.view_dashboard.run_pipeline_requested.connect(lambda: self.switch_view(2))
         self.view_dashboard.run_selected_requested.connect(self.on_run_pipeline_for_documents)
@@ -186,9 +188,24 @@ class MainWindow(QMainWindow):
         self.setStyleSheet(DARKROOM_STYLE)
 
     def switch_view(self, index: int):
+        if self.stack.currentIndex() == index:
+            return
+
+        target = self.stack.widget(index)
         self.stack.setCurrentIndex(index)
         for idx, btn in enumerate(self.nav_buttons):
             btn.setChecked(idx == index)
+
+        # Notion / OpenAI minimalist fade transition
+        effect = QGraphicsOpacityEffect(target)
+        target.setGraphicsEffect(effect)
+        anim = QPropertyAnimation(effect, b"opacity")
+        anim.setDuration(160)
+        anim.setStartValue(0.10)
+        anim.setEndValue(1.0)
+        anim.setEasingCurve(QEasingCurve.OutCubic)
+        anim.start(QPropertyAnimation.DeleteWhenStopped)
+        self._current_anim = anim
 
     def refresh_all_views(self):
         if not self.project:
@@ -280,3 +297,21 @@ class MainWindow(QMainWindow):
             self.init_project(folder)
             self.refresh_all_views()
             self.status_bar.showMessage(f"Switched workspace to: {Path(folder).name}")
+
+    def on_load_demo(self):
+        try:
+            from demo.demo_project import DemoProjectManager
+            self.status_bar.showMessage("Generating synthetic demo project...")
+            demo_proj = DemoProjectManager.setup_demo_project()
+            self.project = demo_proj
+            self.refresh_all_views()
+            self.status_bar.showMessage("Demo project loaded successfully • TVET Qualifications Demo")
+            QMessageBox.information(
+                self,
+                "Demo Project Loaded",
+                "Successfully generated synthetic TVET qualifications, QLFS codebook, and OIHD report fixtures!\n\n"
+                "You can now navigate to the Extraction View to run the pipeline or inspect the documents."
+            )
+        except Exception as e:
+            QMessageBox.critical(self, "Demo Error", f"Failed to load demo project: {e}")
+

@@ -217,14 +217,47 @@ class Project:
         }
         self.store.save_project_state(state)
 
+    def get_document_path(self, doc_id: str) -> Optional[str]:
+        """Returns the resolved absolute path to the document file on the current system."""
+        doc = self.documents.get(doc_id)
+        if not doc:
+            return None
+        p = Path(doc.file_path)
+        if p.exists():
+            return str(p.resolve())
+        candidate = (self.workspace.documents_dir / doc.filename).resolve()
+        if candidate.exists():
+            doc.file_path = str(candidate)
+            return str(candidate)
+        candidate2 = (self.workspace.documents_dir / p.name).resolve()
+        if candidate2.exists():
+            doc.file_path = str(candidate2)
+            return str(candidate2)
+        return doc.file_path
+
     def load(self) -> None:
         state = self.store.load_project_state()
         self.metadata = ProjectMetadata.model_validate(state["metadata"])
         self.documents = {
             k: DocumentMetadata.model_validate(v) for k, v in state.get("documents", {}).items()
         }
+        # Self-heal document file paths across OS and machines
+        updated_paths = False
+        for doc in self.documents.values():
+            p = Path(doc.file_path)
+            if not p.exists():
+                candidate = (self.workspace.documents_dir / doc.filename).resolve()
+                if not candidate.exists():
+                    candidate = (self.workspace.documents_dir / p.name).resolve()
+                if candidate.exists():
+                    doc.file_path = str(candidate)
+                    updated_paths = True
+
         self.relationships = [
             Relationship.model_validate(r) for r in state.get("relationships", [])
         ]
         loaded_ds = self.store.load_datasets()
         self.datasets = {ds.metadata.name: ds for ds in loaded_ds}
+        if updated_paths:
+            self.save()
+

@@ -95,15 +95,15 @@ class DatasetView(QWidget):
 
     def init_ui(self):
         layout = QVBoxLayout(self)
-        layout.setContentsMargins(20, 20, 20, 20)
-        layout.setSpacing(14)
+        layout.setContentsMargins(32, 28, 32, 28)
+        layout.setSpacing(16)
 
         # Top Bar: Dataset picker, search, and export actions
         top_bar = QHBoxLayout()
         top_bar.setSpacing(10)
 
         ds_lbl = QLabel("Dataset:")
-        ds_lbl.setStyleSheet("font-weight: 700; color: #F8FAFC;")
+        ds_lbl.setStyleSheet("font-weight: 600; color: #EDEDED;")
         top_bar.addWidget(ds_lbl)
 
         self.ds_combo = QComboBox()
@@ -114,7 +114,7 @@ class DatasetView(QWidget):
         top_bar.addSpacing(15)
 
         self.search_input = QLineEdit()
-        self.search_input.setPlaceholderText("🔍 Search records in dataset...")
+        self.search_input.setPlaceholderText("Filter records...")
         self.search_input.setFixedWidth(240)
         self.search_input.textChanged.connect(self.on_search_changed)
         top_bar.addWidget(self.search_input)
@@ -145,27 +145,27 @@ class DatasetView(QWidget):
         crud_bar = QHBoxLayout()
         crud_bar.setSpacing(8)
 
-        self.btn_add_rec = QPushButton("➕ Add Record")
-        self.btn_add_rec.setObjectName("SuccessButton")
+        self.btn_add_rec = QPushButton("Add Record")
+        self.btn_add_rec.setObjectName("NavyButton")
         self.btn_add_rec.setFixedHeight(28)
         self.btn_add_rec.clicked.connect(self.on_add_record_clicked)
         crud_bar.addWidget(self.btn_add_rec)
 
-        self.btn_del_rec = QPushButton("➖ Delete Record")
+        self.btn_del_rec = QPushButton("Delete Record")
         self.btn_del_rec.setFixedHeight(28)
         self.btn_del_rec.clicked.connect(self.on_delete_record_clicked)
         crud_bar.addWidget(self.btn_del_rec)
 
         crud_bar.addSpacing(15)
 
-        self.btn_del_ds = QPushButton("🗑 Delete Dataset")
-        self.btn_del_ds.setStyleSheet("background-color: #3B1B1F; color: #EF4444; border: 1px solid #7F1D1D;")
+        self.btn_del_ds = QPushButton("Delete Dataset")
+        self.btn_del_ds.setObjectName("DangerButton")
         self.btn_del_ds.setFixedHeight(28)
         self.btn_del_ds.clicked.connect(self.on_delete_dataset_clicked)
         crud_bar.addWidget(self.btn_del_ds)
 
-        self.btn_clear_ds = QPushButton("⚠ Clear All Datasets")
-        self.btn_clear_ds.setStyleSheet("background-color: #2D1515; color: #F87171; border: 1px solid #991B1B;")
+        self.btn_clear_ds = QPushButton("Clear All")
+        self.btn_clear_ds.setObjectName("DangerButton")
         self.btn_clear_ds.setFixedHeight(28)
         self.btn_clear_ds.clicked.connect(self.on_clear_all_datasets_clicked)
         crud_bar.addWidget(self.btn_clear_ds)
@@ -269,7 +269,7 @@ class DatasetView(QWidget):
         if project.relationships:
             lines = []
             for r in project.relationships:
-                lines.append(f"• <b>{r.parent_dataset}</b> ➔ 1:N ➔ <b>{r.child_dataset}</b> (FK: <code>{r.foreign_key}</code>)")
+                lines.append(f"• <b>{r.parent_dataset}</b> -> 1:N -> <b>{r.child_dataset}</b> (FK: <code>{r.foreign_key}</code>)")
             self.rel_label.setText("<br>".join(lines))
         else:
             self.rel_label.setText("No 1:N relations detected.")
