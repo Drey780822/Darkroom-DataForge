@@ -1,0 +1,63 @@
+name: "qlfs_codebook"
+display_name: "Stats SA QLFS Codebook & Documentation"
+description: "Profile for South Africa Quarterly Labour Force Survey codebooks and metadata guides"
+document_type: "CODEBOOK_METADATA"
+recommended_extractor: "codebook"
+
+matching_patterns:
+  filename_regex: "(?i)(qlfs|labour_force|codebook|metadata|survey_guide)"
+  keywords:
+    - "Variable Name"
+    - "Variable Label"
+    - "Category Code"
+    - "Value Label"
+    - "Quarterly Labour Force"
+    - "Stats SA"
+
+columns:
+  - name: "variable_name"
+    display_name: "Variable Name"
+    type: "string"
+    required: true
+    pattern: "^[A-Z0-9_]{2,30}$"
+    aliases: ["Variable", "Var Name", "Variable_Name", "Field"]
+  - name: "variable_label"
+    display_name: "Variable Label"
+    type: "string"
+    required: true
+    aliases: ["Variable Label", "Description", "Var Label", "Label"]
+  - name: "value"
+    display_name: "Value / Code"
+    type: "string"
+    required: false
+    aliases: ["Value", "Code", "Category Code", "Category"]
+  - name: "value_label"
+    display_name: "Value Label"
+    type: "string"
+    required: false
+    aliases: ["Value Label", "Category Label", "Meaning", "Response"]
+  - name: "data_type"
+    display_name: "Data Type"
+    type: "string"
+    required: false
+    aliases: ["Type", "Data Type", "Format"]
+  - name: "description"
+    display_name: "Notes / Description"
+    type: "string"
+    required: false
+    aliases: ["Notes", "Description", "Universe", "Filter"]
+
+datasets:
+  - id: "variables"
+    name: "Survey Variables"
+    primary_key: ["variable_name"]
+  - id: "variable_categories"
+    name: "Variable Categories / Codebook"
+    primary_key: ["variable_name", "value"]
+
+relationships:
+  - name: "variable_to_categories"
+    type: "ONE_TO_MANY"
+    parent_dataset: "variables"
+    child_dataset: "variable_categories"
+    foreign_key: "variable_name"

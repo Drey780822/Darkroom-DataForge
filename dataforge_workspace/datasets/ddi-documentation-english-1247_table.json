@@ -1,0 +1,663 @@
+{
+  "metadata": {
+    "id": "ea621c4f-a85c-43a9-9339-1feb1e84a50d",
+    "name": "ddi-documentation-english-1247_table",
+    "display_name": "Ddi-Documentation-English-1247 Table",
+    "description": "Extracted dataset from ddi-documentation-english-1247.pdf",
+    "source_documents": [
+      "ddi-documentation-english-1247.pdf"
+    ],
+    "created_at": "2026-09-21 12:55:58.057424+00:00",
+    "updated_at": "2026-09-21 12:55:58.057432+00:00",
+    "version": 1,
+    "quality": {
+      "overall_score": 98.0,
+      "extraction_score": 95.0,
+      "completeness_score": 96.9,
+      "consistency_score": 100.0,
+      "validation_score": 100.0,
+      "details": {
+        "total_records": 16,
+        "total_columns": 2,
+        "total_cells": 32,
+        "non_null_cells": 31,
+        "empty_cell_ratio": 0.031,
+        "critical_validation_issues": 0,
+        "warning_validation_issues": 0
+      }
+    }
+  },
+  "columns": [
+    {
+      "name": "title",
+      "display_name": "Title",
+      "data_type": "string",
+      "required": false,
+      "nullable": true,
+      "unique": false,
+      "regex_pattern": null,
+      "min_value": null,
+      "max_value": null,
+      "allowed_values": null,
+      "confidence": 0.5,
+      "source_header": "Title",
+      "description": null,
+      "is_primary_key": false,
+      "is_foreign_key": false,
+      "foreign_target": null
+    },
+    {
+      "name": "questionnaire",
+      "display_name": "[Questionnaire]",
+      "data_type": "string",
+      "required": false,
+      "nullable": true,
+      "unique": false,
+      "regex_pattern": null,
+      "min_value": null,
+      "max_value": null,
+      "allowed_values": null,
+      "confidence": 0.5,
+      "source_header": "[Questionnaire]",
+      "description": null,
+      "is_primary_key": false,
+      "is_foreign_key": false,
+      "foreign_target": null
+    }
+  ],
+  "records": [
+    {
+      "id": "445f73f9-efca-4572-83fe-4255c58af5f8",
+      "cells": {
+        "title": {
+          "raw_value": "Author(s)",
+          "normalized_value": "Author(s)",
+          "is_modified": false,
+          "confidence": 0.88,
+          "field_name": "title",
+          "error_message": null
+        },
+        "questionnaire": {
+          "raw_value": "Statistics South Africa",
+          "normalized_value": "Statistics South Africa",
+          "is_modified": false,
+          "confidence": 0.88,
+          "field_name": "questionnaire",
+          "error_message": null
+        }
+      },
+      "provenance": {
+        "source_document": "ddi-documentation-english-1247.pdf",
+        "source_document_id": "437ba94d-0922-47a3-9a8c-fb83dc4fc8b8",
+        "source_page": 150,
+        "source_section": null,
+        "source_table": null,
+        "source_row_idx": 0,
+        "extraction_method": "pdf_tables",
+        "extracted_at": "2026-09-21 12:55:58.049089+00:00",
+        "confidence": 0.88,
+        "status": "NORMALIZED",
+        "reviewer_notes": null,
+        "audit_trail": []
+      },
+      "is_flagged_for_review": false,
+      "review_dismissed": false
+    },
+    {
+      "id": "fcf27ac3-4b05-43d8-94d9-00a4cd92391f",
+      "cells": {
+        "title": {
+          "raw_value": "Country",
+          "normalized_value": "Country",
+          "is_modified": false,
+          "confidence": 0.88,
+          "field_name": "title",
+          "error_message": null
+        },
+        "questionnaire": {
+          "raw_value": "South Africa",
+          "normalized_value": "South Africa",
+          "is_modified": false,
+          "confidence": 0.88,
+          "field_name": "questionnaire",
+          "error_message": null
+        }
+      },
+      "provenance": {
+        "source_document": "ddi-documentation-english-1247.pdf",
+        "source_document_id": "437ba94d-0922-47a3-9a8c-fb83dc4fc8b8",
+        "source_page": 150,
+        "source_section": null,
+        "source_table": null,
+        "source_row_idx": 1,
+        "extraction_method": "pdf_tables",
+        "extracted_at": "2026-09-21 12:55:58.049233+00:00",
+        "confidence": 0.88,
+        "status": "NORMALIZED",
+        "reviewer_notes": null,
+        "audit_trail": []
+      },
+      "is_flagged_for_review": false,
+      "review_dismissed": false
+    },
+    {
+      "id": "1618ca9a-23b4-4dd8-8af3-a8bdac56e480",
+      "cells": {
+        "title": {
+          "raw_value": "Language",
+          "normalized_value": "Language",
+          "is_modified": false,
+          "confidence": 0.88,
+          "field_name": "title",
+          "error_message": null
+        },
+        "questionnaire": {
+          "raw_value": "English",
+          "normalized_value": "English",
+          "is_modified": false,
+          "confidence": 0.88,
+          "field_name": "questionnaire",
+          "error_message": null
+        }
+      },
+      "provenance": {
+        "source_document": "ddi-documentation-english-1247.pdf",
+        "source_document_id": "437ba94d-0922-47a3-9a8c-fb83dc4fc8b8",
+        "source_page": 150,
+        "source_section": null,
+        "source_table": null,
+        "source_row_idx": 2,
+        "extraction_method": "pdf_tables",
+        "extracted_at": "2026-09-21 12:55:58.049408+00:00",
+        "confidence": 0.88,
+        "status": "NORMALIZED",
+        "reviewer_notes": null,
+        "audit_trail": []
+      },
+      "is_flagged_for_review": false,
+      "review_dismissed": false
+    },
+    {
+      "id": "5b71d6d8-cb80-43da-a76c-26bfe1b3bdda",
+      "cells": {
+        "title": {
+          "raw_value": "Filename",
+          "normalized_value": "Filename",
+          "is_modified": false,
+          "confidence": 0.88,
+          "field_name": "title",
+          "error_message": null
+        },
+        "questionnaire": {
+          "raw_value": "q-qlfs-2026-q2.pdf",
+          "normalized_value": "q-qlfs-2026-q2.pdf",
+          "is_modified": false,
+          "confidence": 0.88,
+          "field_name": "questionnaire",
+          "error_message": null
+        }
+      },
+      "provenance": {
+        "source_document": "ddi-documentation-english-1247.pdf",
+        "source_document_id": "437ba94d-0922-47a3-9a8c-fb83dc4fc8b8",
+        "source_page": 150,
+        "source_section": null,
+        "source_table": null,
+        "source_row_idx": 3,
+        "extraction_method": "pdf_tables",
+        "extracted_at": "2026-09-21 12:55:58.049557+00:00",
+        "confidence": 0.88,
+        "status": "NORMALIZED",
+        "reviewer_notes": null,
+        "audit_trail": []
+      },
+      "is_flagged_for_review": false,
+      "review_dismissed": false
+    },
+    {
+      "id": "1224684a-8b50-43c0-970d-2ddd87b40286",
+      "cells": {
+        "title": {
+          "raw_value": "Reports",
+          "normalized_value": "Reports",
+          "is_modified": false,
+          "confidence": 0.88,
+          "field_name": "title",
+          "error_message": null
+        },
+        "questionnaire": {
+          "raw_value": "",
+          "normalized_value": null,
+          "is_modified": false,
+          "confidence": 0.88,
+          "field_name": "questionnaire",
+          "error_message": null
+        }
+      },
+      "provenance": {
+        "source_document": "ddi-documentation-english-1247.pdf",
+        "source_document_id": "437ba94d-0922-47a3-9a8c-fb83dc4fc8b8",
+        "source_page": 150,
+        "source_section": null,
+        "source_table": null,
+        "source_row_idx": 4,
+        "extraction_method": "pdf_tables",
+        "extracted_at": "2026-09-21 12:55:58.049676+00:00",
+        "confidence": 0.88,
+        "status": "NORMALIZED",
+        "reviewer_notes": null,
+        "audit_trail": []
+      },
+      "is_flagged_for_review": false,
+      "review_dismissed": false
+    },
+    {
+      "id": "849bbe81-62ad-4a57-b6f5-e59efca2140e",
+      "cells": {
+        "title": {
+          "raw_value": "QLFS Sta",
+          "normalized_value": "QLFS Sta",
+          "is_modified": false,
+          "confidence": 0.88,
+          "field_name": "title",
+          "error_message": null
+        },
+        "questionnaire": {
+          "raw_value": "tistical Release",
+          "normalized_value": "tistical Release",
+          "is_modified": false,
+          "confidence": 0.88,
+          "field_name": "questionnaire",
+          "error_message": null
+        }
+      },
+      "provenance": {
+        "source_document": "ddi-documentation-english-1247.pdf",
+        "source_document_id": "437ba94d-0922-47a3-9a8c-fb83dc4fc8b8",
+        "source_page": 150,
+        "source_section": null,
+        "source_table": null,
+        "source_row_idx": 5,
+        "extraction_method": "pdf_tables",
+        "extracted_at": "2026-09-21 12:55:58.049813+00:00",
+        "confidence": 0.88,
+        "status": "NORMALIZED",
+        "reviewer_notes": null,
+        "audit_trail": []
+      },
+      "is_flagged_for_review": false,
+      "review_dismissed": false
+    },
+    {
+      "id": "e9658517-89a2-4e01-83e5-8ca575fa4404",
+      "cells": {
+        "title": {
+          "raw_value": "Title",
+          "normalized_value": "Title",
+          "is_modified": false,
+          "confidence": 0.88,
+          "field_name": "title",
+          "error_message": null
+        },
+        "questionnaire": {
+          "raw_value": "QLFS Statistical Release",
+          "normalized_value": "QLFS Statistical Release",
+          "is_modified": false,
+          "confidence": 0.88,
+          "field_name": "questionnaire",
+          "error_message": null
+        }
+      },
+      "provenance": {
+        "source_document": "ddi-documentation-english-1247.pdf",
+        "source_document_id": "437ba94d-0922-47a3-9a8c-fb83dc4fc8b8",
+        "source_page": 150,
+        "source_section": null,
+        "source_table": null,
+        "source_row_idx": 6,
+        "extraction_method": "pdf_tables",
+        "extracted_at": "2026-09-21 12:55:58.049973+00:00",
+        "confidence": 0.88,
+        "status": "NORMALIZED",
+        "reviewer_notes": null,
+        "audit_trail": []
+      },
+      "is_flagged_for_review": false,
+      "review_dismissed": false
+    },
+    {
+      "id": "d2426bea-1373-4003-a84d-d01c2f354d09",
+      "cells": {
+        "title": {
+          "raw_value": "Date",
+          "normalized_value": "Date",
+          "is_modified": false,
+          "confidence": 0.88,
+          "field_name": "title",
+          "error_message": null
+        },
+        "questionnaire": {
+          "raw_value": "2026-08-10T22:00:00.000Z",
+          "normalized_value": "2026-08-10T22:00:00.000Z",
+          "is_modified": false,
+          "confidence": 0.88,
+          "field_name": "questionnaire",
+          "error_message": null
+        }
+      },
+      "provenance": {
+        "source_document": "ddi-documentation-english-1247.pdf",
+        "source_document_id": "437ba94d-0922-47a3-9a8c-fb83dc4fc8b8",
+        "source_page": 150,
+        "source_section": null,
+        "source_table": null,
+        "source_row_idx": 8,
+        "extraction_method": "pdf_tables",
+        "extracted_at": "2026-09-21 12:55:58.050231+00:00",
+        "confidence": 0.88,
+        "status": "NORMALIZED",
+        "reviewer_notes": null,
+        "audit_trail": []
+      },
+      "is_flagged_for_review": false,
+      "review_dismissed": false
+    },
+    {
+      "id": "a2a582b6-647e-4cd2-b4bf-70c6efeab5f5",
+      "cells": {
+        "title": {
+          "raw_value": "Filename",
+          "normalized_value": "Filename",
+          "is_modified": false,
+          "confidence": 0.88,
+          "field_name": "title",
+          "error_message": null
+        },
+        "questionnaire": {
+          "raw_value": "qlfs-2026-q2-statisticalrelease.pdf",
+          "normalized_value": "qlfs-2026-q2-statisticalrelease.pdf",
+          "is_modified": false,
+          "confidence": 0.88,
+          "field_name": "questionnaire",
+          "error_message": null
+        }
+      },
+      "provenance": {
+        "source_document": "ddi-documentation-english-1247.pdf",
+        "source_document_id": "437ba94d-0922-47a3-9a8c-fb83dc4fc8b8",
+        "source_page": 150,
+        "source_section": null,
+        "source_table": null,
+        "source_row_idx": 11,
+        "extraction_method": "pdf_tables",
+        "extracted_at": "2026-09-21 12:55:58.050620+00:00",
+        "confidence": 0.88,
+        "status": "NORMALIZED",
+        "reviewer_notes": null,
+        "audit_trail": []
+      },
+      "is_flagged_for_review": false,
+      "review_dismissed": false
+    },
+    {
+      "id": "049915c2-0ab1-4ba1-bf92-4c426123e2fd",
+      "cells": {
+        "title": {
+          "raw_value": "Other m",
+          "normalized_value": "Other m",
+          "is_modified": false,
+          "confidence": 0.88,
+          "field_name": "title",
+          "error_message": null
+        },
+        "questionnaire": {
+          "raw_value": "aterials",
+          "normalized_value": "aterials",
+          "is_modified": false,
+          "confidence": 0.88,
+          "field_name": "questionnaire",
+          "error_message": null
+        }
+      },
+      "provenance": {
+        "source_document": "ddi-documentation-english-1247.pdf",
+        "source_document_id": "437ba94d-0922-47a3-9a8c-fb83dc4fc8b8",
+        "source_page": 150,
+        "source_section": null,
+        "source_table": null,
+        "source_row_idx": 12,
+        "extraction_method": "pdf_tables",
+        "extracted_at": "2026-09-21 12:55:58.050737+00:00",
+        "confidence": 0.88,
+        "status": "NORMALIZED",
+        "reviewer_notes": null,
+        "audit_trail": []
+      },
+      "is_flagged_for_review": false,
+      "review_dismissed": false
+    },
+    {
+      "id": "90b5fce9-394f-4225-a528-8cb9f730f8bc",
+      "cells": {
+        "title": {
+          "raw_value": "QLFS Me",
+          "normalized_value": "QLFS Me",
+          "is_modified": false,
+          "confidence": 0.88,
+          "field_name": "title",
+          "error_message": null
+        },
+        "questionnaire": {
+          "raw_value": "tadata",
+          "normalized_value": "tadata",
+          "is_modified": false,
+          "confidence": 0.88,
+          "field_name": "questionnaire",
+          "error_message": null
+        }
+      },
+      "provenance": {
+        "source_document": "ddi-documentation-english-1247.pdf",
+        "source_document_id": "437ba94d-0922-47a3-9a8c-fb83dc4fc8b8",
+        "source_page": 150,
+        "source_section": null,
+        "source_table": null,
+        "source_row_idx": 13,
+        "extraction_method": "pdf_tables",
+        "extracted_at": "2026-09-21 12:55:58.050935+00:00",
+        "confidence": 0.88,
+        "status": "NORMALIZED",
+        "reviewer_notes": null,
+        "audit_trail": []
+      },
+      "is_flagged_for_review": false,
+      "review_dismissed": false
+    },
+    {
+      "id": "ddf58c4e-3d5b-43c7-88ef-2d5757f27e4e",
+      "cells": {
+        "title": {
+          "raw_value": "Title",
+          "normalized_value": "Title",
+          "is_modified": false,
+          "confidence": 0.88,
+          "field_name": "title",
+          "error_message": null
+        },
+        "questionnaire": {
+          "raw_value": "QLFS Metadata",
+          "normalized_value": "QLFS Metadata",
+          "is_modified": false,
+          "confidence": 0.88,
+          "field_name": "questionnaire",
+          "error_message": null
+        }
+      },
+      "provenance": {
+        "source_document": "ddi-documentation-english-1247.pdf",
+        "source_document_id": "437ba94d-0922-47a3-9a8c-fb83dc4fc8b8",
+        "source_page": 150,
+        "source_section": null,
+        "source_table": null,
+        "source_row_idx": 14,
+        "extraction_method": "pdf_tables",
+        "extracted_at": "2026-09-21 12:55:58.051099+00:00",
+        "confidence": 0.88,
+        "status": "NORMALIZED",
+        "reviewer_notes": null,
+        "audit_trail": []
+      },
+      "is_flagged_for_review": false,
+      "review_dismissed": false
+    },
+    {
+      "id": "a969151d-5910-430f-bb69-90ed0d1700b5",
+      "cells": {
+        "title": {
+          "raw_value": "Filename",
+          "normalized_value": "Filename",
+          "is_modified": false,
+          "confidence": 0.88,
+          "field_name": "title",
+          "error_message": null
+        },
+        "questionnaire": {
+          "raw_value": "qlfs-2026-q2-metadata.pdf",
+          "normalized_value": "qlfs-2026-q2-metadata.pdf",
+          "is_modified": false,
+          "confidence": 0.88,
+          "field_name": "questionnaire",
+          "error_message": null
+        }
+      },
+      "provenance": {
+        "source_document": "ddi-documentation-english-1247.pdf",
+        "source_document_id": "437ba94d-0922-47a3-9a8c-fb83dc4fc8b8",
+        "source_page": 150,
+        "source_section": null,
+        "source_table": null,
+        "source_row_idx": 18,
+        "extraction_method": "pdf_tables",
+        "extracted_at": "2026-09-21 12:55:58.051973+00:00",
+        "confidence": 0.88,
+        "status": "NORMALIZED",
+        "reviewer_notes": null,
+        "audit_trail": []
+      },
+      "is_flagged_for_review": false,
+      "review_dismissed": false
+    },
+    {
+      "id": "a179d0dc-4235-452c-a1d9-2edb5b97e88a",
+      "cells": {
+        "title": {
+          "raw_value": "Concept",
+          "normalized_value": "Concept",
+          "is_modified": false,
+          "confidence": 0.88,
+          "field_name": "title",
+          "error_message": null
+        },
+        "questionnaire": {
+          "raw_value": "s and Definitions Used in t",
+          "normalized_value": "s and Definitions Used in t",
+          "is_modified": false,
+          "confidence": 0.88,
+          "field_name": "questionnaire",
+          "error_message": null
+        }
+      },
+      "provenance": {
+        "source_document": "ddi-documentation-english-1247.pdf",
+        "source_document_id": "437ba94d-0922-47a3-9a8c-fb83dc4fc8b8",
+        "source_page": 150,
+        "source_section": null,
+        "source_table": null,
+        "source_row_idx": 19,
+        "extraction_method": "pdf_tables",
+        "extracted_at": "2026-09-21 12:55:58.052090+00:00",
+        "confidence": 0.88,
+        "status": "NORMALIZED",
+        "reviewer_notes": null,
+        "audit_trail": []
+      },
+      "is_flagged_for_review": false,
+      "review_dismissed": false
+    },
+    {
+      "id": "d2018a4b-3f21-4489-8c70-1c48e74f2526",
+      "cells": {
+        "title": {
+          "raw_value": "Title",
+          "normalized_value": "Title",
+          "is_modified": false,
+          "confidence": 0.88,
+          "field_name": "title",
+          "error_message": null
+        },
+        "questionnaire": {
+          "raw_value": "Concepts and Definitions Used in t",
+          "normalized_value": "Concepts and Definitions Used in t",
+          "is_modified": false,
+          "confidence": 0.88,
+          "field_name": "questionnaire",
+          "error_message": null
+        }
+      },
+      "provenance": {
+        "source_document": "ddi-documentation-english-1247.pdf",
+        "source_document_id": "437ba94d-0922-47a3-9a8c-fb83dc4fc8b8",
+        "source_page": 150,
+        "source_section": null,
+        "source_table": null,
+        "source_row_idx": 20,
+        "extraction_method": "pdf_tables",
+        "extracted_at": "2026-09-21 12:55:58.052218+00:00",
+        "confidence": 0.88,
+        "status": "NORMALIZED",
+        "reviewer_notes": null,
+        "audit_trail": []
+      },
+      "is_flagged_for_review": false,
+      "review_dismissed": false
+    },
+    {
+      "id": "e6d96ebd-f815-4676-842f-69c9f22e8604",
+      "cells": {
+        "title": {
+          "raw_value": "Filename",
+          "normalized_value": "Filename",
+          "is_modified": false,
+          "confidence": 0.88,
+          "field_name": "title",
+          "error_message": null
+        },
+        "questionnaire": {
+          "raw_value": "qlfs-2026-q2-guide.pdf",
+          "normalized_value": "qlfs-2026-q2-guide.pdf",
+          "is_modified": false,
+          "confidence": 0.88,
+          "field_name": "questionnaire",
+          "error_message": null
+        }
+      },
+      "provenance": {
+        "source_document": "ddi-documentation-english-1247.pdf",
+        "source_document_id": "437ba94d-0922-47a3-9a8c-fb83dc4fc8b8",
+        "source_page": 150,
+        "source_section": null,
+        "source_table": null,
+        "source_row_idx": 24,
+        "extraction_method": "pdf_tables",
+        "extracted_at": "2026-09-21 12:55:58.053253+00:00",
+        "confidence": 0.88,
+        "status": "NORMALIZED",
+        "reviewer_notes": null,
+        "audit_trail": []
+      },
+      "is_flagged_for_review": false,
+      "review_dismissed": false
+    }
+  ],
+  "primary_key": []
+}

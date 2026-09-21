@@ -1,0 +1,18 @@
+name: "generic_table"
+display_name: "Generic Tabular Document"
+description: "Universal table extractor for multi-page tabular reports and lists"
+document_type: "STRUCTURED_TABLE"
+recommended_extractor: "pdf_tables"
+
+matching_patterns:
+  filename_regex: ".*"
+  keywords: []
+
+columns: []
+
+datasets:
+  - id: "primary_table"
+    name: "Extracted Table"
+    primary_key: []
+
+relationships: []

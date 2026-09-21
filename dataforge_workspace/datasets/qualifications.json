@@ -1,0 +1,2445 @@
+{
+  "metadata": {
+    "id": "ce88d52e-f718-4ead-9d50-3beeb72dd3a3",
+    "name": "qualifications",
+    "display_name": "Qualifications",
+    "description": "Normalized entity: qualifications",
+    "source_documents": [
+      "List of Occupational Programmes updated for 2026 for website_1.pdf"
+    ],
+    "created_at": "2026-09-21 12:46:23.342246+00:00",
+    "updated_at": "2026-09-21 12:46:23.342250+00:00",
+    "version": 1,
+    "quality": {
+      "overall_score": 89.0,
+      "extraction_score": 95.0,
+      "completeness_score": 98.9,
+      "consistency_score": 82.3,
+      "validation_score": 80.0,
+      "details": {
+        "total_records": 38,
+        "total_columns": 5,
+        "total_cells": 190,
+        "non_null_cells": 188,
+        "empty_cell_ratio": 0.011,
+        "critical_validation_issues": 0,
+        "warning_validation_issues": 38
+      }
+    }
+  },
+  "columns": [
+    {
+      "name": "saqa_id",
+      "display_name": "saqa_id",
+      "data_type": "string",
+      "required": false,
+      "nullable": true,
+      "unique": false,
+      "regex_pattern": null,
+      "min_value": null,
+      "max_value": null,
+      "allowed_values": null,
+      "confidence": 0.5,
+      "source_header": "saqa_id",
+      "description": null,
+      "is_primary_key": true,
+      "is_foreign_key": false,
+      "foreign_target": null
+    },
+    {
+      "name": "qualification",
+      "display_name": "qualification",
+      "data_type": "string",
+      "required": false,
+      "nullable": true,
+      "unique": false,
+      "regex_pattern": null,
+      "min_value": null,
+      "max_value": null,
+      "allowed_values": null,
+      "confidence": 0.5,
+      "source_header": "qualification",
+      "description": null,
+      "is_primary_key": false,
+      "is_foreign_key": false,
+      "foreign_target": null
+    },
+    {
+      "name": "nqf_level",
+      "display_name": "nqf_level",
+      "data_type": "string",
+      "required": false,
+      "nullable": true,
+      "unique": false,
+      "regex_pattern": null,
+      "min_value": null,
+      "max_value": null,
+      "allowed_values": null,
+      "confidence": 0.5,
+      "source_header": "nqf_level",
+      "description": null,
+      "is_primary_key": false,
+      "is_foreign_key": false,
+      "foreign_target": null
+    },
+    {
+      "name": "framework",
+      "display_name": "framework",
+      "data_type": "string",
+      "required": false,
+      "nullable": true,
+      "unique": false,
+      "regex_pattern": null,
+      "min_value": null,
+      "max_value": null,
+      "allowed_values": null,
+      "confidence": 0.5,
+      "source_header": "framework",
+      "description": null,
+      "is_primary_key": false,
+      "is_foreign_key": false,
+      "foreign_target": null
+    },
+    {
+      "name": "nsfas_eligible",
+      "display_name": "nsfas_eligible",
+      "data_type": "string",
+      "required": false,
+      "nullable": true,
+      "unique": false,
+      "regex_pattern": null,
+      "min_value": null,
+      "max_value": null,
+      "allowed_values": null,
+      "confidence": 0.5,
+      "source_header": "nsfas_eligible",
+      "description": null,
+      "is_primary_key": false,
+      "is_foreign_key": false,
+      "foreign_target": null
+    }
+  ],
+  "records": [
+    {
+      "id": "1d248508-0a77-40b1-8244-bb9da4754b60",
+      "cells": {
+        "saqa_id": {
+          "raw_value": "93627",
+          "normalized_value": "93627",
+          "is_modified": false,
+          "confidence": 0.96,
+          "field_name": "saqa_id",
+          "error_message": null
+        },
+        "qualification": {
+          "raw_value": "Occupational\nCertificate:\nBricklayer",
+          "normalized_value": "Occupational Certificate: Bricklayer",
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "qualification",
+          "error_message": null
+        },
+        "nqf_level": {
+          "raw_value": "OQSF",
+          "normalized_value": "OQSF",
+          "is_modified": false,
+          "confidence": 0.96,
+          "field_name": "nqf_level",
+          "error_message": null
+        },
+        "framework": {
+          "raw_value": "",
+          "normalized_value": null,
+          "is_modified": false,
+          "confidence": 0.96,
+          "field_name": "framework",
+          "error_message": null
+        },
+        "nsfas_eligible": {
+          "raw_value": "NO",
+          "normalized_value": false,
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "nsfas_eligible",
+          "error_message": null
+        }
+      },
+      "provenance": {
+        "source_document": "List of Occupational Programmes updated for 2026 for website_1.pdf",
+        "source_document_id": "b3e52c9d-cb87-44da-9603-48237f418f6d",
+        "source_page": 1,
+        "source_section": null,
+        "source_table": null,
+        "source_row_idx": 0,
+        "extraction_method": "qualifications",
+        "extracted_at": "2026-09-21 12:46:23.280135+00:00",
+        "confidence": 0.96,
+        "status": "NORMALIZED",
+        "reviewer_notes": null,
+        "audit_trail": []
+      },
+      "is_flagged_for_review": true,
+      "review_dismissed": false
+    },
+    {
+      "id": "9c3a2427-f7c3-4607-9d53-5c02abdc2901",
+      "cells": {
+        "saqa_id": {
+          "raw_value": "91761",
+          "normalized_value": "91761",
+          "is_modified": false,
+          "confidence": 0.96,
+          "field_name": "saqa_id",
+          "error_message": null
+        },
+        "qualification": {
+          "raw_value": "Occupational\nCertificate:\nElectrician",
+          "normalized_value": "Occupational Certificate: Electrician",
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "qualification",
+          "error_message": null
+        },
+        "nqf_level": {
+          "raw_value": "OQSF",
+          "normalized_value": "OQSF",
+          "is_modified": false,
+          "confidence": 0.96,
+          "field_name": "nqf_level",
+          "error_message": null
+        },
+        "framework": {
+          "raw_value": "",
+          "normalized_value": null,
+          "is_modified": false,
+          "confidence": 0.96,
+          "field_name": "framework",
+          "error_message": null
+        },
+        "nsfas_eligible": {
+          "raw_value": "NO",
+          "normalized_value": false,
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "nsfas_eligible",
+          "error_message": null
+        }
+      },
+      "provenance": {
+        "source_document": "List of Occupational Programmes updated for 2026 for website_1.pdf",
+        "source_document_id": "b3e52c9d-cb87-44da-9603-48237f418f6d",
+        "source_page": 1,
+        "source_section": null,
+        "source_table": null,
+        "source_row_idx": 1,
+        "extraction_method": "qualifications",
+        "extracted_at": "2026-09-21 12:46:23.281582+00:00",
+        "confidence": 0.96,
+        "status": "NORMALIZED",
+        "reviewer_notes": null,
+        "audit_trail": []
+      },
+      "is_flagged_for_review": true,
+      "review_dismissed": false
+    },
+    {
+      "id": "85bb3e88-10bf-49d8-aca7-6228de371bb1",
+      "cells": {
+        "saqa_id": {
+          "raw_value": "97585",
+          "normalized_value": "97585",
+          "is_modified": false,
+          "confidence": 0.96,
+          "field_name": "saqa_id",
+          "error_message": null
+        },
+        "qualification": {
+          "raw_value": "60420003",
+          "normalized_value": 60420003,
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "qualification",
+          "error_message": null
+        },
+        "nqf_level": {
+          "raw_value": "Occupational\nCertificate:\nMillwright",
+          "normalized_value": "Occupational Certificate: Millwright",
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "nqf_level",
+          "error_message": null
+        },
+        "framework": {
+          "raw_value": "OQSF",
+          "normalized_value": "OQSF",
+          "is_modified": false,
+          "confidence": 0.96,
+          "field_name": "framework",
+          "error_message": null
+        },
+        "nsfas_eligible": {
+          "raw_value": "NO",
+          "normalized_value": false,
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "nsfas_eligible",
+          "error_message": null
+        }
+      },
+      "provenance": {
+        "source_document": "List of Occupational Programmes updated for 2026 for website_1.pdf",
+        "source_document_id": "b3e52c9d-cb87-44da-9603-48237f418f6d",
+        "source_page": 1,
+        "source_section": null,
+        "source_table": null,
+        "source_row_idx": 2,
+        "extraction_method": "qualifications",
+        "extracted_at": "2026-09-21 12:46:23.282184+00:00",
+        "confidence": 0.96,
+        "status": "NORMALIZED",
+        "reviewer_notes": null,
+        "audit_trail": []
+      },
+      "is_flagged_for_review": true,
+      "review_dismissed": false
+    },
+    {
+      "id": "650ccf4c-97f5-44a5-ba89-57dc5a25fb0d",
+      "cells": {
+        "saqa_id": {
+          "raw_value": "93626",
+          "normalized_value": "93626",
+          "is_modified": false,
+          "confidence": 0.96,
+          "field_name": "saqa_id",
+          "error_message": null
+        },
+        "qualification": {
+          "raw_value": "60420004",
+          "normalized_value": 60420004,
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "qualification",
+          "error_message": null
+        },
+        "nqf_level": {
+          "raw_value": "Occupational\nCertificate:\nBoilermaker",
+          "normalized_value": "Occupational Certificate: Boilermaker",
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "nqf_level",
+          "error_message": null
+        },
+        "framework": {
+          "raw_value": "OQSF",
+          "normalized_value": "OQSF",
+          "is_modified": false,
+          "confidence": 0.96,
+          "field_name": "framework",
+          "error_message": null
+        },
+        "nsfas_eligible": {
+          "raw_value": "NO",
+          "normalized_value": false,
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "nsfas_eligible",
+          "error_message": null
+        }
+      },
+      "provenance": {
+        "source_document": "List of Occupational Programmes updated for 2026 for website_1.pdf",
+        "source_document_id": "b3e52c9d-cb87-44da-9603-48237f418f6d",
+        "source_page": 1,
+        "source_section": null,
+        "source_table": null,
+        "source_row_idx": 3,
+        "extraction_method": "qualifications",
+        "extracted_at": "2026-09-21 12:46:23.282909+00:00",
+        "confidence": 0.96,
+        "status": "NORMALIZED",
+        "reviewer_notes": null,
+        "audit_trail": []
+      },
+      "is_flagged_for_review": true,
+      "review_dismissed": false
+    },
+    {
+      "id": "d523cfc5-9254-43fe-9f3f-b7ed303b3118",
+      "cells": {
+        "saqa_id": {
+          "raw_value": "102856",
+          "normalized_value": "102856",
+          "is_modified": false,
+          "confidence": 0.96,
+          "field_name": "saqa_id",
+          "error_message": null
+        },
+        "qualification": {
+          "raw_value": "60420005",
+          "normalized_value": 60420005,
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "qualification",
+          "error_message": null
+        },
+        "nqf_level": {
+          "raw_value": "Occupational\nCertificate: Rigger",
+          "normalized_value": "Occupational Certificate: Rigger",
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "nqf_level",
+          "error_message": null
+        },
+        "framework": {
+          "raw_value": "OQSF",
+          "normalized_value": "OQSF",
+          "is_modified": false,
+          "confidence": 0.96,
+          "field_name": "framework",
+          "error_message": null
+        },
+        "nsfas_eligible": {
+          "raw_value": "NO",
+          "normalized_value": false,
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "nsfas_eligible",
+          "error_message": null
+        }
+      },
+      "provenance": {
+        "source_document": "List of Occupational Programmes updated for 2026 for website_1.pdf",
+        "source_document_id": "b3e52c9d-cb87-44da-9603-48237f418f6d",
+        "source_page": 1,
+        "source_section": null,
+        "source_table": null,
+        "source_row_idx": 4,
+        "extraction_method": "qualifications",
+        "extracted_at": "2026-09-21 12:46:23.283497+00:00",
+        "confidence": 0.96,
+        "status": "NORMALIZED",
+        "reviewer_notes": null,
+        "audit_trail": []
+      },
+      "is_flagged_for_review": true,
+      "review_dismissed": false
+    },
+    {
+      "id": "b9a3bf4a-9bcd-4c54-b5d5-be2ba4185b3a",
+      "cells": {
+        "saqa_id": {
+          "raw_value": "99255",
+          "normalized_value": "99255",
+          "is_modified": false,
+          "confidence": 0.96,
+          "field_name": "saqa_id",
+          "error_message": null
+        },
+        "qualification": {
+          "raw_value": "60420006",
+          "normalized_value": 60420006,
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "qualification",
+          "error_message": null
+        },
+        "nqf_level": {
+          "raw_value": "Occupational\nCertificate: Pipe\nFitter",
+          "normalized_value": "Occupational Certificate: Pipe Fitter",
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "nqf_level",
+          "error_message": null
+        },
+        "framework": {
+          "raw_value": "OQSF",
+          "normalized_value": "OQSF",
+          "is_modified": false,
+          "confidence": 0.96,
+          "field_name": "framework",
+          "error_message": null
+        },
+        "nsfas_eligible": {
+          "raw_value": "NO",
+          "normalized_value": false,
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "nsfas_eligible",
+          "error_message": null
+        }
+      },
+      "provenance": {
+        "source_document": "List of Occupational Programmes updated for 2026 for website_1.pdf",
+        "source_document_id": "b3e52c9d-cb87-44da-9603-48237f418f6d",
+        "source_page": 1,
+        "source_section": null,
+        "source_table": null,
+        "source_row_idx": 5,
+        "extraction_method": "qualifications",
+        "extracted_at": "2026-09-21 12:46:23.283968+00:00",
+        "confidence": 0.96,
+        "status": "NORMALIZED",
+        "reviewer_notes": null,
+        "audit_trail": []
+      },
+      "is_flagged_for_review": true,
+      "review_dismissed": false
+    },
+    {
+      "id": "31ed3bf1-fb7c-41db-b2b5-ad97ae92521b",
+      "cells": {
+        "saqa_id": {
+          "raw_value": "91782",
+          "normalized_value": "91782",
+          "is_modified": false,
+          "confidence": 0.96,
+          "field_name": "saqa_id",
+          "error_message": null
+        },
+        "qualification": {
+          "raw_value": "60420007",
+          "normalized_value": 60420007,
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "qualification",
+          "error_message": null
+        },
+        "nqf_level": {
+          "raw_value": "Occupational\nCertificate: Plumber",
+          "normalized_value": "Occupational Certificate: Plumber",
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "nqf_level",
+          "error_message": null
+        },
+        "framework": {
+          "raw_value": "OQSF",
+          "normalized_value": "OQSF",
+          "is_modified": false,
+          "confidence": 0.96,
+          "field_name": "framework",
+          "error_message": null
+        },
+        "nsfas_eligible": {
+          "raw_value": "NO",
+          "normalized_value": false,
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "nsfas_eligible",
+          "error_message": null
+        }
+      },
+      "provenance": {
+        "source_document": "List of Occupational Programmes updated for 2026 for website_1.pdf",
+        "source_document_id": "b3e52c9d-cb87-44da-9603-48237f418f6d",
+        "source_page": 1,
+        "source_section": null,
+        "source_table": null,
+        "source_row_idx": 6,
+        "extraction_method": "qualifications",
+        "extracted_at": "2026-09-21 12:46:23.284323+00:00",
+        "confidence": 0.96,
+        "status": "NORMALIZED",
+        "reviewer_notes": null,
+        "audit_trail": []
+      },
+      "is_flagged_for_review": true,
+      "review_dismissed": false
+    },
+    {
+      "id": "0067f1d4-7919-49a2-8b71-315899b90763",
+      "cells": {
+        "saqa_id": {
+          "raw_value": "97592",
+          "normalized_value": "97592",
+          "is_modified": false,
+          "confidence": 0.96,
+          "field_name": "saqa_id",
+          "error_message": null
+        },
+        "qualification": {
+          "raw_value": "60420008",
+          "normalized_value": 60420008,
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "qualification",
+          "error_message": null
+        },
+        "nqf_level": {
+          "raw_value": "Occupational\nCertificate: Diesel\nMechanic",
+          "normalized_value": "Occupational Certificate: Diesel Mechanic",
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "nqf_level",
+          "error_message": null
+        },
+        "framework": {
+          "raw_value": "OQSF",
+          "normalized_value": "OQSF",
+          "is_modified": false,
+          "confidence": 0.96,
+          "field_name": "framework",
+          "error_message": null
+        },
+        "nsfas_eligible": {
+          "raw_value": "NO",
+          "normalized_value": false,
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "nsfas_eligible",
+          "error_message": null
+        }
+      },
+      "provenance": {
+        "source_document": "List of Occupational Programmes updated for 2026 for website_1.pdf",
+        "source_document_id": "b3e52c9d-cb87-44da-9603-48237f418f6d",
+        "source_page": 1,
+        "source_section": null,
+        "source_table": null,
+        "source_row_idx": 7,
+        "extraction_method": "qualifications",
+        "extracted_at": "2026-09-21 12:46:23.284892+00:00",
+        "confidence": 0.96,
+        "status": "NORMALIZED",
+        "reviewer_notes": null,
+        "audit_trail": []
+      },
+      "is_flagged_for_review": true,
+      "review_dismissed": false
+    },
+    {
+      "id": "35d43302-2981-4f80-9dbb-d29eb904b75a",
+      "cells": {
+        "saqa_id": {
+          "raw_value": "94100",
+          "normalized_value": "94100",
+          "is_modified": false,
+          "confidence": 0.96,
+          "field_name": "saqa_id",
+          "error_message": null
+        },
+        "qualification": {
+          "raw_value": "60420009",
+          "normalized_value": 60420009,
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "qualification",
+          "error_message": null
+        },
+        "nqf_level": {
+          "raw_value": "Occupational\nCertificate: Welder",
+          "normalized_value": "Occupational Certificate: Welder",
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "nqf_level",
+          "error_message": null
+        },
+        "framework": {
+          "raw_value": "OQSF",
+          "normalized_value": "OQSF",
+          "is_modified": false,
+          "confidence": 0.96,
+          "field_name": "framework",
+          "error_message": null
+        },
+        "nsfas_eligible": {
+          "raw_value": "NO",
+          "normalized_value": false,
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "nsfas_eligible",
+          "error_message": null
+        }
+      },
+      "provenance": {
+        "source_document": "List of Occupational Programmes updated for 2026 for website_1.pdf",
+        "source_document_id": "b3e52c9d-cb87-44da-9603-48237f418f6d",
+        "source_page": 1,
+        "source_section": null,
+        "source_table": null,
+        "source_row_idx": 8,
+        "extraction_method": "qualifications",
+        "extracted_at": "2026-09-21 12:46:23.287974+00:00",
+        "confidence": 0.96,
+        "status": "NORMALIZED",
+        "reviewer_notes": null,
+        "audit_trail": []
+      },
+      "is_flagged_for_review": true,
+      "review_dismissed": false
+    },
+    {
+      "id": "963342cc-8189-4abd-aac2-9909ccefefcb",
+      "cells": {
+        "saqa_id": {
+          "raw_value": "94021",
+          "normalized_value": "94021",
+          "is_modified": false,
+          "confidence": 0.96,
+          "field_name": "saqa_id",
+          "error_message": null
+        },
+        "qualification": {
+          "raw_value": "60420010",
+          "normalized_value": 60420010,
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "qualification",
+          "error_message": null
+        },
+        "nqf_level": {
+          "raw_value": "Occupational\nCertificate:\nMechanical Fitter",
+          "normalized_value": "Occupational Certificate: Mechanical Fitter",
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "nqf_level",
+          "error_message": null
+        },
+        "framework": {
+          "raw_value": "OQSF",
+          "normalized_value": "OQSF",
+          "is_modified": false,
+          "confidence": 0.96,
+          "field_name": "framework",
+          "error_message": null
+        },
+        "nsfas_eligible": {
+          "raw_value": "NO",
+          "normalized_value": false,
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "nsfas_eligible",
+          "error_message": null
+        }
+      },
+      "provenance": {
+        "source_document": "List of Occupational Programmes updated for 2026 for website_1.pdf",
+        "source_document_id": "b3e52c9d-cb87-44da-9603-48237f418f6d",
+        "source_page": 1,
+        "source_section": null,
+        "source_table": null,
+        "source_row_idx": 9,
+        "extraction_method": "qualifications",
+        "extracted_at": "2026-09-21 12:46:23.289058+00:00",
+        "confidence": 0.96,
+        "status": "NORMALIZED",
+        "reviewer_notes": null,
+        "audit_trail": []
+      },
+      "is_flagged_for_review": true,
+      "review_dismissed": false
+    },
+    {
+      "id": "c2df4e5e-1216-40b0-9f25-628fec8e90df",
+      "cells": {
+        "saqa_id": {
+          "raw_value": "97990",
+          "normalized_value": "97990",
+          "is_modified": false,
+          "confidence": 0.96,
+          "field_name": "saqa_id",
+          "error_message": null
+        },
+        "qualification": {
+          "raw_value": "60420011",
+          "normalized_value": 60420011,
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "qualification",
+          "error_message": null
+        },
+        "nqf_level": {
+          "raw_value": "Occupational\nCertificate:\nAutomotive Motor",
+          "normalized_value": "Occupational Certificate: Automotive Motor",
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "nqf_level",
+          "error_message": null
+        },
+        "framework": {
+          "raw_value": "OQSF",
+          "normalized_value": "OQSF",
+          "is_modified": false,
+          "confidence": 0.96,
+          "field_name": "framework",
+          "error_message": null
+        },
+        "nsfas_eligible": {
+          "raw_value": "NO",
+          "normalized_value": false,
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "nsfas_eligible",
+          "error_message": null
+        }
+      },
+      "provenance": {
+        "source_document": "List of Occupational Programmes updated for 2026 for website_1.pdf",
+        "source_document_id": "b3e52c9d-cb87-44da-9603-48237f418f6d",
+        "source_page": 1,
+        "source_section": null,
+        "source_table": null,
+        "source_row_idx": 10,
+        "extraction_method": "qualifications",
+        "extracted_at": "2026-09-21 12:46:23.289954+00:00",
+        "confidence": 0.96,
+        "status": "NORMALIZED",
+        "reviewer_notes": null,
+        "audit_trail": []
+      },
+      "is_flagged_for_review": true,
+      "review_dismissed": false
+    },
+    {
+      "id": "acacb2a0-8163-4fad-bbc8-48e4bed4ac8f",
+      "cells": {
+        "saqa_id": {
+          "raw_value": "96236",
+          "normalized_value": "96236",
+          "is_modified": false,
+          "confidence": 0.96,
+          "field_name": "saqa_id",
+          "error_message": null
+        },
+        "qualification": {
+          "raw_value": "60420012",
+          "normalized_value": 60420012,
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "qualification",
+          "error_message": null
+        },
+        "nqf_level": {
+          "raw_value": "Occupational\nCertificate:\nCarpenter",
+          "normalized_value": "Occupational Certificate: Carpenter",
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "nqf_level",
+          "error_message": null
+        },
+        "framework": {
+          "raw_value": "OQSF",
+          "normalized_value": "OQSF",
+          "is_modified": false,
+          "confidence": 0.96,
+          "field_name": "framework",
+          "error_message": null
+        },
+        "nsfas_eligible": {
+          "raw_value": "NO",
+          "normalized_value": false,
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "nsfas_eligible",
+          "error_message": null
+        }
+      },
+      "provenance": {
+        "source_document": "List of Occupational Programmes updated for 2026 for website_1.pdf",
+        "source_document_id": "b3e52c9d-cb87-44da-9603-48237f418f6d",
+        "source_page": 1,
+        "source_section": null,
+        "source_table": null,
+        "source_row_idx": 11,
+        "extraction_method": "qualifications",
+        "extracted_at": "2026-09-21 12:46:23.290435+00:00",
+        "confidence": 0.96,
+        "status": "NORMALIZED",
+        "reviewer_notes": null,
+        "audit_trail": []
+      },
+      "is_flagged_for_review": true,
+      "review_dismissed": false
+    },
+    {
+      "id": "96d4aca3-0651-434b-a3db-4df1c5e10024",
+      "cells": {
+        "saqa_id": {
+          "raw_value": "94020",
+          "normalized_value": "94020",
+          "is_modified": false,
+          "confidence": 0.96,
+          "field_name": "saqa_id",
+          "error_message": null
+        },
+        "qualification": {
+          "raw_value": "60420013",
+          "normalized_value": 60420013,
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "qualification",
+          "error_message": null
+        },
+        "nqf_level": {
+          "raw_value": "Occupational\nCertificate: Fitter\nand Turner",
+          "normalized_value": "Occupational Certificate: Fitter and Turner",
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "nqf_level",
+          "error_message": null
+        },
+        "framework": {
+          "raw_value": "OQSF",
+          "normalized_value": "OQSF",
+          "is_modified": false,
+          "confidence": 0.96,
+          "field_name": "framework",
+          "error_message": null
+        },
+        "nsfas_eligible": {
+          "raw_value": "NO",
+          "normalized_value": false,
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "nsfas_eligible",
+          "error_message": null
+        }
+      },
+      "provenance": {
+        "source_document": "List of Occupational Programmes updated for 2026 for website_1.pdf",
+        "source_document_id": "b3e52c9d-cb87-44da-9603-48237f418f6d",
+        "source_page": 1,
+        "source_section": null,
+        "source_table": null,
+        "source_row_idx": 12,
+        "extraction_method": "qualifications",
+        "extracted_at": "2026-09-21 12:46:23.291047+00:00",
+        "confidence": 0.96,
+        "status": "NORMALIZED",
+        "reviewer_notes": null,
+        "audit_trail": []
+      },
+      "is_flagged_for_review": true,
+      "review_dismissed": false
+    },
+    {
+      "id": "a45a6125-2a7e-4ad3-9f82-7d5bad77878f",
+      "cells": {
+        "saqa_id": {
+          "raw_value": "102497",
+          "normalized_value": "102497",
+          "is_modified": false,
+          "confidence": 0.96,
+          "field_name": "saqa_id",
+          "error_message": null
+        },
+        "qualification": {
+          "raw_value": "60420014",
+          "normalized_value": 60420014,
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "qualification",
+          "error_message": null
+        },
+        "nqf_level": {
+          "raw_value": "Occupational\nCertificate:\nHairdressing",
+          "normalized_value": "Occupational Certificate: Hairdressing",
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "nqf_level",
+          "error_message": null
+        },
+        "framework": {
+          "raw_value": "OQSF",
+          "normalized_value": "OQSF",
+          "is_modified": false,
+          "confidence": 0.96,
+          "field_name": "framework",
+          "error_message": null
+        },
+        "nsfas_eligible": {
+          "raw_value": "YES",
+          "normalized_value": true,
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "nsfas_eligible",
+          "error_message": null
+        }
+      },
+      "provenance": {
+        "source_document": "List of Occupational Programmes updated for 2026 for website_1.pdf",
+        "source_document_id": "b3e52c9d-cb87-44da-9603-48237f418f6d",
+        "source_page": 1,
+        "source_section": null,
+        "source_table": null,
+        "source_row_idx": 13,
+        "extraction_method": "qualifications",
+        "extracted_at": "2026-09-21 12:46:23.291637+00:00",
+        "confidence": 0.96,
+        "status": "NORMALIZED",
+        "reviewer_notes": null,
+        "audit_trail": []
+      },
+      "is_flagged_for_review": true,
+      "review_dismissed": false
+    },
+    {
+      "id": "30a2069b-dcbe-4697-a560-f58b1bee059b",
+      "cells": {
+        "saqa_id": {
+          "raw_value": "97542",
+          "normalized_value": "97542",
+          "is_modified": false,
+          "confidence": 0.96,
+          "field_name": "saqa_id",
+          "error_message": null
+        },
+        "qualification": {
+          "raw_value": "234201000",
+          "normalized_value": 234201000,
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "qualification",
+          "error_message": null
+        },
+        "nqf_level": {
+          "raw_value": "Occupational\nCertificate: Early\nChildhood",
+          "normalized_value": "Occupational Certificate: Early Childhood",
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "nqf_level",
+          "error_message": null
+        },
+        "framework": {
+          "raw_value": "OQSF",
+          "normalized_value": "OQSF",
+          "is_modified": false,
+          "confidence": 0.96,
+          "field_name": "framework",
+          "error_message": null
+        },
+        "nsfas_eligible": {
+          "raw_value": "YES",
+          "normalized_value": true,
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "nsfas_eligible",
+          "error_message": null
+        }
+      },
+      "provenance": {
+        "source_document": "List of Occupational Programmes updated for 2026 for website_1.pdf",
+        "source_document_id": "b3e52c9d-cb87-44da-9603-48237f418f6d",
+        "source_page": 1,
+        "source_section": null,
+        "source_table": null,
+        "source_row_idx": 14,
+        "extraction_method": "qualifications",
+        "extracted_at": "2026-09-21 12:46:23.297419+00:00",
+        "confidence": 0.96,
+        "status": "NORMALIZED",
+        "reviewer_notes": null,
+        "audit_trail": []
+      },
+      "is_flagged_for_review": true,
+      "review_dismissed": false
+    },
+    {
+      "id": "605e3144-5f7a-4287-86d8-04c7ea5aeb4b",
+      "cells": {
+        "saqa_id": {
+          "raw_value": "101697",
+          "normalized_value": "101697",
+          "is_modified": false,
+          "confidence": 0.96,
+          "field_name": "saqa_id",
+          "error_message": null
+        },
+        "qualification": {
+          "raw_value": "343401100",
+          "normalized_value": 343401100,
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "qualification",
+          "error_message": null
+        },
+        "nqf_level": {
+          "raw_value": "Occupational\nCertificate: Chef",
+          "normalized_value": "Occupational Certificate: Chef",
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "nqf_level",
+          "error_message": null
+        },
+        "framework": {
+          "raw_value": "OQSF",
+          "normalized_value": "OQSF",
+          "is_modified": false,
+          "confidence": 0.96,
+          "field_name": "framework",
+          "error_message": null
+        },
+        "nsfas_eligible": {
+          "raw_value": "YES",
+          "normalized_value": true,
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "nsfas_eligible",
+          "error_message": null
+        }
+      },
+      "provenance": {
+        "source_document": "List of Occupational Programmes updated for 2026 for website_1.pdf",
+        "source_document_id": "b3e52c9d-cb87-44da-9603-48237f418f6d",
+        "source_page": 1,
+        "source_section": null,
+        "source_table": null,
+        "source_row_idx": 15,
+        "extraction_method": "qualifications",
+        "extracted_at": "2026-09-21 12:46:23.298107+00:00",
+        "confidence": 0.96,
+        "status": "NORMALIZED",
+        "reviewer_notes": null,
+        "audit_trail": []
+      },
+      "is_flagged_for_review": true,
+      "review_dismissed": false
+    },
+    {
+      "id": "3a5b0fa8-4632-41b9-95f2-9a236624bfc8",
+      "cells": {
+        "saqa_id": {
+          "raw_value": "101408",
+          "normalized_value": "101408",
+          "is_modified": false,
+          "confidence": 0.96,
+          "field_name": "saqa_id",
+          "error_message": null
+        },
+        "qualification": {
+          "raw_value": "351201001",
+          "normalized_value": 351201001,
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "qualification",
+          "error_message": null
+        },
+        "nqf_level": {
+          "raw_value": "Occupational\nCertificate:\nComputer\nTechnician",
+          "normalized_value": "Occupational Certificate: Computer Technician",
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "nqf_level",
+          "error_message": null
+        },
+        "framework": {
+          "raw_value": "OQSF",
+          "normalized_value": "OQSF",
+          "is_modified": false,
+          "confidence": 0.96,
+          "field_name": "framework",
+          "error_message": null
+        },
+        "nsfas_eligible": {
+          "raw_value": "YES",
+          "normalized_value": true,
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "nsfas_eligible",
+          "error_message": null
+        }
+      },
+      "provenance": {
+        "source_document": "List of Occupational Programmes updated for 2026 for website_1.pdf",
+        "source_document_id": "b3e52c9d-cb87-44da-9603-48237f418f6d",
+        "source_page": 1,
+        "source_section": null,
+        "source_table": null,
+        "source_row_idx": 16,
+        "extraction_method": "qualifications",
+        "extracted_at": "2026-09-21 12:46:23.298985+00:00",
+        "confidence": 0.96,
+        "status": "NORMALIZED",
+        "reviewer_notes": null,
+        "audit_trail": []
+      },
+      "is_flagged_for_review": true,
+      "review_dismissed": false
+    },
+    {
+      "id": "da7f65e8-7163-4958-874d-b28ddf010188",
+      "cells": {
+        "saqa_id": {
+          "raw_value": "99447",
+          "normalized_value": "99447",
+          "is_modified": false,
+          "confidence": 0.96,
+          "field_name": "saqa_id",
+          "error_message": null
+        },
+        "qualification": {
+          "raw_value": "313109000",
+          "normalized_value": 313109000,
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "qualification",
+          "error_message": null
+        },
+        "nqf_level": {
+          "raw_value": "Occupational\nCertificate: Solar",
+          "normalized_value": "Occupational Certificate: Solar",
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "nqf_level",
+          "error_message": null
+        },
+        "framework": {
+          "raw_value": "OQSF",
+          "normalized_value": "OQSF",
+          "is_modified": false,
+          "confidence": 0.96,
+          "field_name": "framework",
+          "error_message": null
+        },
+        "nsfas_eligible": {
+          "raw_value": "YES",
+          "normalized_value": true,
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "nsfas_eligible",
+          "error_message": null
+        }
+      },
+      "provenance": {
+        "source_document": "List of Occupational Programmes updated for 2026 for website_1.pdf",
+        "source_document_id": "b3e52c9d-cb87-44da-9603-48237f418f6d",
+        "source_page": 1,
+        "source_section": null,
+        "source_table": null,
+        "source_row_idx": 17,
+        "extraction_method": "qualifications",
+        "extracted_at": "2026-09-21 12:46:23.299608+00:00",
+        "confidence": 0.96,
+        "status": "NORMALIZED",
+        "reviewer_notes": null,
+        "audit_trail": []
+      },
+      "is_flagged_for_review": true,
+      "review_dismissed": false
+    },
+    {
+      "id": "8ca08661-5ecd-43b1-9a24-582d7a39eeea",
+      "cells": {
+        "saqa_id": {
+          "raw_value": "102296",
+          "normalized_value": "102296",
+          "is_modified": false,
+          "confidence": 0.96,
+          "field_name": "saqa_id",
+          "error_message": null
+        },
+        "qualification": {
+          "raw_value": "512101000",
+          "normalized_value": 512101000,
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "qualification",
+          "error_message": null
+        },
+        "nqf_level": {
+          "raw_value": "Occupational\nCertificate: Cook\nNQF Level 4",
+          "normalized_value": "Occupational Certificate: Cook NQF Level 4",
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "nqf_level",
+          "error_message": null
+        },
+        "framework": {
+          "raw_value": "OQSF",
+          "normalized_value": "OQSF",
+          "is_modified": false,
+          "confidence": 0.96,
+          "field_name": "framework",
+          "error_message": null
+        },
+        "nsfas_eligible": {
+          "raw_value": "YES",
+          "normalized_value": true,
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "nsfas_eligible",
+          "error_message": null
+        }
+      },
+      "provenance": {
+        "source_document": "List of Occupational Programmes updated for 2026 for website_1.pdf",
+        "source_document_id": "b3e52c9d-cb87-44da-9603-48237f418f6d",
+        "source_page": 1,
+        "source_section": null,
+        "source_table": null,
+        "source_row_idx": 18,
+        "extraction_method": "qualifications",
+        "extracted_at": "2026-09-21 12:46:23.300117+00:00",
+        "confidence": 0.96,
+        "status": "NORMALIZED",
+        "reviewer_notes": null,
+        "audit_trail": []
+      },
+      "is_flagged_for_review": true,
+      "review_dismissed": false
+    },
+    {
+      "id": "40f9cd8e-9f7e-4916-837c-0fad168b28ac",
+      "cells": {
+        "saqa_id": {
+          "raw_value": "98959",
+          "normalized_value": "98959",
+          "is_modified": false,
+          "confidence": 0.96,
+          "field_name": "saqa_id",
+          "error_message": null
+        },
+        "qualification": {
+          "raw_value": "331301000",
+          "normalized_value": 331301000,
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "qualification",
+          "error_message": null
+        },
+        "nqf_level": {
+          "raw_value": "Occupational\nCertificate:\nBookkeeper\n(Year 1)\nNQF Level 5",
+          "normalized_value": "Occupational Certificate: Bookkeeper (Year 1) NQF Level 5",
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "nqf_level",
+          "error_message": null
+        },
+        "framework": {
+          "raw_value": "OQSF",
+          "normalized_value": "OQSF",
+          "is_modified": false,
+          "confidence": 0.96,
+          "field_name": "framework",
+          "error_message": null
+        },
+        "nsfas_eligible": {
+          "raw_value": "YES",
+          "normalized_value": true,
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "nsfas_eligible",
+          "error_message": null
+        }
+      },
+      "provenance": {
+        "source_document": "List of Occupational Programmes updated for 2026 for website_1.pdf",
+        "source_document_id": "b3e52c9d-cb87-44da-9603-48237f418f6d",
+        "source_page": 1,
+        "source_section": null,
+        "source_table": null,
+        "source_row_idx": 19,
+        "extraction_method": "qualifications",
+        "extracted_at": "2026-09-21 12:46:23.300649+00:00",
+        "confidence": 0.96,
+        "status": "NORMALIZED",
+        "reviewer_notes": null,
+        "audit_trail": []
+      },
+      "is_flagged_for_review": true,
+      "review_dismissed": false
+    },
+    {
+      "id": "d46eadbd-7073-4f60-a2ad-396baa146a80",
+      "cells": {
+        "saqa_id": {
+          "raw_value": "102161",
+          "normalized_value": "102161",
+          "is_modified": false,
+          "confidence": 0.96,
+          "field_name": "saqa_id",
+          "error_message": null
+        },
+        "qualification": {
+          "raw_value": "334102002",
+          "normalized_value": 334102002,
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "qualification",
+          "error_message": null
+        },
+        "nqf_level": {
+          "raw_value": "Occupational\nCertificate:\nOffice\nAdministrator\nNQF Level 5",
+          "normalized_value": "Occupational Certificate: Office Administrator NQF Level 5",
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "nqf_level",
+          "error_message": null
+        },
+        "framework": {
+          "raw_value": "OQSF",
+          "normalized_value": "OQSF",
+          "is_modified": false,
+          "confidence": 0.96,
+          "field_name": "framework",
+          "error_message": null
+        },
+        "nsfas_eligible": {
+          "raw_value": "YES",
+          "normalized_value": true,
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "nsfas_eligible",
+          "error_message": null
+        }
+      },
+      "provenance": {
+        "source_document": "List of Occupational Programmes updated for 2026 for website_1.pdf",
+        "source_document_id": "b3e52c9d-cb87-44da-9603-48237f418f6d",
+        "source_page": 1,
+        "source_section": null,
+        "source_table": null,
+        "source_row_idx": 20,
+        "extraction_method": "qualifications",
+        "extracted_at": "2026-09-21 12:46:23.301161+00:00",
+        "confidence": 0.96,
+        "status": "NORMALIZED",
+        "reviewer_notes": null,
+        "audit_trail": []
+      },
+      "is_flagged_for_review": true,
+      "review_dismissed": false
+    },
+    {
+      "id": "2b08e9d9-a715-468f-b451-f5ec71d4742a",
+      "cells": {
+        "saqa_id": {
+          "raw_value": "103219",
+          "normalized_value": "103219",
+          "is_modified": false,
+          "confidence": 0.96,
+          "field_name": "saqa_id",
+          "error_message": null
+        },
+        "qualification": {
+          "raw_value": "653201000",
+          "normalized_value": 653201000,
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "qualification",
+          "error_message": null
+        },
+        "nqf_level": {
+          "raw_value": "Occupational\nCertificate:\nAircraft\nMaintenance\nMechanic NQF\nLevel 5",
+          "normalized_value": "Occupational Certificate: Aircraft Maintenance Mechanic NQF Level 5",
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "nqf_level",
+          "error_message": null
+        },
+        "framework": {
+          "raw_value": "OQSF",
+          "normalized_value": "OQSF",
+          "is_modified": false,
+          "confidence": 0.96,
+          "field_name": "framework",
+          "error_message": null
+        },
+        "nsfas_eligible": {
+          "raw_value": "NO",
+          "normalized_value": false,
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "nsfas_eligible",
+          "error_message": null
+        }
+      },
+      "provenance": {
+        "source_document": "List of Occupational Programmes updated for 2026 for website_1.pdf",
+        "source_document_id": "b3e52c9d-cb87-44da-9603-48237f418f6d",
+        "source_page": 1,
+        "source_section": null,
+        "source_table": null,
+        "source_row_idx": 21,
+        "extraction_method": "qualifications",
+        "extracted_at": "2026-09-21 12:46:23.301563+00:00",
+        "confidence": 0.96,
+        "status": "NORMALIZED",
+        "reviewer_notes": null,
+        "audit_trail": []
+      },
+      "is_flagged_for_review": true,
+      "review_dismissed": false
+    },
+    {
+      "id": "adaf4d12-a52b-40d5-ad1a-032a3c552f41",
+      "cells": {
+        "saqa_id": {
+          "raw_value": "102996",
+          "normalized_value": "102996",
+          "is_modified": false,
+          "confidence": 0.96,
+          "field_name": "saqa_id",
+          "error_message": null
+        },
+        "qualification": {
+          "raw_value": "652201100",
+          "normalized_value": 652201100,
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "qualification",
+          "error_message": null
+        },
+        "nqf_level": {
+          "raw_value": "Occupational\nCertificate: CNC\nMilling\nMachinist\n(Toolmaker)\nNQF Level 4",
+          "normalized_value": "Occupational Certificate: CNC Milling Machinist (Toolmaker) NQF Level 4",
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "nqf_level",
+          "error_message": null
+        },
+        "framework": {
+          "raw_value": "OQSF",
+          "normalized_value": "OQSF",
+          "is_modified": false,
+          "confidence": 0.96,
+          "field_name": "framework",
+          "error_message": null
+        },
+        "nsfas_eligible": {
+          "raw_value": "YES",
+          "normalized_value": true,
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "nsfas_eligible",
+          "error_message": null
+        }
+      },
+      "provenance": {
+        "source_document": "List of Occupational Programmes updated for 2026 for website_1.pdf",
+        "source_document_id": "b3e52c9d-cb87-44da-9603-48237f418f6d",
+        "source_page": 1,
+        "source_section": null,
+        "source_table": null,
+        "source_row_idx": 22,
+        "extraction_method": "qualifications",
+        "extracted_at": "2026-09-21 12:46:23.301990+00:00",
+        "confidence": 0.96,
+        "status": "NORMALIZED",
+        "reviewer_notes": null,
+        "audit_trail": []
+      },
+      "is_flagged_for_review": true,
+      "review_dismissed": false
+    },
+    {
+      "id": "119c4796-2aaf-404a-8622-b3998b5ac396",
+      "cells": {
+        "saqa_id": {
+          "raw_value": "103099",
+          "normalized_value": "103099",
+          "is_modified": false,
+          "confidence": 0.96,
+          "field_name": "saqa_id",
+          "error_message": null
+        },
+        "qualification": {
+          "raw_value": "652201100",
+          "normalized_value": 652201100,
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "qualification",
+          "error_message": null
+        },
+        "nqf_level": {
+          "raw_value": "Occupational\nCertificate: CNC\nTurning\nMachinist\n(Toolmaker)\nNQF Level 4",
+          "normalized_value": "Occupational Certificate: CNC Turning Machinist (Toolmaker) NQF Level 4",
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "nqf_level",
+          "error_message": null
+        },
+        "framework": {
+          "raw_value": "OQSF",
+          "normalized_value": "OQSF",
+          "is_modified": false,
+          "confidence": 0.96,
+          "field_name": "framework",
+          "error_message": null
+        },
+        "nsfas_eligible": {
+          "raw_value": "YES",
+          "normalized_value": true,
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "nsfas_eligible",
+          "error_message": null
+        }
+      },
+      "provenance": {
+        "source_document": "List of Occupational Programmes updated for 2026 for website_1.pdf",
+        "source_document_id": "b3e52c9d-cb87-44da-9603-48237f418f6d",
+        "source_page": 1,
+        "source_section": null,
+        "source_table": null,
+        "source_row_idx": 23,
+        "extraction_method": "qualifications",
+        "extracted_at": "2026-09-21 12:46:23.302336+00:00",
+        "confidence": 0.96,
+        "status": "NORMALIZED",
+        "reviewer_notes": null,
+        "audit_trail": []
+      },
+      "is_flagged_for_review": true,
+      "review_dismissed": false
+    },
+    {
+      "id": "0c007519-43d7-4319-8e08-20551a8c7aea",
+      "cells": {
+        "saqa_id": {
+          "raw_value": "94182",
+          "normalized_value": "94182",
+          "is_modified": false,
+          "confidence": 0.96,
+          "field_name": "saqa_id",
+          "error_message": null
+        },
+        "qualification": {
+          "raw_value": "643202001",
+          "normalized_value": 643202001,
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "qualification",
+          "error_message": null
+        },
+        "nqf_level": {
+          "raw_value": "Occupational\nCertificate:",
+          "normalized_value": "Occupational Certificate:",
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "nqf_level",
+          "error_message": null
+        },
+        "framework": {
+          "raw_value": "OQSF",
+          "normalized_value": "OQSF",
+          "is_modified": false,
+          "confidence": 0.96,
+          "field_name": "framework",
+          "error_message": null
+        },
+        "nsfas_eligible": {
+          "raw_value": "NO",
+          "normalized_value": false,
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "nsfas_eligible",
+          "error_message": null
+        }
+      },
+      "provenance": {
+        "source_document": "List of Occupational Programmes updated for 2026 for website_1.pdf",
+        "source_document_id": "b3e52c9d-cb87-44da-9603-48237f418f6d",
+        "source_page": 1,
+        "source_section": null,
+        "source_table": null,
+        "source_row_idx": 24,
+        "extraction_method": "qualifications",
+        "extracted_at": "2026-09-21 12:46:23.302694+00:00",
+        "confidence": 0.96,
+        "status": "NORMALIZED",
+        "reviewer_notes": null,
+        "audit_trail": []
+      },
+      "is_flagged_for_review": true,
+      "review_dismissed": false
+    },
+    {
+      "id": "9d94163e-4ad5-4d4b-8554-c8fd8ad03a0d",
+      "cells": {
+        "saqa_id": {
+          "raw_value": "101876",
+          "normalized_value": "101876",
+          "is_modified": false,
+          "confidence": 0.96,
+          "field_name": "saqa_id",
+          "error_message": null
+        },
+        "qualification": {
+          "raw_value": "334302001",
+          "normalized_value": 334302001,
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "qualification",
+          "error_message": null
+        },
+        "nqf_level": {
+          "raw_value": "Occupational\nCertificate:\nManagement\nAssistant\nNQF Level 5",
+          "normalized_value": "Occupational Certificate: Management Assistant NQF Level 5",
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "nqf_level",
+          "error_message": null
+        },
+        "framework": {
+          "raw_value": "OQSF",
+          "normalized_value": "OQSF",
+          "is_modified": false,
+          "confidence": 0.96,
+          "field_name": "framework",
+          "error_message": null
+        },
+        "nsfas_eligible": {
+          "raw_value": "YES",
+          "normalized_value": true,
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "nsfas_eligible",
+          "error_message": null
+        }
+      },
+      "provenance": {
+        "source_document": "List of Occupational Programmes updated for 2026 for website_1.pdf",
+        "source_document_id": "b3e52c9d-cb87-44da-9603-48237f418f6d",
+        "source_page": 1,
+        "source_section": null,
+        "source_table": null,
+        "source_row_idx": 25,
+        "extraction_method": "qualifications",
+        "extracted_at": "2026-09-21 12:46:23.303443+00:00",
+        "confidence": 0.96,
+        "status": "NORMALIZED",
+        "reviewer_notes": null,
+        "audit_trail": []
+      },
+      "is_flagged_for_review": true,
+      "review_dismissed": false
+    },
+    {
+      "id": "3bab9070-7c05-487f-b8b3-1a99cb543a6a",
+      "cells": {
+        "saqa_id": {
+          "raw_value": "119262",
+          "normalized_value": "119262",
+          "is_modified": false,
+          "confidence": 0.96,
+          "field_name": "saqa_id",
+          "error_message": null
+        },
+        "qualification": {
+          "raw_value": "251201003",
+          "normalized_value": 251201003,
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "qualification",
+          "error_message": null
+        },
+        "nqf_level": {
+          "raw_value": "Occupational\nCertificate:\nInternet of\nThings Developer\nNQF Level 4",
+          "normalized_value": "Occupational Certificate: Internet of Things Developer NQF Level 4",
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "nqf_level",
+          "error_message": null
+        },
+        "framework": {
+          "raw_value": "OQSF",
+          "normalized_value": "OQSF",
+          "is_modified": false,
+          "confidence": 0.96,
+          "field_name": "framework",
+          "error_message": null
+        },
+        "nsfas_eligible": {
+          "raw_value": "YES",
+          "normalized_value": true,
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "nsfas_eligible",
+          "error_message": null
+        }
+      },
+      "provenance": {
+        "source_document": "List of Occupational Programmes updated for 2026 for website_1.pdf",
+        "source_document_id": "b3e52c9d-cb87-44da-9603-48237f418f6d",
+        "source_page": 1,
+        "source_section": null,
+        "source_table": null,
+        "source_row_idx": 26,
+        "extraction_method": "qualifications",
+        "extracted_at": "2026-09-21 12:46:23.304832+00:00",
+        "confidence": 0.96,
+        "status": "NORMALIZED",
+        "reviewer_notes": null,
+        "audit_trail": []
+      },
+      "is_flagged_for_review": true,
+      "review_dismissed": false
+    },
+    {
+      "id": "d0540d7d-5268-4dcd-a7ae-e2da788719d2",
+      "cells": {
+        "saqa_id": {
+          "raw_value": "118792",
+          "normalized_value": "118792",
+          "is_modified": false,
+          "confidence": 0.96,
+          "field_name": "saqa_id",
+          "error_message": null
+        },
+        "qualification": {
+          "raw_value": "251201002",
+          "normalized_value": 251201002,
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "qualification",
+          "error_message": null
+        },
+        "nqf_level": {
+          "raw_value": "Occupational\nCertificate:\nArtificial\nIntelligence\nSoftware\nDeveloper\nNQF Level 5",
+          "normalized_value": "Occupational Certificate: Artificial Intelligence Software Developer NQF Level 5",
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "nqf_level",
+          "error_message": null
+        },
+        "framework": {
+          "raw_value": "OQSF",
+          "normalized_value": "OQSF",
+          "is_modified": false,
+          "confidence": 0.96,
+          "field_name": "framework",
+          "error_message": null
+        },
+        "nsfas_eligible": {
+          "raw_value": "YES",
+          "normalized_value": true,
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "nsfas_eligible",
+          "error_message": null
+        }
+      },
+      "provenance": {
+        "source_document": "List of Occupational Programmes updated for 2026 for website_1.pdf",
+        "source_document_id": "b3e52c9d-cb87-44da-9603-48237f418f6d",
+        "source_page": 1,
+        "source_section": null,
+        "source_table": null,
+        "source_row_idx": 27,
+        "extraction_method": "qualifications",
+        "extracted_at": "2026-09-21 12:46:23.305284+00:00",
+        "confidence": 0.96,
+        "status": "NORMALIZED",
+        "reviewer_notes": null,
+        "audit_trail": []
+      },
+      "is_flagged_for_review": true,
+      "review_dismissed": false
+    },
+    {
+      "id": "011c6781-943b-455d-9873-1a210e8f7c08",
+      "cells": {
+        "saqa_id": {
+          "raw_value": "118699",
+          "normalized_value": "118699",
+          "is_modified": false,
+          "confidence": 0.96,
+          "field_name": "saqa_id",
+          "error_message": null
+        },
+        "qualification": {
+          "raw_value": "252301001",
+          "normalized_value": 252301001,
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "qualification",
+          "error_message": null
+        },
+        "nqf_level": {
+          "raw_value": "Occupational\nCertificate:\nCloud\nAdministration\nNQF Level 4",
+          "normalized_value": "Occupational Certificate: Cloud Administration NQF Level 4",
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "nqf_level",
+          "error_message": null
+        },
+        "framework": {
+          "raw_value": "OQSF",
+          "normalized_value": "OQSF",
+          "is_modified": false,
+          "confidence": 0.96,
+          "field_name": "framework",
+          "error_message": null
+        },
+        "nsfas_eligible": {
+          "raw_value": "YES",
+          "normalized_value": true,
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "nsfas_eligible",
+          "error_message": null
+        }
+      },
+      "provenance": {
+        "source_document": "List of Occupational Programmes updated for 2026 for website_1.pdf",
+        "source_document_id": "b3e52c9d-cb87-44da-9603-48237f418f6d",
+        "source_page": 1,
+        "source_section": null,
+        "source_table": null,
+        "source_row_idx": 28,
+        "extraction_method": "qualifications",
+        "extracted_at": "2026-09-21 12:46:23.306158+00:00",
+        "confidence": 0.96,
+        "status": "NORMALIZED",
+        "reviewer_notes": null,
+        "audit_trail": []
+      },
+      "is_flagged_for_review": true,
+      "review_dismissed": false
+    },
+    {
+      "id": "019b44f7-be45-4170-a018-8fb40be7b413",
+      "cells": {
+        "saqa_id": {
+          "raw_value": "118986",
+          "normalized_value": "118986",
+          "is_modified": false,
+          "confidence": 0.96,
+          "field_name": "saqa_id",
+          "error_message": null
+        },
+        "qualification": {
+          "raw_value": "252901001",
+          "normalized_value": 252901001,
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "qualification",
+          "error_message": null
+        },
+        "nqf_level": {
+          "raw_value": "Occupational\nCertificate:\nCybersecurity\nAnalyst\nNQF Level 5",
+          "normalized_value": "Occupational Certificate: Cybersecurity Analyst NQF Level 5",
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "nqf_level",
+          "error_message": null
+        },
+        "framework": {
+          "raw_value": "OQSF",
+          "normalized_value": "OQSF",
+          "is_modified": false,
+          "confidence": 0.96,
+          "field_name": "framework",
+          "error_message": null
+        },
+        "nsfas_eligible": {
+          "raw_value": "YES",
+          "normalized_value": true,
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "nsfas_eligible",
+          "error_message": null
+        }
+      },
+      "provenance": {
+        "source_document": "List of Occupational Programmes updated for 2026 for website_1.pdf",
+        "source_document_id": "b3e52c9d-cb87-44da-9603-48237f418f6d",
+        "source_page": 1,
+        "source_section": null,
+        "source_table": null,
+        "source_row_idx": 29,
+        "extraction_method": "qualifications",
+        "extracted_at": "2026-09-21 12:46:23.306791+00:00",
+        "confidence": 0.96,
+        "status": "NORMALIZED",
+        "reviewer_notes": null,
+        "audit_trail": []
+      },
+      "is_flagged_for_review": true,
+      "review_dismissed": false
+    },
+    {
+      "id": "5c79887e-0557-4c6f-8e15-e90b6ff1b278",
+      "cells": {
+        "saqa_id": {
+          "raw_value": "118706",
+          "normalized_value": "118706",
+          "is_modified": false,
+          "confidence": 0.96,
+          "field_name": "saqa_id",
+          "error_message": null
+        },
+        "qualification": {
+          "raw_value": "333908001",
+          "normalized_value": 333908001,
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "qualification",
+          "error_message": null
+        },
+        "nqf_level": {
+          "raw_value": "Occupational\nCertificate:\nMarketing\nCoordinator\nNQF Level 5",
+          "normalized_value": "Occupational Certificate: Marketing Coordinator NQF Level 5",
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "nqf_level",
+          "error_message": null
+        },
+        "framework": {
+          "raw_value": "OQSF",
+          "normalized_value": "OQSF",
+          "is_modified": false,
+          "confidence": 0.96,
+          "field_name": "framework",
+          "error_message": null
+        },
+        "nsfas_eligible": {
+          "raw_value": "YES",
+          "normalized_value": true,
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "nsfas_eligible",
+          "error_message": null
+        }
+      },
+      "provenance": {
+        "source_document": "List of Occupational Programmes updated for 2026 for website_1.pdf",
+        "source_document_id": "b3e52c9d-cb87-44da-9603-48237f418f6d",
+        "source_page": 1,
+        "source_section": null,
+        "source_table": null,
+        "source_row_idx": 30,
+        "extraction_method": "qualifications",
+        "extracted_at": "2026-09-21 12:46:23.307251+00:00",
+        "confidence": 0.96,
+        "status": "NORMALIZED",
+        "reviewer_notes": null,
+        "audit_trail": []
+      },
+      "is_flagged_for_review": true,
+      "review_dismissed": false
+    },
+    {
+      "id": "ba58f025-66e5-4b44-b8ca-957995fae1c8",
+      "cells": {
+        "saqa_id": {
+          "raw_value": "118689",
+          "normalized_value": "118689",
+          "is_modified": false,
+          "confidence": 0.96,
+          "field_name": "saqa_id",
+          "error_message": null
+        },
+        "qualification": {
+          "raw_value": "342301000",
+          "normalized_value": 342301000,
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "qualification",
+          "error_message": null
+        },
+        "nqf_level": {
+          "raw_value": "National\nOccupational\nCertificate:\nFitness\nInstructor\nNQF Level 4",
+          "normalized_value": "National Occupational Certificate: Fitness Instructor NQF Level 4",
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "nqf_level",
+          "error_message": null
+        },
+        "framework": {
+          "raw_value": "OQSF",
+          "normalized_value": "OQSF",
+          "is_modified": false,
+          "confidence": 0.96,
+          "field_name": "framework",
+          "error_message": null
+        },
+        "nsfas_eligible": {
+          "raw_value": "YES",
+          "normalized_value": true,
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "nsfas_eligible",
+          "error_message": null
+        }
+      },
+      "provenance": {
+        "source_document": "List of Occupational Programmes updated for 2026 for website_1.pdf",
+        "source_document_id": "b3e52c9d-cb87-44da-9603-48237f418f6d",
+        "source_page": 1,
+        "source_section": null,
+        "source_table": null,
+        "source_row_idx": 31,
+        "extraction_method": "qualifications",
+        "extracted_at": "2026-09-21 12:46:23.307728+00:00",
+        "confidence": 0.96,
+        "status": "NORMALIZED",
+        "reviewer_notes": null,
+        "audit_trail": []
+      },
+      "is_flagged_for_review": true,
+      "review_dismissed": false
+    },
+    {
+      "id": "1650e327-8466-4767-9373-4b20fc9d6bd1",
+      "cells": {
+        "saqa_id": {
+          "raw_value": "96368",
+          "normalized_value": "96368",
+          "is_modified": false,
+          "confidence": 0.96,
+          "field_name": "saqa_id",
+          "error_message": null
+        },
+        "qualification": {
+          "raw_value": "333101000",
+          "normalized_value": 333101000,
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "qualification",
+          "error_message": null
+        },
+        "nqf_level": {
+          "raw_value": "Occupational\nCertificate:\nClearing and\nForwarding\nAgent\nNQF Level 5",
+          "normalized_value": "Occupational Certificate: Clearing and Forwarding Agent NQF Level 5",
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "nqf_level",
+          "error_message": null
+        },
+        "framework": {
+          "raw_value": "OQSF",
+          "normalized_value": "OQSF",
+          "is_modified": false,
+          "confidence": 0.96,
+          "field_name": "framework",
+          "error_message": null
+        },
+        "nsfas_eligible": {
+          "raw_value": "YES",
+          "normalized_value": true,
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "nsfas_eligible",
+          "error_message": null
+        }
+      },
+      "provenance": {
+        "source_document": "List of Occupational Programmes updated for 2026 for website_1.pdf",
+        "source_document_id": "b3e52c9d-cb87-44da-9603-48237f418f6d",
+        "source_page": 1,
+        "source_section": null,
+        "source_table": null,
+        "source_row_idx": 32,
+        "extraction_method": "qualifications",
+        "extracted_at": "2026-09-21 12:46:23.308176+00:00",
+        "confidence": 0.96,
+        "status": "NORMALIZED",
+        "reviewer_notes": null,
+        "audit_trail": []
+      },
+      "is_flagged_for_review": true,
+      "review_dismissed": false
+    },
+    {
+      "id": "aeeabda3-b9e7-45f8-b1dd-4b66c8c8a1de",
+      "cells": {
+        "saqa_id": {
+          "raw_value": "94025",
+          "normalized_value": "94025",
+          "is_modified": false,
+          "confidence": 0.96,
+          "field_name": "saqa_id",
+          "error_message": null
+        },
+        "qualification": {
+          "raw_value": "432301000",
+          "normalized_value": 432301000,
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "qualification",
+          "error_message": null
+        },
+        "nqf_level": {
+          "raw_value": "Occupational\nCertificate:\nTransport Clerk\nNQF Level 4",
+          "normalized_value": "Occupational Certificate: Transport Clerk NQF Level 4",
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "nqf_level",
+          "error_message": null
+        },
+        "framework": {
+          "raw_value": "OQSF",
+          "normalized_value": "OQSF",
+          "is_modified": false,
+          "confidence": 0.96,
+          "field_name": "framework",
+          "error_message": null
+        },
+        "nsfas_eligible": {
+          "raw_value": "YES",
+          "normalized_value": true,
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "nsfas_eligible",
+          "error_message": null
+        }
+      },
+      "provenance": {
+        "source_document": "List of Occupational Programmes updated for 2026 for website_1.pdf",
+        "source_document_id": "b3e52c9d-cb87-44da-9603-48237f418f6d",
+        "source_page": 1,
+        "source_section": null,
+        "source_table": null,
+        "source_row_idx": 33,
+        "extraction_method": "qualifications",
+        "extracted_at": "2026-09-21 12:46:23.308664+00:00",
+        "confidence": 0.96,
+        "status": "NORMALIZED",
+        "reviewer_notes": null,
+        "audit_trail": []
+      },
+      "is_flagged_for_review": true,
+      "review_dismissed": false
+    },
+    {
+      "id": "558d0c4c-6b91-4911-8d43-3854252913f4",
+      "cells": {
+        "saqa_id": {
+          "raw_value": "101865",
+          "normalized_value": "101865",
+          "is_modified": false,
+          "confidence": 0.96,
+          "field_name": "saqa_id",
+          "error_message": null
+        },
+        "qualification": {
+          "raw_value": "422101000",
+          "normalized_value": 422101000,
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "qualification",
+          "error_message": null
+        },
+        "nqf_level": {
+          "raw_value": "Occupational\nCertificate:\nTourism\nInformation\nOfficer NQF\nLevel 5",
+          "normalized_value": "Occupational Certificate: Tourism Information Officer NQF Level 5",
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "nqf_level",
+          "error_message": null
+        },
+        "framework": {
+          "raw_value": "OQSF",
+          "normalized_value": "OQSF",
+          "is_modified": false,
+          "confidence": 0.96,
+          "field_name": "framework",
+          "error_message": null
+        },
+        "nsfas_eligible": {
+          "raw_value": "YES",
+          "normalized_value": true,
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "nsfas_eligible",
+          "error_message": null
+        }
+      },
+      "provenance": {
+        "source_document": "List of Occupational Programmes updated for 2026 for website_1.pdf",
+        "source_document_id": "b3e52c9d-cb87-44da-9603-48237f418f6d",
+        "source_page": 1,
+        "source_section": null,
+        "source_table": null,
+        "source_row_idx": 34,
+        "extraction_method": "qualifications",
+        "extracted_at": "2026-09-21 12:46:23.309143+00:00",
+        "confidence": 0.96,
+        "status": "NORMALIZED",
+        "reviewer_notes": null,
+        "audit_trail": []
+      },
+      "is_flagged_for_review": true,
+      "review_dismissed": false
+    },
+    {
+      "id": "7917820d-109d-487e-afe4-2775f3c8ea0c",
+      "cells": {
+        "saqa_id": {
+          "raw_value": "110942",
+          "normalized_value": "110942",
+          "is_modified": false,
+          "confidence": 0.96,
+          "field_name": "saqa_id",
+          "error_message": null
+        },
+        "qualification": {
+          "raw_value": "333905000",
+          "normalized_value": 333905000,
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "qualification",
+          "error_message": null
+        },
+        "nqf_level": {
+          "raw_value": "Occupational\nCertificate:\nSupply Chain\nPractitioner NQF\nLevel 5",
+          "normalized_value": "Occupational Certificate: Supply Chain Practitioner NQF Level 5",
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "nqf_level",
+          "error_message": null
+        },
+        "framework": {
+          "raw_value": "OQSF",
+          "normalized_value": "OQSF",
+          "is_modified": false,
+          "confidence": 0.96,
+          "field_name": "framework",
+          "error_message": null
+        },
+        "nsfas_eligible": {
+          "raw_value": "YES",
+          "normalized_value": true,
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "nsfas_eligible",
+          "error_message": null
+        }
+      },
+      "provenance": {
+        "source_document": "List of Occupational Programmes updated for 2026 for website_1.pdf",
+        "source_document_id": "b3e52c9d-cb87-44da-9603-48237f418f6d",
+        "source_page": 1,
+        "source_section": null,
+        "source_table": null,
+        "source_row_idx": 35,
+        "extraction_method": "qualifications",
+        "extracted_at": "2026-09-21 12:46:23.309689+00:00",
+        "confidence": 0.96,
+        "status": "NORMALIZED",
+        "reviewer_notes": null,
+        "audit_trail": []
+      },
+      "is_flagged_for_review": true,
+      "review_dismissed": false
+    },
+    {
+      "id": "f48ca225-dfe1-4af9-8e97-1a74e4373843",
+      "cells": {
+        "saqa_id": {
+          "raw_value": "102944",
+          "normalized_value": "102944",
+          "is_modified": false,
+          "confidence": 0.96,
+          "field_name": "saqa_id",
+          "error_message": null
+        },
+        "qualification": {
+          "raw_value": "333201000",
+          "normalized_value": 333201000,
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "qualification",
+          "error_message": null
+        },
+        "nqf_level": {
+          "raw_value": "Occupational\nCertificate:\nConference and\nEvents Organiser",
+          "normalized_value": "Occupational Certificate: Conference and Events Organiser",
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "nqf_level",
+          "error_message": null
+        },
+        "framework": {
+          "raw_value": "OQSF",
+          "normalized_value": "OQSF",
+          "is_modified": false,
+          "confidence": 0.96,
+          "field_name": "framework",
+          "error_message": null
+        },
+        "nsfas_eligible": {
+          "raw_value": "YES",
+          "normalized_value": true,
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "nsfas_eligible",
+          "error_message": null
+        }
+      },
+      "provenance": {
+        "source_document": "List of Occupational Programmes updated for 2026 for website_1.pdf",
+        "source_document_id": "b3e52c9d-cb87-44da-9603-48237f418f6d",
+        "source_page": 1,
+        "source_section": null,
+        "source_table": null,
+        "source_row_idx": 36,
+        "extraction_method": "qualifications",
+        "extracted_at": "2026-09-21 12:46:23.310312+00:00",
+        "confidence": 0.96,
+        "status": "NORMALIZED",
+        "reviewer_notes": null,
+        "audit_trail": []
+      },
+      "is_flagged_for_review": true,
+      "review_dismissed": false
+    },
+    {
+      "id": "b507139f-d6ab-4c78-b012-06755a88f459",
+      "cells": {
+        "saqa_id": {
+          "raw_value": "103145",
+          "normalized_value": "103145",
+          "is_modified": false,
+          "confidence": 0.96,
+          "field_name": "saqa_id",
+          "error_message": null
+        },
+        "qualification": {
+          "raw_value": "332301000",
+          "normalized_value": 332301000,
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "qualification",
+          "error_message": null
+        },
+        "nqf_level": {
+          "raw_value": "Occupational\nCertificate:\nRetail Buyer\nNQF Level 5",
+          "normalized_value": "Occupational Certificate: Retail Buyer NQF Level 5",
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "nqf_level",
+          "error_message": null
+        },
+        "framework": {
+          "raw_value": "OQSF",
+          "normalized_value": "OQSF",
+          "is_modified": false,
+          "confidence": 0.96,
+          "field_name": "framework",
+          "error_message": null
+        },
+        "nsfas_eligible": {
+          "raw_value": "YES",
+          "normalized_value": true,
+          "is_modified": true,
+          "confidence": 0.96,
+          "field_name": "nsfas_eligible",
+          "error_message": null
+        }
+      },
+      "provenance": {
+        "source_document": "List of Occupational Programmes updated for 2026 for website_1.pdf",
+        "source_document_id": "b3e52c9d-cb87-44da-9603-48237f418f6d",
+        "source_page": 1,
+        "source_section": null,
+        "source_table": null,
+        "source_row_idx": 37,
+        "extraction_method": "qualifications",
+        "extracted_at": "2026-09-21 12:46:23.310720+00:00",
+        "confidence": 0.96,
+        "status": "NORMALIZED",
+        "reviewer_notes": null,
+        "audit_trail": []
+      },
+      "is_flagged_for_review": true,
+      "review_dismissed": false
+    }
+  ],
+  "primary_key": [
+    "saqa_id"
+  ]
+}

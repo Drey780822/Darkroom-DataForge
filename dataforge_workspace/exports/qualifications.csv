@@ -1,0 +1,39 @@
+saqa_id,qualification,nqf_level,framework,nsfas_eligible
+93627,Occupational Certificate: Bricklayer,OQSF,,False
+91761,Occupational Certificate: Electrician,OQSF,,False
+97585,60420003,Occupational Certificate: Millwright,OQSF,False
+93626,60420004,Occupational Certificate: Boilermaker,OQSF,False
+102856,60420005,Occupational Certificate: Rigger,OQSF,False
+99255,60420006,Occupational Certificate: Pipe Fitter,OQSF,False
+91782,60420007,Occupational Certificate: Plumber,OQSF,False
+97592,60420008,Occupational Certificate: Diesel Mechanic,OQSF,False
+94100,60420009,Occupational Certificate: Welder,OQSF,False
+94021,60420010,Occupational Certificate: Mechanical Fitter,OQSF,False
+97990,60420011,Occupational Certificate: Automotive Motor,OQSF,False
+96236,60420012,Occupational Certificate: Carpenter,OQSF,False
+94020,60420013,Occupational Certificate: Fitter and Turner,OQSF,False
+102497,60420014,Occupational Certificate: Hairdressing,OQSF,True
+97542,234201000,Occupational Certificate: Early Childhood,OQSF,True
+101697,343401100,Occupational Certificate: Chef,OQSF,True
+101408,351201001,Occupational Certificate: Computer Technician,OQSF,True
+99447,313109000,Occupational Certificate: Solar,OQSF,True
+102296,512101000,Occupational Certificate: Cook NQF Level 4,OQSF,True
+98959,331301000,Occupational Certificate: Bookkeeper (Year 1) NQF Level 5,OQSF,True
+102161,334102002,Occupational Certificate: Office Administrator NQF Level 5,OQSF,True
+103219,653201000,Occupational Certificate: Aircraft Maintenance Mechanic NQF Level 5,OQSF,False
+102996,652201100,Occupational Certificate: CNC Milling Machinist (Toolmaker) NQF Level 4,OQSF,True
+103099,652201100,Occupational Certificate: CNC Turning Machinist (Toolmaker) NQF Level 4,OQSF,True
+94182,643202001,Occupational Certificate:,OQSF,False
+101876,334302001,Occupational Certificate: Management Assistant NQF Level 5,OQSF,True
+119262,251201003,Occupational Certificate: Internet of Things Developer NQF Level 4,OQSF,True
+118792,251201002,Occupational Certificate: Artificial Intelligence Software Developer NQF Level 5,OQSF,True
+118699,252301001,Occupational Certificate: Cloud Administration NQF Level 4,OQSF,True
+118986,252901001,Occupational Certificate: Cybersecurity Analyst NQF Level 5,OQSF,True
+118706,333908001,Occupational Certificate: Marketing Coordinator NQF Level 5,OQSF,True
+118689,342301000,National Occupational Certificate: Fitness Instructor NQF Level 4,OQSF,True
+96368,333101000,Occupational Certificate: Clearing and Forwarding Agent NQF Level 5,OQSF,True
+94025,432301000,Occupational Certificate: Transport Clerk NQF Level 4,OQSF,True
+101865,422101000,Occupational Certificate: Tourism Information Officer NQF Level 5,OQSF,True
+110942,333905000,Occupational Certificate: Supply Chain Practitioner NQF Level 5,OQSF,True
+102944,333201000,Occupational Certificate: Conference and Events Organiser,OQSF,True
+103145,332301000,Occupational Certificate: Retail Buyer NQF Level 5,OQSF,True

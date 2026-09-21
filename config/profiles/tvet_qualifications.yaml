@@ -1,0 +1,66 @@
+name: "tvet_qualifications"
+display_name: "TVET Occupational Qualifications"
+description: "Profile for DHET / QCTO Public TVET College Occupational Qualifications and Offerings"
+document_type: "REPEATED_TABULAR"
+recommended_extractor: "qualifications"
+
+matching_patterns:
+  filename_regex: "(?i)(tvet|occupational_qualifications|saqa|qualifications_list|college_offering)"
+  keywords:
+    - "SAQA ID"
+    - "Qualification Title"
+    - "NQF Level"
+    - "Participating Colleges"
+    - "Occupational Certificate"
+    - "TVET College"
+
+columns:
+  - name: "saqa_id"
+    display_name: "SAQA ID"
+    type: "string"
+    required: true
+    pattern: "^[0-9]{5,7}$"
+    aliases: ["SAQA ID", "SAQA", "Qual ID", "ID"]
+  - name: "qualification"
+    display_name: "Qualification Title"
+    type: "string"
+    required: true
+    aliases: ["Qualification Title", "Qualification", "Title", "Programme Name"]
+  - name: "nqf_level"
+    display_name: "NQF Level"
+    type: "integer"
+    required: true
+    min_value: 1
+    max_value: 10
+    aliases: ["NQF Level", "NQF", "Level"]
+  - name: "framework"
+    display_name: "Framework"
+    type: "string"
+    required: false
+    aliases: ["Framework", "Sub-Framework", "OQSF", "HEQSF"]
+  - name: "nsfas_eligible"
+    display_name: "NSFAS Funded"
+    type: "boolean"
+    required: false
+    aliases: ["NSFAS", "NSFAS Eligible", "Funded"]
+  - name: "participating_colleges"
+    display_name: "Participating Colleges"
+    type: "list"
+    required: false
+    split_delimiter: ";"
+    aliases: ["Participating Colleges", "TVET Colleges", "Colleges", "Institutions"]
+
+datasets:
+  - id: "qualifications"
+    name: "Occupational Qualifications"
+    primary_key: ["saqa_id"]
+  - id: "qualification_colleges"
+    name: "Qualification Offerings by TVET College"
+    primary_key: ["saqa_id", "college_name"]
+
+relationships:
+  - name: "qualification_to_colleges"
+    type: "ONE_TO_MANY"
+    parent_dataset: "qualifications"
+    child_dataset: "qualification_colleges"
+    foreign_key: "saqa_id"

@@ -1,0 +1,63 @@
+name: "occupations_high_demand"
+display_name: "Occupations in High Demand (OIHD)"
+description: "Profile for DHET National and Provincial Occupations in High Demand Reports and Annexures"
+document_type: "SEMI_STRUCTURED_REPORT"
+recommended_extractor: "occupations"
+
+matching_patterns:
+  filename_regex: "(?i)(oihd|high_demand|occupations_demand|ofo|labour_market)"
+  keywords:
+    - "OFO Code"
+    - "Occupation Title"
+    - "Demand Ranking"
+    - "Province"
+    - "Major Group"
+    - "High Demand"
+
+columns:
+  - name: "ofo_code"
+    display_name: "OFO Code"
+    type: "string"
+    required: true
+    pattern: "^[0-9]{4,6}$"
+    aliases: ["OFO Code", "OFO", "Code", "Occupation Code"]
+  - name: "occupation_title"
+    display_name: "Occupation Title"
+    type: "string"
+    required: true
+    aliases: ["Occupation Title", "Occupation", "Title", "Designation"]
+  - name: "demand_rank"
+    display_name: "Demand Ranking"
+    type: "integer"
+    required: false
+    aliases: ["Demand Ranking", "Rank", "Priority", "Demand Level"]
+  - name: "major_group"
+    display_name: "Major Group"
+    type: "string"
+    required: false
+    aliases: ["Major Group", "Category", "Occupational Group"]
+  - name: "province"
+    display_name: "Province"
+    type: "string"
+    required: false
+    aliases: ["Province", "Region", "Geo", "Provincial"]
+  - name: "educational_qualification_req"
+    display_name: "Entry Qualification"
+    type: "string"
+    required: false
+    aliases: ["Entry Qualification", "Qualification Required", "Min Education"]
+
+datasets:
+  - id: "occupations_high_demand"
+    name: "National & Provincial Occupations in High Demand"
+    primary_key: ["ofo_code", "province"]
+  - id: "occupation_metadata"
+    name: "OIHD Annexure Metadata"
+    primary_key: ["ofo_code"]
+
+relationships:
+  - name: "occupation_to_regional_demand"
+    type: "ONE_TO_MANY"
+    parent_dataset: "occupation_metadata"
+    child_dataset: "occupations_high_demand"
+    foreign_key: "ofo_code"

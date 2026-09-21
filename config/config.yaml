@@ -1,0 +1,61 @@
+# Darkroom DataForge - Global Configuration
+
+app:
+  name: "Darkroom DataForge"
+  version: "1.0.0"
+  organization: "Wits–merSETA Darkroom"
+  platform_subtitle: "Structured Data Extraction, Validation & Dataset Generation Platform"
+
+ocr:
+  enabled: true
+  language: "eng"
+  tesseract_cmd: ""  # If empty, defaults to 'tesseract' on PATH
+  psm: 6             # Assume a single uniform block of text
+  oem: 3             # Default OCR Engine Mode
+
+extraction:
+  minimum_confidence: 0.70
+  max_table_gap: 15.0
+  heuristics:
+    empty_cell_threshold: 0.65
+    column_drift_tolerance: 5.0
+    continuation_header_similarity: 0.85
+  timeout_seconds_per_page: 30
+
+normalization:
+  trim_whitespace: true
+  normalize_unicode: true
+  normalize_linebreaks: true
+  preserve_leading_zeros: true
+  auto_detect_nulls: true
+  null_tokens: ["N/A", "NA", "null", "NULL", "-", "--", "None", "none", "n/a"]
+
+validation:
+  strict_types: false
+  flag_duplicates: true
+  check_referential_integrity: true
+  max_sample_issues_per_rule: 50
+
+concurrency:
+  max_workers: 4
+  chunk_pages_size: 10
+
+export:
+  include_provenance: false
+  default_format: "csv"
+  timestamp_in_filename: false
+  snake_case_headers: true
+  excel_header_color: "#1D3557"
+  excel_header_text_color: "#FFFFFF"
+
+logging:
+  level: "INFO"
+  log_to_file: true
+  max_log_mb: 10
+  backup_count: 5
+
+ai:
+  enabled: false
+  provider: "none"  # "gemini", "openai", "local", "none"
+  model: "gemini-2.5-flash"
+  api_key_env_var: "GEMINI_API_KEY"
