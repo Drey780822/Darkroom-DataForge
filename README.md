@@ -10,7 +10,7 @@
 
 ## 1. Overview & Purpose
 
-**Darkroom DataForge** is a centralized, research-grade document intelligence and structured-data extraction web workstation built specifically for the **Wits–merSETA Darkroom** team.
+**Darkroom DataForge** is a centralized, research-grade document intelligence and structured-data extraction web workstation built specifically for the **Wits–merSETA Darkroom** team...
 
 The platform converts complex collections of semi-structured PDF documents—such as **South African Quarterly Labour Force Survey (QLFS) codebooks**, **Public TVET College Occupational Qualifications lists**, **Occupations in High Demand (OIHD) reports**, and technical research annexures—into clean, validated, database-ready machine-readable datasets.
 
