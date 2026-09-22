@@ -10,16 +10,20 @@ import {
   History,
   Download,
   Terminal,
+  Bot,
+  Award,
 } from 'lucide-react';
 
 const NAV_ITEMS = [
   { name: 'Dashboard', path: '/', icon: LayoutDashboard },
   { name: 'Projects', path: '/projects', icon: FolderGit2 },
   { name: 'Documents', path: '/documents', icon: FileText },
+  { name: 'AI Models & LLMs', path: '/ai-models', icon: Bot },
   { name: 'Pipeline', path: '/pipeline', icon: Workflow },
   { name: 'Datasets', path: '/datasets', icon: Database },
   { name: 'Validation', path: '/validation', icon: ShieldCheck },
   { name: 'Review & Audit', path: '/review', icon: History },
+  { name: 'Evaluation Benchmarks', path: '/evaluation', icon: Award },
   { name: 'Exports', path: '/exports', icon: Download },
 ];
 

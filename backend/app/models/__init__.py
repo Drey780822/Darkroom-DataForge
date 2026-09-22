@@ -6,6 +6,8 @@ from backend.app.models.record import Record
 from backend.app.models.validation_issue import ValidationIssue
 from backend.app.models.review import ReviewAudit
 from backend.app.models.activity import ActivityLog
+from backend.app.models.ai_config import AIConfig
+from backend.app.models.evaluation import EvaluationRun
 
 __all__ = [
     "Project",
@@ -16,4 +18,6 @@ __all__ = [
     "ValidationIssue",
     "ReviewAudit",
     "ActivityLog",
+    "AIConfig",
+    "EvaluationRun",
 ]

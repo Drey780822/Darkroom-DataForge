@@ -60,10 +60,13 @@ backend/storage/temp/*
 *.db
 *.sqlite3
 
-# Environment files
+# Environment & Credential files
 .env
 .env.local
 .env.*.local
+storage/ai_credentials.json
+backend/storage/ai_credentials.json
+ai_credentials.json
 
 # IDE
 .idea/

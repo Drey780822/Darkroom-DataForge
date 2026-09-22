@@ -12,6 +12,15 @@ import {
   ReviewAudit,
   ActivityLog,
   ExportResponse,
+  ProviderConfig,
+  ModelMetadata,
+  AIModelConfig,
+  TestConnectionResponse,
+  DocumentIntelligenceMap,
+  DocumentUnderstandingResponse,
+  SchemaInferenceResponse,
+  EvaluationReport,
+  ConflictRecord,
 } from '../types';
 
 const api = axios.create({
@@ -90,7 +99,7 @@ export const apiClient = {
     return `/api/v1/documents/${id}/file`;
   },
 
-  // Extraction
+  // Extraction & Intelligence Pipeline
   getJobs: async (projectId?: string): Promise<ExtractionJob[]> => {
     const res = await api.get('/extraction/jobs', { params: { project_id: projectId } });
     return res.data;
@@ -103,10 +112,103 @@ export const apiClient = {
     project_id: string;
     document_ids: string[];
     pipeline_type: string;
+    extraction_mode?: string;
+    provider?: string;
+    model?: string;
+    secondary_model?: string;
     parameters?: Record<string, any>;
     target_dataset_name?: string;
   }): Promise<ExtractionJob> => {
     const res = await api.post('/extraction/jobs', data);
+    return res.data;
+  },
+  inspectDocumentLayout: async (documentId: string): Promise<DocumentIntelligenceMap> => {
+    const res = await api.post('/extraction/inspect', null, { params: { document_id: documentId } });
+    return res.data;
+  },
+  understandDocument: async (payload: {
+    document_id: string;
+    provider?: string;
+    model?: string;
+  }): Promise<DocumentUnderstandingResponse> => {
+    const res = await api.post('/extraction/understand', null, { params: payload });
+    return res.data;
+  },
+  inferSchema: async (payload: {
+    document_id: string;
+    dataset_name: string;
+    candidate_fields?: string[];
+    provider?: string;
+    model?: string;
+  }): Promise<SchemaInferenceResponse> => {
+    const res = await api.post('/extraction/infer-schema', null, { params: payload });
+    return res.data;
+  },
+  getJobConflicts: async (jobId: string): Promise<ConflictRecord[]> => {
+    const res = await api.get(`/extraction/jobs/${jobId}/conflicts`);
+    return res.data;
+  },
+  resolveJobConflict: async (
+    jobId: string,
+    payload: { conflict_id: string; resolution: string; resolved_value?: any; comment?: string; resolved_by?: string }
+  ) => {
+    const res = await api.post(`/extraction/jobs/${jobId}/conflicts/resolve`, payload);
+    return res.data;
+  },
+
+  // AI Models & Providers
+  getProviders: async (): Promise<ProviderConfig[]> => {
+    const res = await api.get('/ai-models/providers');
+    return res.data;
+  },
+  getAvailableModels: async (): Promise<ModelMetadata[]> => {
+    const res = await api.get('/ai-models/available');
+    return res.data;
+  },
+  getAIConfigs: async (): Promise<AIModelConfig[]> => {
+    const res = await api.get('/ai-models/configs');
+    return res.data;
+  },
+  saveAIConfig: async (payload: AIModelConfig): Promise<AIModelConfig> => {
+    const res = await api.post('/ai-models/configs', payload);
+    return res.data;
+  },
+  deleteAIConfig: async (configId: string): Promise<void> => {
+    await api.delete(`/ai-models/configs/${configId}`);
+  },
+  testAIConnection: async (payload: {
+    provider: string;
+    model?: string;
+    api_key?: string;
+    base_url?: string;
+  }): Promise<TestConnectionResponse> => {
+    const res = await api.post('/ai-models/test-connection', payload);
+    return res.data;
+  },
+  updateAICredentials: async (payload: {
+    provider: string;
+    api_key?: string;
+    base_url?: string;
+  }): Promise<{ status: string; message: string }> => {
+    const res = await api.post('/ai-models/credentials', payload);
+    return res.data;
+  },
+
+  // Golden Dataset Evaluation
+  runEvaluation: async (formData: FormData): Promise<EvaluationReport> => {
+    const res = await api.post('/evaluation/run', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+    return res.data;
+  },
+  getEvaluationRuns: async (datasetId?: string): Promise<EvaluationReport[]> => {
+    const res = await api.get('/evaluation/runs', { params: { dataset_id: datasetId } });
+    return res.data;
+  },
+  getEvaluationRun: async (runId: string): Promise<EvaluationReport> => {
+    const res = await api.get(`/evaluation/runs/${runId}`);
     return res.data;
   },
 
@@ -121,6 +223,10 @@ export const apiClient = {
   },
   updateDataset: async (id: string, data: { name?: string; description?: string; status?: string }): Promise<Dataset> => {
     const res = await api.patch(`/datasets/${id}`, data);
+    return res.data;
+  },
+  verifyDataset: async (id: string, payload: { verified_by: string; verification_notes?: string }): Promise<Dataset> => {
+    const res = await api.post(`/datasets/${id}/verify`, payload);
     return res.data;
   },
   deleteDataset: async (id: string): Promise<void> => {
@@ -171,7 +277,7 @@ export const apiClient = {
     old_value?: string;
     new_value?: string;
     reason?: string;
-    reviewed_by?: string;
+    reviewed_by: string;
   }): Promise<ReviewAudit> => {
     const res = await api.post('/review/audit', data);
     return res.data;

@@ -1,3 +1,4 @@
+from datetime import datetime, timezone
 from typing import List, Optional
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
@@ -5,7 +6,7 @@ from sqlalchemy.orm import Session
 from backend.app.database import get_db
 from backend.app.models.dataset import Dataset
 from backend.app.models.activity import ActivityLog
-from backend.app.schemas.dataset import DatasetResponse, DatasetUpdate
+from backend.app.schemas.dataset import DatasetResponse, DatasetUpdate, VerifyDatasetRequest
 
 router = APIRouter(prefix="/datasets", tags=["Datasets"])
 
@@ -36,6 +37,32 @@ def update_dataset(dataset_id: str, payload: DatasetUpdate, db: Session = Depend
     if payload.status is not None:
         dataset.status = payload.status
 
+    db.commit()
+    db.refresh(dataset)
+    return dataset
+
+@router.post("/{dataset_id}/verify", response_model=DatasetResponse)
+def verify_dataset(dataset_id: str, payload: VerifyDatasetRequest, db: Session = Depends(get_db)):
+    """Mark a dataset as Verified after human review and provenance inspection."""
+    dataset = db.query(Dataset).filter(Dataset.id == dataset_id).first()
+    if not dataset:
+        raise HTTPException(status_code=404, detail="Dataset not found")
+
+    dataset.is_verified = True
+    dataset.verified_by = payload.verified_by
+    dataset.verified_at = datetime.now(timezone.utc)
+    dataset.verification_notes = payload.verification_notes
+    dataset.status = "reviewed"
+
+    activity = ActivityLog(
+        project_id=dataset.project_id,
+        entity_type="dataset",
+        entity_id=dataset.id,
+        action="reviewed",
+        description=f"Researcher '{payload.verified_by}' verified dataset '{dataset.name}'. Notes: {payload.verification_notes or 'None'}",
+        user=payload.verified_by,
+    )
+    db.add(activity)
     db.commit()
     db.refresh(dataset)
     return dataset

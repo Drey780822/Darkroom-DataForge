@@ -11,6 +11,8 @@ import { DatasetDetails } from './pages/DatasetDetails';
 import { Validation } from './pages/Validation';
 import { Review } from './pages/Review';
 import { Exports } from './pages/Exports';
+import { AiModels } from './pages/AiModels';
+import { Evaluation } from './pages/Evaluation';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -30,11 +32,13 @@ export const App: React.FC = () => {
             <Route path="/" element={<Dashboard />} />
             <Route path="/projects" element={<Projects />} />
             <Route path="/documents" element={<Documents />} />
+            <Route path="/ai-models" element={<AiModels />} />
             <Route path="/pipeline" element={<Pipeline />} />
             <Route path="/datasets" element={<Datasets />} />
             <Route path="/datasets/:datasetId" element={<DatasetDetails />} />
             <Route path="/validation" element={<Validation />} />
             <Route path="/review" element={<Review />} />
+            <Route path="/evaluation" element={<Evaluation />} />
             <Route path="/exports" element={<Exports />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Route>
