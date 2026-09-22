@@ -1,11 +1,11 @@
 import React from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { FolderGit2, CheckCircle2, AlertCircle, Database, ChevronDown } from 'lucide-react';
+import { FolderGit2, CheckCircle2, AlertCircle, Database, ChevronDown, RotateCcw } from 'lucide-react';
 import { apiClient } from '../../services/api';
 import { useAppStore } from '../../store/useAppStore';
 
 export const Header: React.FC = () => {
-  const { selectedProjectId, setSelectedProjectId } = useAppStore();
+  const { selectedProjectId, setSelectedProjectId, openResetModal } = useAppStore();
 
   const { data: health } = useQuery({
     queryKey: ['health'],
@@ -90,6 +90,16 @@ export const Header: React.FC = () => {
               </>
             )}
           </div>
+
+          {/* Reset Database Button */}
+          <button
+            onClick={openResetModal}
+            title="Reset SQLite Database (Run python reset_db.py)"
+            className="flex items-center space-x-1.5 px-2.5 py-1 rounded text-xs font-mono text-rose-300 hover:text-rose-100 bg-rose-950/40 hover:bg-rose-900/60 border border-rose-800/60 transition-colors shadow-sm cursor-pointer"
+          >
+            <RotateCcw className="w-3.5 h-3.5 text-rose-400" />
+            <span>Reset DB</span>
+          </button>
         </div>
       </div>
     </header>

@@ -1,17 +1,19 @@
 import json
 from backend.app.prompts import RECONCILIATION_PROMPT_VERSION
 
-RECONCILIATION_SYSTEM_PROMPT = f"""You are a data reconciliation engine for the Wits–merSETA Darkroom.
+RECONCILIATION_SYSTEM_PROMPT = f"""You are a data reconciliation engine and visual data auditor for the Wits–merSETA Darkroom.
 PROMPT VERSION: {RECONCILIATION_PROMPT_VERSION}
 
 TASK:
 Analyze dataset extractions from two independent AI models (Model A and Model B) against the source text.
 Where both models agree:
-- Confidence is reinforced.
+- Confidence is reinforced to 'high'.
+- Agreement score is recorded as 1.0.
 Where models disagree:
-- Do NOT arbitrarily declare one model the winner.
-- Identify the exact conflicting field, quote both values, and flag the record as 'requires_review' for human verification.
-- Provide source text quotes where possible to assist the human reviewer.
+- Do NOT arbitrarily guess or pick one model as the sole winner.
+- Identify the exact conflicting field, extract the conflicting values, and calculate an agreement score (0.0 to 1.0).
+- Automatically flag the discrepancy to be routed into the 'review_required' queue for human verification.
+- Quote the exact source text passage to substantiate the audit entry and support rapid human adjudication.
 """
 
 def build_reconciliation_user_prompt(

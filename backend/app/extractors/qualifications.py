@@ -113,8 +113,25 @@ class QualificationsExtractor(BaseExtractor):
                             else:
                                 saqa_id, title, nqf, framework, nsfas, colleges = "", "", "", "", "No", ""
 
-                            colleges = re.sub(r"[\r\n•·]+", "; ", colleges).strip()
-                            colleges = re.sub(r"\s*;\s*", "; ", colleges)
+                            # Robustly stitch wrapped college lines
+                            col_text = re.sub(r"[•·]+", "; ", colleges)
+                            c_lines = [l.strip() for l in re.split(r"[\r\n]+", col_text) if l.strip()]
+                            c_stitched = []
+                            for cline in c_lines:
+                                clow = cline.lower()
+                                if c_stitched and (
+                                    clow in ["college", "colleges", "tvet", "tvet college", "campus", "tvet colleges"]
+                                    or clow.startswith("college")
+                                    or clow.startswith("campus")
+                                    or c_stitched[-1].endswith(",")
+                                    or c_stitched[-1].endswith("-")
+                                ):
+                                    c_stitched[-1] = f"{c_stitched[-1]} {cline}".strip()
+                                else:
+                                    c_stitched.append(cline)
+
+                            colleges = "; ".join(c_stitched)
+                            colleges = re.sub(r"\s*;\s*", "; ", colleges).strip(" ;")
 
                             if re.search(r"\d{4,7}", saqa_id):
                                 data_rows.append([
@@ -130,7 +147,11 @@ class QualificationsExtractor(BaseExtractor):
                                 if title:
                                     last_row[1] = f"{last_row[1]} {title}".strip()
                                 if colleges:
-                                    last_row[5] = f"{last_row[5]}; {colleges}".strip("; ")
+                                    clow = colleges.lower().strip()
+                                    if clow in ["college", "colleges", "tvet", "tvet college", "campus"] or clow.startswith("college"):
+                                        last_row[5] = f"{last_row[5]} {colleges}".strip()
+                                    else:
+                                        last_row[5] = f"{last_row[5]}; {colleges}".strip("; ")
 
                         if data_rows:
                             tables.append(

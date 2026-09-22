@@ -4,11 +4,15 @@ import csv
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import List, Dict, Any, Optional
+from sqlalchemy.orm import Session
 
 from backend.app.config import settings
+from backend.app.models.metadata import DataDictionaryEntry, ProvenanceRecord, ReviewRequired
 
 class ManifestGeneratorService:
-    """Generates complete research audit artifacts: data_dictionary.csv, provenance.csv, and extraction_manifest.json."""
+    """Generates complete research audit artifacts: data_dictionary.csv, provenance.csv, and extraction_manifest.json.
+    Reads directly from normalized database tables to eliminate drift.
+    """
 
     @classmethod
     def generate_artifact_bundle(
@@ -22,6 +26,8 @@ class ManifestGeneratorService:
         models_used: List[str],
         prompt_version: str,
         profile_name: str,
+        db: Optional[Session] = None,
+        job_id: Optional[str] = None,
         output_dir: Optional[Path] = None,
     ) -> Dict[str, str]:
         base_dir = output_dir or (settings.exports_path / f"bundle_{dataset_name.replace(' ', '_')}_{int(datetime.now().timestamp())}")
@@ -44,33 +50,54 @@ class ManifestGeneratorService:
             "example_value",
             "source_pages",
         ]
+
+        # Check if entries exist in data_dictionary table
+        db_dict_entries = []
+        if db and job_id:
+            db_dict_entries = db.query(DataDictionaryEntry).filter(DataDictionaryEntry.job_id == job_id).all()
+
         with open(dict_path, "w", newline="", encoding="utf-8") as f:
             writer = csv.DictWriter(f, fieldnames=dict_fields)
             writer.writeheader()
-            for col in schema_columns:
-                col_name = col.get("name", "")
-                ex_val = ""
-                sample_pages = set()
-                for r in records[:50]:
-                    if col_name in r and r[col_name]:
-                        ex_val = str(r[col_name])
-                        break
-                for r in records:
-                    p = r.get("source_page") or r.get("provenance", {}).get("page_number")
-                    if p:
-                        sample_pages.add(str(p))
 
-                writer.writerow({
-                    "dataset_name": dataset_name,
-                    "column_name": col_name,
-                    "source_label": col.get("original_name") or col.get("source_label") or col_name,
-                    "data_type": col.get("type", "string"),
-                    "nullable": "YES" if not col.get("required") else "NO",
-                    "description": col.get("description", f"Extracted column {col_name}"),
-                    "identifier": "YES" if col.get("identifier") or col_name in ["saqa_id", "ofo_code"] else "NO",
-                    "example_value": ex_val,
-                    "source_pages": ", ".join(sorted(list(sample_pages), key=lambda x: int(x) if x.isdigit() else 0)[:10]),
-                })
+            if db_dict_entries:
+                for entry in db_dict_entries:
+                    writer.writerow({
+                        "dataset_name": entry.dataset_name,
+                        "column_name": entry.column_name,
+                        "source_label": entry.source_field,
+                        "data_type": entry.data_type,
+                        "nullable": "YES" if entry.nullable == "true" else "NO",
+                        "description": entry.description,
+                        "identifier": "YES" if entry.column_name in ["saqa_id", "ofo_code"] else "NO",
+                        "example_value": entry.example_value or "",
+                        "source_pages": "-",
+                    })
+            else:
+                for col in schema_columns:
+                    col_name = col.get("name", "")
+                    ex_val = ""
+                    sample_pages = set()
+                    for r in records[:50]:
+                        if col_name in r and r[col_name]:
+                            ex_val = str(r[col_name])
+                            break
+                    for r in records:
+                        p = r.get("source_page") or r.get("provenance", {}).get("page_number")
+                        if p:
+                            sample_pages.add(str(p))
+
+                    writer.writerow({
+                        "dataset_name": dataset_name,
+                        "column_name": col_name,
+                        "source_label": col.get("original_name") or col.get("source_label") or col_name,
+                        "data_type": col.get("type", "string"),
+                        "nullable": "YES" if not col.get("required") else "NO",
+                        "description": col.get("description", f"Extracted column {col_name}"),
+                        "identifier": "YES" if col.get("identifier") or col_name in ["saqa_id", "ofo_code"] else "NO",
+                        "example_value": ex_val,
+                        "source_pages": ", ".join(sorted(list(sample_pages), key=lambda x: int(x) if x.isdigit() else 0)[:10]),
+                    })
         generated_files["data_dictionary"] = str(dict_path)
 
         # 2. provenance.csv
@@ -95,7 +122,12 @@ class ManifestGeneratorService:
         manifest_path = meta_dir / "extraction_manifest.json"
         total_recs = len(records)
         verified_count = sum(1 for r in records if r.get("status") in ["valid", "human_reviewed"])
-        review_required_count = sum(1 for r in records if r.get("status") in ["warning", "error"] or r.get("issues"))
+
+        review_required_count = 0
+        if db and job_id:
+            review_required_count = db.query(ReviewRequired).filter(ReviewRequired.job_id == job_id).count()
+        if review_required_count == 0:
+            review_required_count = sum(1 for r in records if r.get("status") in ["warning", "error"] or r.get("issues"))
 
         manifest_data = {
             "document": document_filename,

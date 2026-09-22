@@ -24,3 +24,23 @@ class ReviewAuditResponse(BaseModel):
     created_at: datetime
 
     model_config = ConfigDict(from_attributes=True)
+
+class ReviewRequiredResponse(BaseModel):
+    id: int
+    job_id: Optional[str] = None
+    document_id: Optional[str] = None
+    dataset_id: Optional[str] = None
+    original_value: str
+    issue: str
+    source_page: str
+    reason: str
+    agreement_score: Optional[float] = None
+    resolved: bool
+    resolved_by: Optional[str] = None
+    resolved_at: Optional[datetime] = None
+
+    model_config = ConfigDict(from_attributes=True)
+
+class ReviewRequiredResolveRequest(BaseModel):
+    resolved_by: Optional[str] = "Researcher"
+    correction: Optional[str] = None

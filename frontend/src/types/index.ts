@@ -393,3 +393,11 @@ export interface ReconciliationResult {
   conflicts: ConflictRecord[];
   reconciled_records: Record<string, any>[];
 }
+
+export interface ResetDatabaseResponse {
+  status: string;
+  message: string;
+  tables_recreated: number;
+  files_removed: number;
+}
+

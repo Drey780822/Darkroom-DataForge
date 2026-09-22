@@ -6,6 +6,7 @@ import { apiClient } from '../../services/api';
 import { Header } from './Header';
 import { Sidebar } from './Sidebar';
 import { SourceDocumentModal } from '../common/SourceDocumentModal';
+import { ResetDatabaseModal } from '../common/ResetDatabaseModal';
 
 export const Layout: React.FC = () => {
   const { data: health, isError } = useQuery({
@@ -48,6 +49,7 @@ export const Layout: React.FC = () => {
         </main>
       </div>
       <SourceDocumentModal />
+      <ResetDatabaseModal />
     </div>
   );
 };

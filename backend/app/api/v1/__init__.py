@@ -11,6 +11,7 @@ from backend.app.api.v1.exports import router as exports_router
 from backend.app.api.v1.activity import router as activity_router
 from backend.app.api.v1.ai_models import router as ai_models_router
 from backend.app.api.v1.evaluation import router as evaluation_router
+from backend.app.api.v1.system import router as system_router
 
 api_v1_router = APIRouter(prefix="/api/v1")
 
@@ -26,3 +27,4 @@ api_v1_router.include_router(exports_router)
 api_v1_router.include_router(activity_router)
 api_v1_router.include_router(ai_models_router)
 api_v1_router.include_router(evaluation_router)
+api_v1_router.include_router(system_router)

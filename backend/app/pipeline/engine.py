@@ -1,3 +1,4 @@
+import re
 import time
 import logging
 from datetime import datetime, timezone
@@ -10,6 +11,17 @@ from backend.app.models.record import Record
 from backend.app.models.validation_issue import ValidationIssue
 from backend.app.models.extraction_job import ExtractionJob
 from backend.app.models.activity import ActivityLog
+from backend.app.models.college import College
+from backend.app.models.qualification import (
+    Qualification,
+    QualificationCollege,
+    DsppCentreOfSpecialisation,
+)
+from backend.app.models.metadata import (
+    DataDictionaryEntry,
+    ProvenanceRecord,
+    ReviewRequired,
+)
 from backend.app.extractors import (
     QualificationsExtractor,
     OccupationsExtractor,
@@ -19,7 +31,12 @@ from backend.app.extractors import (
 )
 from backend.app.pipeline.normalizer import Normalizer
 from backend.app.pipeline.schema_detector import SchemaDetector
-from backend.app.pipeline.validator import Validator
+from backend.app.pipeline.validator import (
+    Validator,
+    ALLOWED_NSFAS_ALLOWANCES,
+    ALLOWED_CONFIDENCE_LEVELS,
+    ALLOWED_NQF_SUB_FRAMEWORKS,
+)
 from backend.app.llm.router import LLMRouter, ExtractionMode, EscalationLevel
 from backend.app.llm.schemas import (
     DocumentIntelligenceMap,
@@ -41,6 +58,82 @@ from backend.app.services.reconciliation_engine import ReconciliationEngineServi
 from backend.app.services.manifest_generator import ManifestGeneratorService
 
 logger = logging.getLogger("dataforge.pipeline")
+
+GENERIC_COLLEGE_STOPWORDS = {
+    "college",
+    "colleges",
+    "tvet",
+    "tvet college",
+    "tvet colleges",
+    "participating",
+    "participating colleges",
+    "participating tvet colleges",
+    "none",
+    "nil",
+    "n/a",
+    "na",
+    "no",
+    "-",
+    "--",
+}
+
+def parse_and_clean_colleges(raw_colleges: Any) -> List[str]:
+    """Robustly extracts individual college names from raw table text,
+    handling wrapped lines, multi-line cells, semicolons, and bullets.
+    """
+    if not raw_colleges:
+        return []
+
+    raw_items = []
+    if isinstance(raw_colleges, list):
+        raw_items = [str(x) for x in raw_colleges]
+    elif isinstance(raw_colleges, str):
+        text = raw_colleges.strip()
+        if ";" in text:
+            raw_items = text.split(";")
+        elif "•" in text or "·" in text:
+            raw_items = re.split(r"[•·]+", text)
+        elif "\n" in text:
+            lines = [l.strip() for l in text.splitlines() if l.strip()]
+            stitched = []
+            for line in lines:
+                clow = line.lower()
+                if stitched and (
+                    clow in ["college", "colleges", "tvet", "tvet college", "tvet colleges", "campus"]
+                    or clow.startswith("college")
+                    or clow.startswith("campus")
+                    or stitched[-1].endswith(",")
+                    or stitched[-1].endswith("-")
+                ):
+                    stitched[-1] = f"{stitched[-1]} {line}".strip()
+                else:
+                    stitched.append(line)
+            raw_items = stitched
+        else:
+            raw_items = [text]
+    else:
+        raw_items = [str(raw_colleges)]
+
+    clean_colleges = []
+    for item in raw_items:
+        c_clean = re.sub(r"\s+", " ", str(item)).strip(" \t\r\n;,•·-")
+        if not c_clean or len(c_clean) < 3:
+            continue
+        if c_clean.lower() in GENERIC_COLLEGE_STOPWORDS:
+            continue
+        c_clean = re.sub(r"^\d+[\.\)]\s*", "", c_clean).strip()
+        if c_clean and c_clean.lower() not in GENERIC_COLLEGE_STOPWORDS:
+            clean_colleges.append(c_clean)
+
+    # Deduplicate while preserving order
+    seen = set()
+    result = []
+    for c in clean_colleges:
+        if c.lower() not in seen:
+            seen.add(c.lower())
+            result.append(c)
+
+    return result
 
 class PipelineEngine:
     """Orchestrates document intelligence, layout reconstruction, LLM structured extraction, dual validation, and dataset generation."""
@@ -385,9 +478,35 @@ class PipelineEngine:
             job.dataset_id = dataset.id
             db.commit()
 
+            # Route reconciliation model disagreements to review_required
+            if conflicts_list:
+                for conflict in conflicts_list:
+                    c_dict = conflict if isinstance(conflict, dict) else (conflict.model_dump() if hasattr(conflict, "model_dump") else {})
+                    val_a = c_dict.get("model_a_value", c_dict.get("field_value_a", ""))
+                    val_b = c_dict.get("model_b_value", c_dict.get("field_value_b", ""))
+                    f_name = c_dict.get("field_name", "field")
+                    p_num = str(c_dict.get("page_number", c_dict.get("source_page", 1)))
+                    agr = c_dict.get("agreement_score")
+                    Validator.route_to_review_required(
+                        db=db,
+                        original_value=str(val_a or val_b or ""),
+                        issue=f"model_disagreement_{f_name}",
+                        source_page=p_num,
+                        reason=f"Model disagreement between {job.primary_model or 'Model A'} ('{val_a}') and {job.secondary_model or 'Model B'} ('{val_b}')",
+                        job_id=job.id,
+                        document_id=primary_doc.id,
+                        dataset_id=dataset.id,
+                        agreement_score=agr,
+                    )
+
             error_records_count = 0
             warning_records_count = 0
             records_entities = []
+
+            # In-memory deduplication trackers to prevent session duplicate flush violations
+            seen_qualifications = set()
+            seen_qualification_colleges = set()
+            seen_dspp_centres = set()
 
             for r_idx, r_item in enumerate(extracted_records_list):
                 row_num = r_idx + 1
@@ -440,6 +559,208 @@ class PipelineEngine:
                         )
                     )
 
+                # Relational Schema Persistence: qualifications, colleges, qualification_colleges, dspp_centres
+                saqa_candidate = str(
+                    norm_data.get("saqa_id")
+                    or norm_data.get("qual_id")
+                    or raw_dict.get("saqa_id")
+                    or raw_dict.get("qual_id")
+                    or ""
+                ).strip()
+
+                is_qualification_record = (
+                    bool(re.search(r"\d{4,}", saqa_candidate))
+                    or "qualification" in str(primary_doc.doc_type).lower()
+                    or "saqa_id" in norm_data
+                    or "qualification_name" in norm_data
+                    or "qualification" in norm_data
+                )
+
+                if is_qualification_record:
+                    q_name = str(
+                        norm_data.get("qualification_name")
+                        or norm_data.get("qualification")
+                        or norm_data.get("qualification_title")
+                        or raw_dict.get("qualification")
+                        or raw_dict.get("qualification_name")
+                        or "Unknown Qualification"
+                    ).strip()
+                    q_raw = str(
+                        raw_dict.get("qualification")
+                        or raw_dict.get("qualification_name")
+                        or raw_dict.get("qualification_title")
+                        or q_name
+                    )
+                    q_num = str(
+                        norm_data.get("qualification_number")
+                        or norm_data.get("qual_no")
+                        or norm_data.get("qualification_no")
+                        or raw_dict.get("qual_no")
+                        or saqa_candidate
+                        or str(row_num)
+                    ).strip()
+                    nqf_lvl = str(norm_data.get("nqf_level") or raw_dict.get("nqf_level") or "").strip() or None
+
+                    # Framework mapping & validation
+                    raw_fw = str(norm_data.get("nqf_sub_framework") or norm_data.get("framework") or norm_data.get("sub_framework") or "OQSF").strip().upper()
+                    if "OQSF" in raw_fw or "OCCUPATIONAL" in raw_fw:
+                        clean_fw = "OQSF"
+                    elif "HEQSF" in raw_fw or "HIGHER" in raw_fw:
+                        clean_fw = "HEQSF"
+                    elif "GFET" in raw_fw or "GENERAL" in raw_fw or "FURTHER" in raw_fw:
+                        clean_fw = "GFETQSF"
+                    else:
+                        clean_fw = raw_fw
+
+                    # NSFAS allowance normalization
+                    raw_nsfas = str(norm_data.get("nsfas_allowance") or norm_data.get("nsfas_eligible") or norm_data.get("nsfas") or "").strip()
+                    if raw_nsfas.upper() in ["YES", "ELIGIBLE", "FUNDED", "TRUE", "1", "Y"]:
+                        clean_nsfas = "YES"
+                    elif raw_nsfas.upper() in ["NO", "NOT ELIGIBLE", "UNFUNDED", "FALSE", "0", "N"]:
+                        clean_nsfas = "NO"
+                    else:
+                        clean_nsfas = raw_nsfas.upper() if raw_nsfas else "NO"
+
+                    # Confidence level normalization
+                    conf_raw = r_item.get("confidence", 1.0)
+                    if isinstance(conf_raw, (int, float)):
+                        if conf_raw >= 0.85:
+                            clean_conf = "high"
+                        elif conf_raw >= 0.60:
+                            clean_conf = "medium"
+                        else:
+                            clean_conf = "low"
+                    else:
+                        c_str = str(conf_raw).lower().strip()
+                        clean_conf = c_str if c_str in ALLOWED_CONFIDENCE_LEVELS else "medium"
+
+                    src_sec = str(r_item.get("source_section") or norm_data.get("source_section") or "Section 1: Occupational Qualifications")
+                    src_page = str(r_item.get("source_page", 1))
+
+                    qual_dict = {
+                        "saqa_id": saqa_candidate,
+                        "qualification_number": q_num,
+                        "qualification_name": q_name,
+                        "qualification_name_raw": q_raw,
+                        "nqf_level": nqf_lvl,
+                        "nqf_sub_framework": clean_fw,
+                        "nsfas_allowance": clean_nsfas,
+                        "source_section": src_sec,
+                        "source_page": src_page,
+                        "confidence": clean_conf,
+                        "extraction_note": r_item.get("extraction_note"),
+                    }
+
+                    is_valid_qual, qual_violations = Validator.validate_qualification_constraints(qual_dict, row_index=row_num)
+                    if not is_valid_qual:
+                        for v in qual_violations:
+                            Validator.route_to_review_required(
+                                db=db,
+                                original_value=v["raw_value"],
+                                issue=v["rule_name"],
+                                source_page=src_page,
+                                reason=v["message"],
+                                job_id=job.id,
+                                document_id=primary_doc.id,
+                                dataset_id=dataset.id,
+                                agreement_score=None,
+                            )
+                    else:
+                        # Insert or update in qualifications parent table
+                        if saqa_candidate not in seen_qualifications:
+                            existing_qual = db.query(Qualification).filter(Qualification.saqa_id == saqa_candidate).first()
+                            if not existing_qual:
+                                qual_obj = Qualification(
+                                    saqa_id=saqa_candidate,
+                                    qualification_number=q_num,
+                                    qualification_name=q_name,
+                                    qualification_name_raw=q_raw,
+                                    nqf_level=nqf_lvl,
+                                    nqf_sub_framework=clean_fw,
+                                    nsfas_allowance=clean_nsfas,
+                                    source_section=src_sec,
+                                    source_page=src_page,
+                                    confidence=clean_conf,
+                                    extraction_note=r_item.get("extraction_note"),
+                                    job_id=job.id,
+                                    document_id=primary_doc.id,
+                                )
+                                db.add(qual_obj)
+                                db.flush()
+                            seen_qualifications.add(saqa_candidate)
+
+                        # Normalize colleges & junction tables using robust parsing
+                        raw_colleges = (
+                            norm_data.get("colleges")
+                            or norm_data.get("participating_colleges")
+                            or raw_dict.get("participating_colleges")
+                            or raw_dict.get("colleges")
+                        )
+                        college_list = parse_and_clean_colleges(raw_colleges)
+
+                        is_dspp = (
+                            "dspp" in src_sec.lower()
+                            or "centre of specialisation" in src_sec.lower()
+                            or "specialisation" in src_sec.lower()
+                            or norm_data.get("programme_context")
+                            or norm_data.get("specialisation_trade")
+                        )
+                        prog_context = str(
+                            norm_data.get("programme_context")
+                            or norm_data.get("specialisation_trade")
+                            or q_name
+                        )
+
+                        for c_name in college_list:
+                            if not c_name:
+                                continue
+                            college_entity = College.get_or_create(db, c_name)
+                            if not college_entity:
+                                continue
+
+                            pair_key = (saqa_candidate, college_entity.college_id)
+
+                            # 1. qualification_colleges
+                            if pair_key not in seen_qualification_colleges:
+                                qc_exists = db.query(QualificationCollege).filter(
+                                    QualificationCollege.saqa_id == saqa_candidate,
+                                    QualificationCollege.college_id == college_entity.college_id,
+                                ).first()
+                                if not qc_exists:
+                                    qc_obj = QualificationCollege(
+                                        saqa_id=saqa_candidate,
+                                        qualification_number=q_num,
+                                        college_id=college_entity.college_id,
+                                        college_name=college_entity.college_name,
+                                        source_section=src_sec,
+                                        source_page=src_page,
+                                        job_id=job.id,
+                                        document_id=primary_doc.id,
+                                    )
+                                    db.add(qc_obj)
+                                seen_qualification_colleges.add(pair_key)
+
+                            # 2. dspp_centres_of_specialisation (if DSPP context)
+                            if is_dspp and pair_key not in seen_dspp_centres:
+                                dspp_exists = db.query(DsppCentreOfSpecialisation).filter(
+                                    DsppCentreOfSpecialisation.saqa_id == saqa_candidate,
+                                    DsppCentreOfSpecialisation.college_id == college_entity.college_id,
+                                ).first()
+                                if not dspp_exists:
+                                    dspp_obj = DsppCentreOfSpecialisation(
+                                        saqa_id=saqa_candidate,
+                                        qualification_number=q_num,
+                                        college_id=college_entity.college_id,
+                                        college_name=college_entity.college_name,
+                                        source_section=src_sec,
+                                        source_page=src_page,
+                                        programme_context=prog_context,
+                                        job_id=job.id,
+                                        document_id=primary_doc.id,
+                                    )
+                                    db.add(dspp_obj)
+                                seen_dspp_centres.add(pair_key)
+
             # -------------------------------------------------------------
             # STAGE 6: Quality Metrics & Research Artifact Bundle
             # -------------------------------------------------------------
@@ -456,6 +777,50 @@ class PipelineEngine:
             dataset.quality_score = quality_score
             dataset.status = "validated"
 
+            # Populate normalized data_dictionary table
+            for col in schema_columns:
+                col_name = col.get("name")
+                if not col_name:
+                    continue
+                existing_entry = db.query(DataDictionaryEntry).filter(
+                    DataDictionaryEntry.job_id == job.id,
+                    DataDictionaryEntry.dataset_name == dataset.name,
+                    DataDictionaryEntry.column_name == col_name,
+                ).first()
+                if not existing_entry:
+                    is_null = "false" if col.get("required") else "true"
+                    db.add(DataDictionaryEntry(
+                        job_id=job.id,
+                        document_id=primary_doc.id,
+                        dataset_name=dataset.name,
+                        column_name=col_name,
+                        data_type=str(col.get("type", "string")),
+                        description=str(col.get("description") or f"Extracted column {col_name}"),
+                        source_field=str(col.get("original_name") or col.get("source_label") or col_name),
+                        nullable=is_null,
+                        example_value=str(col.get("example", "")) if col.get("example") is not None else None,
+                    ))
+
+            # Populate normalized provenance table
+            existing_prov = db.query(ProvenanceRecord).filter(
+                ProvenanceRecord.job_id == job.id,
+                ProvenanceRecord.dataset_name == dataset.name,
+            ).first()
+            page_range_str = f"1-{getattr(doc_map, 'page_count', 1)}"
+            if not existing_prov:
+                db.add(ProvenanceRecord(
+                    job_id=job.id,
+                    document_id=primary_doc.id,
+                    dataset_name=dataset.name,
+                    source_document=primary_doc.original_name,
+                    source_section=getattr(primary_doc, "doc_type", "general") or "general",
+                    source_page=page_range_str,
+                    extraction_method="llm_structured_extraction" if use_llm else "deterministic_table",
+                    record_count=total_records,
+                ))
+            else:
+                existing_prov.record_count = total_records
+
             # Generate Data Dictionary & Provenance bundle
             try:
                 bundle_files = ManifestGeneratorService.generate_artifact_bundle(
@@ -468,6 +833,8 @@ class PipelineEngine:
                     models_used=[m for m in [job.primary_model, job.secondary_model] if m],
                     prompt_version=EXTRACTION_PROMPT_VERSION,
                     profile_name=primary_doc.doc_type,
+                    db=db,
+                    job_id=job.id,
                 )
                 logger.info(f"Artifact bundle generated: {bundle_files}")
             except Exception as b_err:

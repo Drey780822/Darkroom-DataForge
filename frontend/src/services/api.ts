@@ -21,6 +21,7 @@ import {
   SchemaInferenceResponse,
   EvaluationReport,
   ConflictRecord,
+  ResetDatabaseResponse,
 } from '../types';
 
 const api = axios.create({
@@ -301,4 +302,11 @@ export const apiClient = {
     const res = await api.get('/activity', { params: { project_id: projectId, limit } });
     return res.data;
   },
+
+  // System
+  resetDatabase: async (clearFiles: boolean = false): Promise<ResetDatabaseResponse> => {
+    const res = await api.post('/system/reset-database', { clear_files: clearFiles });
+    return res.data;
+  },
 };
+

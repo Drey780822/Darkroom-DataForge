@@ -1,12 +1,19 @@
-from typing import List
-from fastapi import APIRouter, Depends, HTTPException, status
+from typing import List, Optional
+from datetime import datetime, timezone
+from fastapi import APIRouter, Depends, HTTPException, Query, status
 from sqlalchemy.orm import Session
 
 from backend.app.database import get_db
 from backend.app.models.dataset import Dataset
 from backend.app.models.record import Record
 from backend.app.models.review import ReviewAudit
-from backend.app.schemas.review import ReviewAuditCreate, ReviewAuditResponse
+from backend.app.models.metadata import ReviewRequired
+from backend.app.schemas.review import (
+    ReviewAuditCreate,
+    ReviewAuditResponse,
+    ReviewRequiredResponse,
+    ReviewRequiredResolveRequest,
+)
 
 router = APIRouter(prefix="/review", tags=["Review"])
 
@@ -53,3 +60,40 @@ def get_dataset_reviews(dataset_id: str, db: Session = Depends(get_db)):
         .all()
     )
     return reviews
+
+@router.get("/review-required", response_model=List[ReviewRequiredResponse])
+def list_review_required(
+    job_id: Optional[str] = Query(None),
+    document_id: Optional[str] = Query(None),
+    dataset_id: Optional[str] = Query(None),
+    resolved: Optional[bool] = Query(None),
+    db: Session = Depends(get_db),
+):
+    query = db.query(ReviewRequired)
+    if job_id:
+        query = query.filter(ReviewRequired.job_id == job_id)
+    if document_id:
+        query = query.filter(ReviewRequired.document_id == document_id)
+    if dataset_id:
+        query = query.filter(ReviewRequired.dataset_id == dataset_id)
+    if resolved is not None:
+        query = query.filter(ReviewRequired.resolved == resolved)
+
+    return query.order_by(ReviewRequired.id.asc()).all()
+
+@router.post("/review-required/{item_id}/resolve", response_model=ReviewRequiredResponse)
+def resolve_review_required(
+    item_id: int,
+    payload: ReviewRequiredResolveRequest,
+    db: Session = Depends(get_db),
+):
+    item = db.query(ReviewRequired).filter(ReviewRequired.id == item_id).first()
+    if not item:
+        raise HTTPException(status_code=404, detail="ReviewRequired item not found")
+
+    item.resolved = True
+    item.resolved_by = payload.resolved_by or "Researcher"
+    item.resolved_at = datetime.now(timezone.utc)
+    db.commit()
+    db.refresh(item)
+    return item

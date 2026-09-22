@@ -19,6 +19,9 @@ interface AppState {
     recordIndex?: number;
   }) => void;
   closeSourceModal: () => void;
+  isResetModalOpen: boolean;
+  openResetModal: () => void;
+  closeResetModal: () => void;
 }
 
 export const useAppStore = create<AppState>((set) => ({
@@ -44,4 +47,7 @@ export const useAppStore = create<AppState>((set) => ({
     set((state) => ({
       sourceModal: { ...state.sourceModal, isOpen: false },
     })),
+  isResetModalOpen: false,
+  openResetModal: () => set({ isResetModalOpen: true }),
+  closeResetModal: () => set({ isResetModalOpen: false }),
 }));

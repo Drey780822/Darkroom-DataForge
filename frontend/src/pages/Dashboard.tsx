@@ -10,6 +10,7 @@ import {
   Upload,
   Play,
   Activity,
+  RotateCcw,
 } from 'lucide-react';
 import {
   ResponsiveContainer,
@@ -25,7 +26,7 @@ import { useAppStore } from '../store/useAppStore';
 import { Badge } from '../components/common/Badge';
 
 export const Dashboard: React.FC = () => {
-  const { selectedProjectId } = useAppStore();
+  const { selectedProjectId, openResetModal } = useAppStore();
 
   const { data: projects = [] } = useQuery({
     queryKey: ['projects'],
@@ -77,6 +78,14 @@ export const Dashboard: React.FC = () => {
           </p>
         </div>
         <div className="flex items-center space-x-3">
+          <button
+            onClick={openResetModal}
+            title="Reset SQLite Database (Run python reset_db.py)"
+            className="flex items-center space-x-1.5 px-3 py-1.5 bg-rose-950/40 hover:bg-rose-900/60 text-xs font-medium text-rose-300 hover:text-rose-100 border border-rose-800/50 rounded-lg transition-colors font-mono cursor-pointer"
+          >
+            <RotateCcw className="w-3.5 h-3.5 text-rose-400" />
+            <span>Reset DB</span>
+          </button>
           <Link
             to="/documents"
             className="flex items-center space-x-1.5 px-3 py-1.5 bg-darkroom-card hover:bg-darkroom-border text-xs font-medium text-gray-200 border border-darkroom-border rounded-lg transition-colors"

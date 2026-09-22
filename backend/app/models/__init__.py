@@ -9,6 +9,19 @@ from backend.app.models.activity import ActivityLog
 from backend.app.models.ai_config import AIConfig
 from backend.app.models.evaluation import EvaluationRun
 
+# Master Relational Schema Models
+from backend.app.models.college import College
+from backend.app.models.qualification import (
+    Qualification,
+    QualificationCollege,
+    DsppCentreOfSpecialisation,
+)
+from backend.app.models.metadata import (
+    DataDictionaryEntry,
+    ProvenanceRecord,
+    ReviewRequired,
+)
+
 __all__ = [
     "Project",
     "Document",
@@ -20,4 +33,11 @@ __all__ = [
     "ActivityLog",
     "AIConfig",
     "EvaluationRun",
+    "College",
+    "Qualification",
+    "QualificationCollege",
+    "DsppCentreOfSpecialisation",
+    "DataDictionaryEntry",
+    "ProvenanceRecord",
+    "ReviewRequired",
 ]

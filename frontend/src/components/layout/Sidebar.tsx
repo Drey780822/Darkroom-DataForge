@@ -12,7 +12,9 @@ import {
   Terminal,
   Bot,
   Award,
+  RotateCcw,
 } from 'lucide-react';
+import { useAppStore } from '../../store/useAppStore';
 
 const NAV_ITEMS = [
   { name: 'Dashboard', path: '/', icon: LayoutDashboard },
@@ -28,6 +30,7 @@ const NAV_ITEMS = [
 ];
 
 export const Sidebar: React.FC = () => {
+  const { openResetModal } = useAppStore();
   return (
     <aside className="w-60 bg-darkroom-surface border-r border-darkroom-border flex flex-col justify-between py-4">
       {/* Primary Navigation */}
@@ -55,6 +58,18 @@ export const Sidebar: React.FC = () => {
           );
         })}
       </nav>
+
+      {/* Reset Database Button */}
+      <div className="px-3 pb-2 space-y-2">
+        <button
+          onClick={openResetModal}
+          title="Reset SQLite Database (Run python reset_db.py)"
+          className="w-full flex items-center justify-center space-x-2 px-3 py-2 rounded-lg text-xs font-medium text-rose-300 hover:text-rose-100 bg-rose-950/40 hover:bg-rose-900/60 border border-rose-800/50 transition-all font-mono shadow-sm cursor-pointer"
+        >
+          <RotateCcw className="w-3.5 h-3.5 text-rose-400" />
+          <span>Reset Database</span>
+        </button>
+      </div>
 
       {/* Footer Info / Provenance Badge */}
       <div className="px-4 py-3 mx-3 bg-darkroom-card/70 border border-darkroom-border rounded-lg text-xs text-gray-400">
