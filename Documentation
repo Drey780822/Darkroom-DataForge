@@ -1,0 +1,148 @@
+Darkroom DataForge Executive Summary & Stakeholder Briefing
+Darkroom DataForge Tool
+Specification
+Application Brief & Executive Summary
+Document Version 1.0
+AI DevOps Team A.Cele, D.Mahandana, M.Moletsane, N.Naidoo, T.Dikotope
+Supervisors Dr J.Van As, N.Modise
+Date September 2026
+Project Job Matching Platform(MerSeta)
+Contents
+1 Executive Summary 2
+2 Strategic Rationale & Problem Statement 2
+3 High-Level Solution Architecture 3
+4 Key Business Features & Operational Capabilities 3
+5 Summary of Deliverables & Output Packages 4
+6 Strategic Outcomes & Value Realization 4
+1
+Darkroom DataForge Executive Summary & Stakeholder Briefing
+1 Executive Summary
+Darkroom DataForge is an enterprise-grade document intelligence and data-engineering
+workstation designed to automate the conversion of complex, unstructured, and semi-structured
+documents into high-integrity, machine-readable datasets.
+At a glance. DataForge replaces error-prone manual transcription and unconstrained
+generative AI with a scientific, human-in-the-loop pipeline that keeps every extracted value
+tied to its original source document, cutting dataset generation timelines from weeks to
+hours without compromising data fidelity.
+In modern research, policy development, and skills planning, critical information is often trapped
+within static formats , such as PDF reports, government gazettes, educational framework
+listings, and survey codebooks. Standard tools like commercial chatbots or basic “PDF-to-Excel”
+converters frequently fail at this task: they hallucinate non-existent figures, drop table rows,
+mangle critical formatting (such as dropping leading zeroes in identification codes), and offer
+zero auditing capabilities.
+Darkroom DataForge solves this challenge by implementing a scientific, human-in-the-loop
+AI processing platform. It guarantees that all extracted data remains strictly tied to the
+original source document while automating labour-intensive manual data entry. By combining
+multi-model AI validation with structured human review, DataForge drastically reduces dataset
+generation timelines from weeks to hours without compromising data fidelity.
+2 Strategic Rationale & Problem Statement
+2.1 Strategic Imperative
+Data-driven decision-making in workforce planning and educational research requires accurate,
+structured datasets. Manually transcribing thousands of pages of official gazettes, qualifications
+frameworks, and occupational demand reports is slow, costly, and highly prone to human error.
+Conversely, using unconstrained generative AI creates severe operational risks through unverified
+outputs.
+2.2 Core Operational Challenges Addressed
+• Data Loss & Hallucinations. Generic AI models tend to “fill in the gaps” when information
+is missing or ambiguous. DataForge enforces a strict “Single Source of Truth” rule, forbidding
+the system from guessing or generating unverified data.
+• Format Corruption. Standard converters ruin key numerical identifiers. For instance,
+South African qualification and occupational codes (e.g., 6-digit OFO codes such as 021301,
+SAQA IDs, and NQF levels) often lose leading zeroes when converted to standard spreadsheets,
+rendering them unusable for computational analysis. DataForge preserves text integrity and
+exact formatting.
+• Complex Multi-Page Tables. Tables that break across pages, wrap text within single
+cells, or carry over subtle sub-headers usually break standard scrapers. DataForge uses
+custom layout analysis to maintain contextual continuity across page breaks.
+• Lack of Auditability. Traditional tools provide a final spreadsheet without showing how
+or where a value was extracted. DataForge generates complete audit trails and provenance
+2
+Darkroom DataForge Executive Summary & Stakeholder Briefing
+records, linking every data cell back to its exact source page.
+3 High-Level Solution Architecture
+Darkroom DataForge operates as an end-to-end processing pipeline that guides raw documents
+through eight distinct stages of transformation and quality assurance.
+Unstructured Documents / PDFs
+1. Inspection & Layout Analysis
+2. Document Understanding
+3. Interactive Schema Inference
+4. Table-Aware Chunking
+5. AI Structured Extraction
+6. Automated Rule Validation
+7. Multi-Model Reconciliation
+8. Human-in-the-Loop Review
+Verified Research
+Dataset & Audit Package
+Checks density, OCR requirements, &
+table structures
+Identifies document intent, sections, &
+annexures
+Establishes clean field definitions &
+data types
+Slices long tables while preserving split
+rows
+Extracts verbatim data under strict
+constraints
+Enforces code formatting & logical consistency
+Compares extractions across competing
+AI models
+Enables 1-click visual sign-off by researchers
+Figure 1: The Darkroom DataForge eight-stage processing pipeline, from raw unstructured input to a
+verified research dataset and audit package.
+4 Key Business Features & Operational Capabilities
+The platform provides several core capabilities designed to meet the stringent requirements of
+research and policy analysis. The following table outlines these features and their corresponding
+stakeholder benefits.
+3
+Darkroom DataForge Executive Summary & Stakeholder Briefing
+Feature Stakeholder Benefit
+Multi-Model Check &
+Reconciliation
+Enables running two independent AI models (e.g., Anthropic
+Claude and Google Gemini) side-by-side. Discrepancies are flagged
+automatically, ensuring high accuracy before human review.
+Human-in-the-Loop
+Review Queue
+Highlights uncertain fields or rule violations and provides a direct,
+one-click link to the specific page (#page=N) of the source PDF for
+rapid human verification.
+Data Privacy & Local
+Deployment
+Supports complete local, air-gapped deployment using local AI
+models. This ensures sensitive or unpublished research data never
+leaves internal organization servers.
+Standardized Research
+Packages
+Generates a complete publication bundle upon export, including
+the dataset (CSV/Excel/JSON), data dictionaries, row-level
+provenance tracking, and cryptographic audit manifests.
+Benchmarking &
+Quality Scoring
+Evaluates extraction quality against verified “Golden Datasets” to
+deliver measurable Precision, Recall, and Accuracy metrics for
+audit reports.
+Table 1: Core capabilities and the stakeholder value each delivers.
+5 Summary of Deliverables & Output Packages
+When a document extraction process is finalized, DataForge produces four interconnected assets
+designed for immediate use by analysts, data scientists, and policy auditors.
+• Clean Dataset (dataset.csv / .xlsx / .json) — Formatted, verified, and structured
+data ready for import into analytical tools (Stata, R, Python, SQL).
+• Data Dictionary (data_dictionary.csv) — A metadata file defining original headers,
+normalized column names, data types, primary keys, and description rules.
+• Provenance Trail (provenance.csv) — An audit ledger mapping every record back to
+its source document ID, exact page number, and the extraction model used.
+• Extraction Manifest (extraction_manifest.json) — A cryptographic summary containing SHA-256 file hashes, timestamps, prompt version numbers, and configuration parameters
+to ensure scientific reproducibility.
+6 Strategic Outcomes & Value Realization
+• Efficiency Gains. Reduces document processing times by up to 80–90%, shifting effort
+from manual data entry to strategic data analysis.
+• Risk Mitigation. Eliminates human copy-paste errors and AI hallucination risks through
+multi-stage automated and manual verification rules.
+• Governance Compliance. Provides complete institutional traceability and reproducible
+4
+Darkroom DataForge Executive Summary & Stakeholder Briefing
+datasets suitable for formal academic research, governance reviews, and legal/regulatory
+reporting.
+GitHub Repository: https://github.com/Drey780822/Darkroom-DataForge
+|09/2026
+5
